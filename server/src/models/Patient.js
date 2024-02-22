@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const Appointment = require('./Appointment');
+
 const patientSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -15,7 +17,7 @@ const patientSchema = new mongoose.Schema({
     appointments: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'Appoinmtent',
+            ref: Appointment,
         }
     ]
 });

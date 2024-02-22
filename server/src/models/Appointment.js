@@ -2,14 +2,6 @@ const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema(
     {
-        doctorId: {
-            type: mongoose.Types.ObjectId,
-            ref: 'Doctor',
-        },
-        patientId: {
-            type: mongoose.Types.ObjectId,
-            ref: 'Patient',
-        },
         date: {
             type: String,
             required: [true, 'Appointment date is required!'],
@@ -24,8 +16,6 @@ const appointmentSchema = new mongoose.Schema(
             minLength: [5, 'Reason must be at least 5 characters!'],
             maxLength: [50, 'Reason must not be more than 50 characters!'],
         },
-        
-        
     },
     {
         timestamps: true,
