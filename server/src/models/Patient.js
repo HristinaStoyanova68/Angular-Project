@@ -35,6 +35,6 @@ patientSchema.virtual('rePassword')
     this.password = hash;
 });
 
-const Patient = mongoose.model('User', patientSchema);
+const Patient = mongoose.model('Patient', patientSchema);
 
 module.exports = Patient;
