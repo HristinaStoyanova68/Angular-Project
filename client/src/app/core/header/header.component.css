@@ -1,0 +1,50 @@
+nav {
+    display: flex;
+    margin-right: 2em;
+}
+
+nav ul {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    list-style-type: none;
+}
+
+nav ul li {
+    text-decoration: none;
+    font-style: italic;
+    text-transform: uppercase;
+    
+}
+
+nav ul li a {
+    color: #423c3c;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: rgb(238, 238, 243);
+    padding-bottom: 0.3em;
+}
+
+nav ul li a {
+    position: relative;
+    text-decoration: none;
+  }
+  
+  nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0.5px;
+    background-color: #fff;
+    transition: width 0.3s ease-out;
+    transform-origin: 0 50%;
+  }
+  
+  nav ul li a:hover::before {
+    width: 100%;
+    left: 0;
+  }
