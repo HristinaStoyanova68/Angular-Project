@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule} from '@angular/common/http'
 import { ErrorComponent } from './error/error.component';
 import { MainModule } from './main/main.module';
+import { UserRoutingModule } from './user/user-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MainModule } from './main/main.module';
     SharedModule,
     HttpClientModule,
     MainModule,
+    UserRoutingModule,
     AppRoutingModule,
   ],
   providers: [],
