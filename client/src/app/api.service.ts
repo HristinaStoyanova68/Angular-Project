@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getRecipesList() {
+  getRecipesList () {
     const { apiUrl} = environment;
 
     return this.http.get<Recipe[]>(`${apiUrl}/recipes-list`);
@@ -20,5 +20,12 @@ export class ApiService {
     const {apiUrl} = environment;
 
     return this.http.get<Recipe>(`${apiUrl}/recipes-list/${id}`);
+  }
+
+  createRecipe(recipeName: string) {
+    const {apiUrl} = environment;
+    const payload = {recipeName};
+
+    return this.http.post<Recipe>(`${apiUrl}/recipes-list`, payload);
   }
 }
