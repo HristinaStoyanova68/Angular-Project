@@ -1,0 +1,53 @@
+.component-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+h2 {
+    text-align: right;
+    padding-right: 2em;
+    font-size: 5em;
+    color: rgb(104, 54, 63);
+    transition: color 0.5s; 
+    opacity: 0.7;
+}
+
+h2:hover {
+    color: #000;
+}
+
+.row-items {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5em;
+    margin-bottom: 2em;
+    padding-right: 1em;
+    gap: 2em;
+}
+
+.row-items button {
+    padding: 1em 1.5em;
+    margin: 0 1.5em;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-style: italic;
+    color: rgb(104, 54, 63);
+    border-radius: 1em;
+    background-color: rgb(230, 187, 215);
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.5s ease;
+    opacity: 0.7;
+}
+
+.row-items button:hover {
+    color: #000;
+    background-color: rgb(211, 147, 189);
+}
