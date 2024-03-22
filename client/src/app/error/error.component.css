@@ -81,7 +81,7 @@
   }
   
   button {
-    background: linear-gradient(#EC5DC1, #D61A6F);
+    background: linear-gradient(#B55C6B, #d74d8b);
     padding: 0 12px;
     border: none;
     border-radius: 20px;
@@ -94,14 +94,14 @@
   }
   
   .bubble {
-    background: linear-gradient(#EC5DC1, #D61A6F);
+    background: linear-gradient(#B55C6B, #d74d8b);
     border-radius: 50%;
     box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
     position: absolute;
   }
   .bubble:before, .bubble:after {
     content: "";
-    background: linear-gradient(#EC5DC1, #D61A6F);
+    background: linear-gradient(#B55C6B, #d74d8b);
     border-radius: 50%;
     box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
     position: absolute;
