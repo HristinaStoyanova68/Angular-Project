@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main/main.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { PecipesListComponent } from './pecipes-list/pecipes-list.component';
 
 
 
@@ -12,6 +13,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     HomeComponent,
     MainComponent,
     AddRecipeComponent,
+    PecipesListComponent,
   ],
   imports: [
     CommonModule, MainRoutingModule,
