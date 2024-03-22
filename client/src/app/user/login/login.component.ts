@@ -10,11 +10,11 @@ export class LoginComponent {
     isActive: boolean = false;
     
 
-    onLoginAction() {
+    onLoginActive() {
         this.isActive = false;
     }
 
-    onRegisterAction() {
+    onRegisterActive() {
         this.isActive = true;
     }
 
