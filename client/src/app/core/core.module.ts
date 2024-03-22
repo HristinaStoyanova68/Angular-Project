@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
     FooterComponent
   ],
   imports: [
-    CommonModule, RouterModule
+    CommonModule, RouterModule,
   ],
   exports: [
     HeaderComponent,
