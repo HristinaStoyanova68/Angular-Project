@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main/main.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 
 
@@ -10,6 +11,7 @@ import { MainComponent } from './main/main.component';
   declarations: [
     HomeComponent,
     MainComponent,
+    AddRecipeComponent,
   ],
   imports: [
     CommonModule, MainRoutingModule,
