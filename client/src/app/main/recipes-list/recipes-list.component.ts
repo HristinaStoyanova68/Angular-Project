@@ -22,5 +22,4 @@ export class RecipesListComponent implements OnInit{
       }, 1000)
     })
   }
-
 }
