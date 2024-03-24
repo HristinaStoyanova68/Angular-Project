@@ -9,9 +9,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(216, 182, 207, 0.4);
-
   box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
-  /* background-color: rgb(255, 255, 255, 0.3); */
   border: 1px solid rgb(202, 202, 202, 0.5);
   border-radius: 5px;
   width: 400px;
@@ -39,13 +37,13 @@
   font-style: italic;
 }
 
-ul.icons-container {
+ul.icons {
   display: flex;
   gap: 2em;
   list-style-type: none;
 }
 
-ul.icons-container li a {
+ul.icons li a {
   display: block;
   width: 40px;
   height: 40px;
@@ -58,7 +56,7 @@ ul.icons-container li a {
   color: black;
 }
 
-ul.icons-container li a:hover {
+ul.icons li a:hover {
   color: #fff;
   background: linear-gradient(#b55c6b, #d74d8b);
   
