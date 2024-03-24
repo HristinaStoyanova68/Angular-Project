@@ -9,7 +9,7 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { LastArrivalsComponent } from './last-arrivals/last-arrivals.component';
 import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-social-media.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { ServiceComponent } from './service/service.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 
@@ -22,7 +22,7 @@ import { ServiceComponent } from './service/service.component';
     LastArrivalsComponent,
     ShareOnSocialMediaComponent,
     AboutUsComponent,
-    ServiceComponent,
+    ContactUsComponent,
   ],
   imports: [
     CommonModule, SharedModule, MainRoutingModule,

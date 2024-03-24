@@ -5,7 +5,7 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { LastArrivalsComponent } from './last-arrivals/last-arrivals.component';
 import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-social-media.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { ServiceComponent } from './service/service.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'recipesList', component: RecipesListComponent },
   {path: 'last-arrivals', component: LastArrivalsComponent},
   {path: 'about-us', component: AboutUsComponent},
-  {path: 'service', component: ServiceComponent},
+  {path: 'contact-us', component: ContactUsComponent},
   {path: 'share', component: ShareOnSocialMediaComponent},
 ];
 

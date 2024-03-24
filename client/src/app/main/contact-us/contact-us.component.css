@@ -1,0 +1,49 @@
+.card-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .card {
+    display: flex;
+    align-items: flex-start;
+    background-color: rgb(216, 182, 207, 0.4);
+  
+    box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgb(202, 202, 202, 0.5);
+    border-radius: 5px;
+    width: 400px;
+    height: fit-content;
+    padding: 20px;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 8em;
+    right: 8em;
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    font-style: italic;
+    color: #423c3c;
+    padding-bottom: 0.5em;
+    text-align: center;
+    font-style: italic;
+  }
+  
+  ul.icons {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    list-style-type: none;
+  }
+
+  ul.icons li {
+    font-size: 18px;
+  }
