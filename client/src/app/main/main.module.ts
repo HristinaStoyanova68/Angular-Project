@@ -7,6 +7,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { SharedModule } from '../shared/shared.module';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { LastArrivalsComponent } from './last-arrivals/last-arrivals.component';
+import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-social-media.component';
 
 
 
@@ -17,6 +18,7 @@ import { LastArrivalsComponent } from './last-arrivals/last-arrivals.component';
     AddRecipeComponent,
     RecipesListComponent,
     LastArrivalsComponent,
+    ShareOnSocialMediaComponent,
   ],
   imports: [
     CommonModule, SharedModule, MainRoutingModule,
