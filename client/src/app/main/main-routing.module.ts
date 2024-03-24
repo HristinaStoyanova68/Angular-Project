@@ -7,12 +7,17 @@ import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-so
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
   { path: 'recipesList', component: RecipesListComponent },
-  {path: 'add-recipe', component: AddRecipeComponent},
+  {
+    path: 'add-recipe', 
+    component: AddRecipeComponent,
+    canActivate: [AuthActivate],
+  },
   {path: 'last-arrivals', component: LastArrivalsComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contact-us', component: ContactUsComponent},
