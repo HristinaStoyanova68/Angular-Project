@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { LastArrivalsComponent } from './last-arrivals/last-arrivals.component';
 import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-social-media.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ServiceComponent } from './service/service.component';
 
 
 
@@ -19,6 +21,8 @@ import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-so
     RecipesListComponent,
     LastArrivalsComponent,
     ShareOnSocialMediaComponent,
+    AboutUsComponent,
+    ServiceComponent,
   ],
   imports: [
     CommonModule, SharedModule, MainRoutingModule,
