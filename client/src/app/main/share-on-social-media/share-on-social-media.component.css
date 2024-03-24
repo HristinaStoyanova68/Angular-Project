@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(216, 182, 207, 0.4);
-  
+
   box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
   /* background-color: rgb(255, 255, 255, 0.3); */
   border: 1px solid rgb(202, 202, 202, 0.5);
@@ -31,8 +31,10 @@
 }
 
 .card-title {
+  font-weight: bold;
+  font-style: italic;
+  color: #423c3c;
   padding-bottom: 0.5em;
-  /* text-transform: uppercase; */
   text-align: center;
   font-style: italic;
 }
@@ -49,8 +51,8 @@ ul.icons-container li a {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  background: linear-gradient(#B55C6B, #d74d8b);
-  transition: background-color 0.3s ease; 
+  background: linear-gradient(#b55c6b, #d74d8b);
+  transition: background-color 0.3s ease;
   /* background-color: rgb(235, 183, 183, 0.5); */
   text-decoration: none;
   border-radius: 50%;
@@ -60,5 +62,4 @@ ul.icons-container li a {
 ul.icons-container li a:hover {
   color: #fff;
   background: linear-gradient(rgba(181, 92, 107, 0.6), rgba(215, 77, 139, 0.6));
-;
 }
