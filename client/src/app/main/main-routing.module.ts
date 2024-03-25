@@ -12,7 +12,7 @@ import { AuthActivate } from '../guards/auth.activate';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
-  { path: 'recipesList', component: RecipesListComponent },
+  { path: 'recipes-list', component: RecipesListComponent },
   {
     path: 'add-recipe', 
     component: AddRecipeComponent,
