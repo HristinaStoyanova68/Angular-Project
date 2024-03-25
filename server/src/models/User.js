@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const Appointment = require('./Appointment');
 
-const patientSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
     },
@@ -22,19 +22,19 @@ const patientSchema = new mongoose.Schema({
     ]
 });
 
-patientSchema.virtual('rePassword')
+userSchema.virtual('rePassword')
     .set(function (value) {
         if (value !== this.password) {
             throw new Error('Passwords don\'t match!');
         }
     });
 
-    patientSchema.pre('save', async function () {
+    userSchema.pre('save', async function () {
     const hash = await bcrypt.hash(this.password, 10);
 
     this.password = hash;
 });
 
-const Patient = mongoose.model('Patient', patientSchema);
+const User = mongoose.model('User', userSchema);
 
-module.exports = Patient;
+module.exports = User;

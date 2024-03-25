@@ -1,16 +1,17 @@
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
 
-const Patient = require('../models/Patient');
+const User = require('../models/User');
 const { accessTokenGenerator, refreshTokenGenerator } = require('../utils/tokenGenerator');
 // const { validationResult } = require('express-validator');
 
-// @desc Sign in existing patient
+// @desc Sign in existing user
 // @route POST /login
 // @access Public
 
 const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    console.log(email, password);
     // const { errors } = validationResult(req);
 
     // if (errors.length) {
@@ -26,20 +27,20 @@ const login = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Password is required!' });
     }
 
-    const patient = await Patient.findOne({ email }).populate('appointments');
+    const user = await User.findOne({ email }).populate('appointments');
 
-    if (!patient) {
+    if (!user) {
         return res.status(401).json({ message: 'Unauthorized: Invalid email or password!' });
     }
 
-    const isValidPassword = await bcrypt.compare(password, patient.password);
+    const isValidPassword = await bcrypt.compare(password, user.password);
 
     if (!isValidPassword) {
         return res.status(401).json({ message: 'Unauthorized: Invalid email or password!' });
     }
 
-    const accessToken = await accessTokenGenerator(patient);
-    const refreshToken = await refreshTokenGenerator(patient);
+    const accessToken = await accessTokenGenerator(user);
+    const refreshToken = await refreshTokenGenerator(user);
 
     res.cookie('jwt', refreshToken, {
         httpOnly: true,
@@ -50,22 +51,24 @@ const login = asyncHandler(async (req, res) => {
 
     // Have to check if it is necessary to make this userData object or to send only the accessToken
     
-    const patientData = {
-        id: patient._id,
-        username: patient.username,
-        email: patient.email,
+    const userData = {
+        id: user._id,
+        username: user.username,
+        email: user.email,
         accessToken,
     };
 
-    res.status(200).json(patientData);
+    res.status(200).json(userData);
 });
 
-// @desc Register new patient
-// @route POST patients/register
+// @desc Register new user
+// @route POST users/register
 // @access Private
 
 const register = asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
+    console.log('server');
+    console.log(username, email, password);
 
     if (!username) {
         return res.status(400).json({ message: 'Username is required!' });
@@ -79,31 +82,32 @@ const register = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Password is required!' });
     }
 
-    const usernameExists = await Patient.findOne({ username }).lean();
+    const usernameExists = await User.findOne({ username }).lean();
 
     if (usernameExists) {
         return res.status(409).json({ message: 'Username already exists!' });
     }
 
-    const createPatient = await Patient.create({ username, email, password });
+    const createUser = await User.create({ username, email, password });
 
-    if (!createPatient) {
+    if (!createUser) {
         return res.status(400).json({ message: 'Inavlid user data received!' });
     }
 
-    const token = await accessTokenGenerator(createPatient);
+    const token = await accessTokenGenerator(createUser);
 
-    const patientData = {
-        id: createPatient._id,
-        username: createPatient.username,
-        email: createPatient.email,
+    const userData = {
+        id: createUser._id,
+        username: createUser.username,
+        email: createUser.email,
+        password: createUser.password,
         token
     };
 
-    res.status(201).json(patientData);
+    res.status(201).json(userData);
 });
 
-// @desc Logout an patient
+// @desc Logout an user
 // @route POST /logout
 // @access Public
 

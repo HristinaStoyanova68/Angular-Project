@@ -26,10 +26,28 @@
                     </div>
                 </div>
                 <span>or use your email for registration</span>
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button>Sign Up</button>
+                <input 
+                type="text" 
+                placeholder="Name"
+                #inputUsername
+                >
+                <input 
+                type="email" 
+                placeholder="Email"
+                #inputEmail
+                >
+                <input 
+                type="password" 
+                placeholder="Password"
+                #inputPassword
+                >
+                <input 
+                type="password" 
+                placeholder="Repeat Password"
+                name="rePassword"
+                #inputRePassword
+                >
+                <button (click)="onRegisterClick($event, inputUsername.value, inputEmail.value, inputPassword.value)">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
@@ -61,15 +79,15 @@
                 <input 
                 type="email" 
                 placeholder="Email"
-                #inputEmail
+                #inputLoginEmail
                 >
                 <input 
                 type="password" 
                 placeholder="Password"
-                #inputPassword
+                #inputLoginPassword
                 >
                 <a href="#">Forget Your Password?</a>
-                <button (click)="onLoginClick($event, inputEmail.value, inputPassword.value)">Sign In</button>
+                <button (click)="onLoginClick($event, inputLoginEmail.value, inputLoginPassword.value)">Sign In</button>
             </form>
         </div>
         <div class="toggle-container">

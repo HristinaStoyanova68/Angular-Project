@@ -15,11 +15,11 @@ export class HeaderComponent {
     }
 
     get firstName(): string {
-        return this.userService.user?.firstName || '';
+        return this.userService.user?.username || '';
     }
 
-    logout() {
-        this.userService.logout();
+    signOut() {
+        this.userService.signOut();
         this.router.navigate(['/']);
     }
 }

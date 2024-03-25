@@ -1,20 +1,20 @@
 export interface User {
-    themes: string[];
-    posts: string[];
+    // themes: string[];
+    // posts: string[];
     _id: string;
-    tel: string;
+    // tel: string;
     email: string;
     username: string;
     password: string;
-    created_at: string;
-    updatedAt: string;
+    appointments: any[];
+    // created_at: string;
+    // updatedAt: string;
     __v: number;
 }
 
 export interface UserForAuth {
-    firstName: string;
+    username: string;
     email: string;
-    phoneNumber: string;
     password: string;
     id: string;
 }
