@@ -11,6 +11,7 @@ import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-so
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 
 
@@ -25,6 +26,7 @@ import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
     AboutUsComponent,
     ContactUsComponent,
     UpdateRecipeComponent,
+    RecipeDetailsComponent,
   ],
   imports: [
     CommonModule, SharedModule, MainRoutingModule,
