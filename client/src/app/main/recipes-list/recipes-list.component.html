@@ -5,17 +5,15 @@
 
     <div class="component-container" *ngIf="!isLoading">
         
-        <!-- <h1>Our Menu</h1> -->
-    
         <div class="section-menu" *ngIf="recipesList !== null">
-            <div class="menu-breakfast section-content" *ngFor="let post of recipesList.slice(0, 6)">
+            <div class="menu-breakfast section-content" *ngFor="let recipe of recipesList.slice(0, 6)">
                 <article>
                     <div class="media">
                         <img src="../../../assets/images/IMG_8566.JPG" alt="pic1">
                     </div>
                     <div class="entry-content">
-                        <h2>Recipe Name</h2>
-                        <p>Recipe Description</p>
+                        <h2>{{recipe.name}}</h2>
+                        <p>{{recipe.ingredients}}</p>
                         <a href="#">READ MORE</a>
                         <!-- TODO add update and likes buttons -->
                     </div>
