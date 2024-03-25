@@ -10,6 +10,7 @@ import { LastArrivalsComponent } from './last-arrivals/last-arrivals.component';
 import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-social-media.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 
 
 
@@ -23,6 +24,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ShareOnSocialMediaComponent,
     AboutUsComponent,
     ContactUsComponent,
+    UpdateRecipeComponent,
   ],
   imports: [
     CommonModule, SharedModule, MainRoutingModule,
