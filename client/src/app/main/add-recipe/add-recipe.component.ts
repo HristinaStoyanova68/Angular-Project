@@ -14,4 +14,5 @@ export class AddRecipeComponent {
 
         this.apiService.createRecipe(recipeName);
     }
+
 }

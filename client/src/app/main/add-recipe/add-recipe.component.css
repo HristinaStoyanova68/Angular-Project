@@ -1,0 +1,75 @@
+.card-container {
+    display: flex;
+    /* border: 2px solid red; */
+    font-style: italic;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(216, 182, 207, 0.4);
+    border: 1px solid rgb(202, 202, 202, 0.5);
+    border-radius: 5px;
+    width: 700px;
+    height: fit-content;
+    padding: 20px;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.5);
+    position: absolute;
+    /* overflow-y: auto; */
+    top: 4em;
+    right: 4em;
+    /* bottom: 0; */
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+ input, textarea {
+    border: 2px solid rgb(209, 174, 174);
+    border-radius: 0.7em;
+    min-width: 300px;
+    padding: 0.5em;
+    background-color: rgb(236, 221, 232, 0.5);
+ }
+
+ textarea {
+    overflow-y: auto;
+    min-height: 100px;
+ }
+
+  button {
+    background: linear-gradient(#B55C6B, #d74d8b);
+    padding: 0 12px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
+    outline: none;
+    color: #FFF;
+    font: 400 16px/2.5 Nunito, "Varela Round", Sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
