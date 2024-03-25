@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class UpdateRecipeComponent {
 
+  //TODO add guard for owner of the recipe
+
 }

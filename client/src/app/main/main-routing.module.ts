@@ -8,6 +8,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { AuthActivate } from '../guards/auth.activate';
+import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: 'add-recipe', 
     component: AddRecipeComponent,
+    canActivate: [AuthActivate],
+  },
+  {
+    path: 'update-recipe',
+    component: UpdateRecipeComponent,
     canActivate: [AuthActivate],
   },
   {path: 'last-arrivals', component: LastArrivalsComponent},
