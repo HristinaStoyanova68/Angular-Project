@@ -1,6 +1,5 @@
 .card-container {
     display: flex;
-    /* border: 2px solid red; */
     font-style: italic;
     min-height: 100vh;
     position: relative;
@@ -18,10 +17,8 @@
     padding: 20px;
     box-shadow: 0 0 1em rgb(0, 0, 0, 0.5);
     position: absolute;
-    /* overflow-y: auto; */
     top: 4em;
     right: 4em;
-    /* bottom: 0; */
   }
 
   .card-content {
@@ -48,10 +45,11 @@
     gap: 0.5em;
   }
 
- input, textarea {
+  input, textarea {
     border: 2px solid rgb(209, 174, 174);
     border-radius: 0.7em;
-    min-width: 300px;
+    min-width: 25em;
+    overflow-x: auto;
     padding: 0.5em;
     background-color: rgb(236, 221, 232, 0.5);
  }
@@ -60,6 +58,11 @@
     overflow-y: auto;
     min-height: 100px;
  }
+
+ input:focus,
+ textarea:focus {
+    outline-color: rgb(181, 92, 107); 
+}
 
   button {
     background: linear-gradient(#B55C6B, #d74d8b);
