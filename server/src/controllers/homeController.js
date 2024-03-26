@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 
-const Doctor = require('../models/Doctor');
+const Doctor = require('../models/Collection');
 
 // @desc Get all doctors
 // @route GET /

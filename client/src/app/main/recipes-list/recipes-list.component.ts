@@ -8,18 +8,21 @@ import { Recipe } from 'src/app/types/recipe';
   styleUrls: ['./recipes-list.component.css']
 })
 export class RecipesListComponent implements OnInit{
-  recipesList: Recipe[] = [];
-  isLoading: boolean = true;
+  // recipesList: Recipe[] = [];
+  isLoading: boolean = false;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getRecipesList().subscribe((recipesList) => {
-      this.recipesList = recipesList;
+    // this.apiService.getRecipesList().subscribe((recipesList) => {
+    //   this.recipesList = recipesList;
 
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 1000)
-    })
+    //   setTimeout(() => {
+    //     this.isLoading = false;
+    //   }, 1000)
+    // })
+
+    console.log('done');
+    
   }
 }

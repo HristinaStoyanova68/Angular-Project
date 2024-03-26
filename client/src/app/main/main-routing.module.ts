@@ -9,11 +9,13 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { AuthActivate } from '../guards/auth.activate';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
   { path: 'recipes-list', component: RecipesListComponent },
+  {path: 'recipe-details', component: RecipeDetailsComponent},
   {
     path: 'add-recipe', 
     component: AddRecipeComponent,

@@ -4,18 +4,23 @@
     </div>
 
     <div class="component-container" *ngIf="!isLoading">
-        
-        <div class="section-menu" *ngIf="recipesList !== null">
-            <div class="menu-breakfast section-content" *ngFor="let recipe of recipesList.slice(0, 6)">
+
+        <!-- <div class="section-menu" *ngIf="recipesList !== null"> -->
+        <div class="section-menu">
+            <!-- <div class="menu-breakfast section-content" *ngFor="let recipe of recipesList.slice(0, 6)"> -->
+            <div class="menu-breakfast section-content">
                 <article>
                     <div class="media">
                         <img src="../../../assets/images/IMG_8566.JPG" alt="pic1">
                     </div>
                     <div class="entry-content">
-                        <h2>{{recipe.name}}</h2>
-                        <p>{{recipe.ingredients}}</p>
-                        <a href="#">READ MORE</a>
-                        <!-- TODO add update and likes buttons -->
+                        <!-- <h2>{{recipe.name}}</h2> -->
+                        <h2>recipe name</h2>
+                        <!-- <p>{{recipe.ingredients}}</p> -->
+                        <p>ingredients</p>
+
+                        <a routerLink="/recipe-details">view more</a>
+                        <!-- TODO add edit and like buttons -->
                     </div>
                 </article>
             </div>
