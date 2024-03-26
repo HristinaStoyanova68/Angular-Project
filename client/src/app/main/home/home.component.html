@@ -1,10 +1,16 @@
-
 <div class="component-container">
     <h2>My project</h2>
 
-    <div class="row-items">
-        <button routerLink="/recipes-list">All recipes</button>
-        <button routerLink="/add-recipe">Add recipe</button>
-        <button routerLink="/last-arrivals">Last arrivals</button>
+    <div class="choices-container">
+        <div class="row-items">
+            <button (click)="toggleChoices()">Meal choices</button>
+            <button routerLink="/add-recipe">Add recipe</button>
+            <button routerLink="/last-arrivals">Last arrivals</button>
+        </div>
+        <div class="choices" *ngIf="isShownChoices">
+            <button routerLink="/salads">Salads</button>
+            <button routerLink="/main-courses">Main Courses</button>
+            <button routerLink="/desserts">Desserts</button>
+        </div>
     </div>
 </div>

@@ -8,13 +8,16 @@ import { Recipe } from 'src/app/types/recipe';
   styleUrls: ['./last-arrivals.component.css'],
 })
 export class LastArrivalsComponent implements OnInit{
+    collection: string = 'salads';
     recipesList: Recipe[] = [];
     isLoading: boolean = true;
 
     constructor(private apiService: ApiService) {}
 
     ngOnInit(): void {
-        this.apiService.getRecipesList().subscribe((recipesList) => {
+        this.apiService.getRecipesList(this.collection).subscribe
+        //TODO implement last 3 from all
+        ((recipesList) => {
             this.recipesList = recipesList.slice(-3);
 
             setTimeout(() => {
@@ -22,4 +25,6 @@ export class LastArrivalsComponent implements OnInit{
             }, 1000)
         });  
     }
+
+
 }

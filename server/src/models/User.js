@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
     },
-    appointments: [
+    recipes: [
         {
             type: mongoose.Types.ObjectId,
             ref: Appointment,

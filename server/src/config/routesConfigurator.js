@@ -1,11 +1,11 @@
 const homeRouter = require('../routes/homeRoutes');
 const userRouter = require('../routes/userRoutes');
-// const appointmentRouter = require('../routes/appointmentRouter');
+const recipesRouter = require('../routes/recipesRoutes');
 const errorHandler = require('../middlewares/errorHandler');
 
 module.exports = (app) => {
     app.use(homeRouter);
     app.use('/users', userRouter);
-    // app.use('/schedule', appointmentRouter);
+    app.use('/recipes', recipesRouter);
     app.use(errorHandler);
 }

@@ -10,16 +10,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getRecipesList () {
+  getRecipesList (collection: string) {
     const { apiUrl} = environment;
 
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes-list`);
+    return this.http.get<Recipe[]>(`${apiUrl}/recipes/${collection}`);
   }
 
   getRecipe (id: string) {
     const {apiUrl} = environment;
 
-    return this.http.get<Recipe>(`${apiUrl}/recipes-list/${id}`);
+    return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`);
   }
 
   createRecipe(recipeName: string) {

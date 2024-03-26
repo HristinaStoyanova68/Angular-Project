@@ -14,7 +14,9 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
-  { path: 'recipes-list', component: RecipesListComponent },
+  { path: 'salads', component: RecipesListComponent },
+  { path: 'main-courses', component: RecipesListComponent },
+  { path: 'desserts', component: RecipesListComponent },
   {path: 'recipe-details', component: RecipeDetailsComponent},
   {
     path: 'add-recipe', 
