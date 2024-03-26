@@ -1,3 +1,7 @@
+header {
+  max-height: 7em;
+}
+
 nav {
   display: flex;
   margin-right: 2em;
@@ -23,7 +27,8 @@ nav ul li a {
   text-decoration: none;
 }
 
-.sign-out {
+.sign-out,
+.meal-choices {
     cursor: pointer;
 }
 
@@ -48,3 +53,24 @@ nav ul li a:hover::before {
   width: 100%;
   left: 0;
 }
+
+nav ul li.meal-choices {
+  position: relative;
+}
+
+.choices {
+  margin-top: 0.5em;
+  padding: 0 1.5em 0.8em 1.5em;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgb(181, 92, 107);
+}
+
+.choices .hover a {
+  font-size: 14px;
+  display: inline-block;
+  color: #423c3c;
+}
+

@@ -5,21 +5,27 @@ import { UserService } from 'src/app/user/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-    constructor(private userService: UserService, private router: Router) {}
+  isShownChoices: boolean = false;
 
-    get isLoggedIn(): boolean {
-      return this.userService.isLogged;
-    }
+  constructor(private userService: UserService, private router: Router) {}
 
-    get firstName(): string {
-        return this.userService.user?.username || '';
-    }
+  get isLoggedIn(): boolean {
+    return this.userService.isLogged;
+  }
 
-    signOut() {
-        this.userService.signOut();
-        this.router.navigate(['/']);
-    }
+  get firstName(): string {
+    return this.userService.user?.username || '';
+  }
+
+  toggleChoices() {
+    this.isShownChoices = !this.isShownChoices;
+  }
+
+  signOut() {
+    this.userService.signOut();
+    this.router.navigate(['/']);
+  }
 }

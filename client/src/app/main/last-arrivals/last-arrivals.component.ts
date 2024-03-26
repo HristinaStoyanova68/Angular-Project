@@ -15,15 +15,15 @@ export class LastArrivalsComponent implements OnInit{
     constructor(private apiService: ApiService) {}
 
     ngOnInit(): void {
-        this.apiService.getRecipesList(this.collection).subscribe
-        //TODO implement last 3 from all
-        ((recipesList) => {
-            this.recipesList = recipesList.slice(-3);
+        // this.apiService.getRecipesList(this.collection).subscribe
+        // //TODO implement last 3 from all
+        // ((recipesList) => {
+        //     this.recipesList = recipesList.slice(-3);
 
-            setTimeout(() => {
-                this.isLoading = false;
-            }, 1000)
-        });  
+        //     setTimeout(() => {
+        //         this.isLoading = false;
+        //     }, 1000)
+        // });  
     }
 
 
