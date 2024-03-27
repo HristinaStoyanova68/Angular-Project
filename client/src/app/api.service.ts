@@ -22,7 +22,7 @@ export class ApiService {
     return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/${collectionName}`);
   }
 
-  getRecipe (id: string) {
+  getRecipeById (id: string) {
     const {apiUrl} = environment;
 
     return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`);
