@@ -13,7 +13,7 @@ export class ApiService {
   getRecipesForCollectionName (collectionName: string) {
     const { apiUrl} = environment;
 
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes/${collectionName}`);
+    return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/${collectionName}`);
   }
 
   getRecipe (id: string) {
