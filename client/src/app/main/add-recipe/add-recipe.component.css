@@ -35,12 +35,17 @@ form {
   gap: 1em;
 }
 
-.form-group {
+.form-group,
+#ingredients-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
+}
+
+#ingredients-container {
+  flex-direction: row;
 }
 
 input,
@@ -52,6 +57,16 @@ select {
   overflow-x: auto;
   padding: 0.5em;
   background-color: rgb(236, 221, 232, 0.5);
+}
+
+input#ingredientQty {
+  min-width: unset; 
+  width: 17%;
+}
+
+input#ingredientName {
+  min-width: unset; 
+  width: 80%;
 }
 
 textarea {
