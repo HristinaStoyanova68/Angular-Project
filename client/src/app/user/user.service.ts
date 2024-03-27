@@ -3,6 +3,7 @@ import { User, UserForAuth } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { Router } from '@angular/router';
+import { Recipe } from '../types/recipe';
 
 @Injectable({
   providedIn: 'root',
@@ -58,6 +59,12 @@ export class UserService {
 
         (error) => console.log(error)
       );
+  }
+
+  getMyRecipes () {
+    const {apiUrl} = environment;
+
+    return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/my-recipes`);
   }
 
   signOut() {
