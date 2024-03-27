@@ -5,20 +5,20 @@ const User = require("../models/User");
 
 const getAllRecipesForCollection = asyncHandler(async (req, res) => {
   const { collectionName } = req.params;
-  const collection = await Collection
-    .findOne({ name: collectionName })
+  const collection = await Collection.findOne({ name: collectionName })
     .populate("recipes")
     .lean();
 
   if (!collection) {
+
     return res.status(204).json({ message: "Collection not found!" });
   }
 
-  const allRecipes = [...collection.recipes];
+  const allRecipes = [];
 
-//   if (allRecipes.length === 0) {
-//     return res.status(204).json({ message: "No recipes in this collection!" });
-//   }
+  if (collection.recipes.length !== 0) {
+    allRecipes = [...collection.recipes];
+  }
 
   res.status(200).json(allRecipes);
 });
@@ -35,26 +35,32 @@ const getRecipeById = asyncHandler(async (req, res) => {
 });
 
 const getMyRecipes = asyncHandler(async (req, res) => {
-    const userId = req.user.id; //TODO implement correct userId depending on Angular
+  const userId = req.user.id; //TODO implement correct userId depending on Angular
 
-    const currentUser = await User.findById({_id: userId}).populate('recipes').lean();
+  const currentUser = await User.findById({ _id: userId })
+    .populate("myRecipes")
+    .lean();
 
-    if (!currentUser) {
-        return res.status(204).json({ message: "User not found!" });
-    }
+  if (!currentUser) {
+    return res.status(204).json({ message: "User not found!" });
+  }
 
-    const myRecipes = [...currentUser.recipes];
+  const myRecipes = [];
 
-    res.status(200).json(myRecipes);
-})
+  if (currentUser.myRecipes.length !== 0) {
+    myRecipes = [...currentUser.myRecipes];
+  }
+
+  res.status(200).json(myRecipes);
+});
 
 const addRecipe = asyncHandler(async (req, res) => {
   // const {}
 });
 
 module.exports = {
-    getAllRecipesForCollection,
-    getRecipeById,
-    getMyRecipes,
-    addRecipe,
+  getAllRecipesForCollection,
+  getRecipeById,
+  getMyRecipes,
+  addRecipe,
 };
