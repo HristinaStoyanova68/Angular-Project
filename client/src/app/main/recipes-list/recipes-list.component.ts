@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { Recipe } from 'src/app/types/recipe';
 
 @Component({
   selector: 'app-recipes-list',
@@ -8,34 +9,37 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./recipes-list.component.css'],
 })
 export class RecipesListComponent implements OnInit {
-  //   collectionName: string | undefined;
-  isLoading: boolean = false;
+  collectionName: string | undefined;
+  recipes: Recipe[] | [] = [];
+  hasRecipes: boolean = false;
+  isLoading: boolean = true;
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(
+    private apiService: ApiService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    const currentUrl = this.router.url;
-    const collectionName: string | undefined =
-      this.extractCollection(currentUrl);
+    this.collectionName = this.activatedRoute.snapshot.routeConfig?.path;
 
-    if (collectionName !== undefined) {
+    if (
+        this.collectionName === 'salads' ||
+        this.collectionName === 'meals' || 
+        this.collectionName === 'desserts'
+        ) {
       this.apiService
-        .getRecipesForCollectionName(collectionName)
-        .subscribe((recipes) => {
-            console.log(recipes);
-            
-          setTimeout(() => {
+        .getRecipesForCollectionName(this.collectionName)
+        .subscribe((allRecipes) => {
             this.isLoading = false;
-          }, 1000);
+
+          if (allRecipes.length === 0) {
+            this.hasRecipes = false;
+          } else {
+            this.recipes = [...allRecipes];
+            this.hasRecipes = true;
+          }
+
         });
     }
-
-    console.log('done');
-  }
-
-  private extractCollection(url: string): string | undefined {
-    const segments = url.split('/');
-    const result = segments.pop();
-    return result;
   }
 }

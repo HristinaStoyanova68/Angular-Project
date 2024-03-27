@@ -1,29 +1,30 @@
-<main>
+<div>
     <div *ngIf="isLoading">
         <app-loader />
     </div>
 
     <div class="component-container" *ngIf="!isLoading">
 
-        <!-- <div class="section-menu" *ngIf="recipesList !== null"> -->
-        <div class="section-menu">
-            <!-- <div class="menu-breakfast section-content" *ngFor="let recipe of recipesList.slice(0, 6)"> -->
-            <div class="menu-breakfast section-content">
+        <div class="section-menu" *ngIf="hasRecipes">
+            
+            <div class="menu-breakfast section-content" *ngFor="let recipe of recipes">
                 <article>
                     <div class="media">
-                        <img src="../../../assets/images/IMG_8566.JPG" alt="pic1">
+                        <img src="{{recipe.image}}" alt="{{recipe.name}}">
                     </div>
                     <div class="entry-content">
-                        <!-- <h2>{{recipe.name}}</h2> -->
-                        <h2>recipe name</h2>
-                        <!-- <p>{{recipe.ingredients}}</p> -->
-                        <p>ingredients</p>
+                        <h2>{{recipe.name}}</h2>
+                        <p>{{recipe.ingredients}}</p>
 
-                        <a routerLink="/recipe-details">view more</a>
+                        <a [routerLink]="[recipe.mealType.toLowerCase(), recipe._id]">view more</a>
                         <!-- TODO add edit and like buttons -->
                     </div>
                 </article>
             </div>
         </div>
+
+        <div *ngIf="!hasRecipes">
+            <p>There are no recipes in this collection yet.</p>
+        </div>
     </div>
-</main>
+</div>
