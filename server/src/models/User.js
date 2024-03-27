@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const Appointment = require('./Recipe');
+const Recipe = require('./Recipe');
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -14,10 +14,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
     },
-    recipes: [
+    myRecipes: [
         {
             type: mongoose.Types.ObjectId,
-            ref: Appointment,
+            ref: Recipe,
         }
     ]
 });
