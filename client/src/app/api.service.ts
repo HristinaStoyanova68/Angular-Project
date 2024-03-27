@@ -10,6 +10,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getLastArrivals () {
+    const { apiUrl} = environment;
+
+    return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/last-arrivals`);
+  }
+
   getRecipesForCollectionName (collectionName: string) {
     const { apiUrl} = environment;
 

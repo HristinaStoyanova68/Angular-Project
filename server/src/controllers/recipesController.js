@@ -3,6 +3,46 @@ const Collection = require("../models/Collection");
 const Recipe = require("../models/Recipe");
 const User = require("../models/User");
 
+const getAllRecipes = asyncHandler(async (req, res) => {
+  const saladsCollection = await Collection.findOne({ name: "salads" })
+    .populate("recipes")
+    .lean();
+
+  const mainsCollection = await Collection.findOne({ name: "mains" })
+    .populate("recipes")
+    .lean();
+
+  const dessertsCollection = await Collection.findOne({ name: "desserts" })
+    .populate("recipes")
+    .lean();
+
+  if (!saladsCollection || !mainsCollection || !dessertsCollection) {
+    return res.status(204).json({ message: "Collection not found!" });
+  }
+
+  const allRecipes = [];
+
+  if (saladsCollection.recipes.length !== 0) {
+    allRecipes.push(...saladsCollection.recipes);
+  }
+
+  if (mainsCollection.recipes.length !== 0) {
+    allRecipes.push(...mainsCollection.recipes);
+  }
+
+  if (dessertsCollection.recipes.length !== 0) {
+    allRecipes.push(...dessertsCollection.recipes);
+  }
+
+  const lastArrivals = [];
+
+  if (allRecipes.length !== 0) {
+    lastArrivals = allRecipes.sort((a,b) => b.createdAt - a.createdAt).slice(0, 4);
+  }
+
+  res.status(200).json(lastArrivals);
+});
+
 const getAllRecipesForCollection = asyncHandler(async (req, res) => {
   const { collectionName } = req.params;
   const collection = await Collection.findOne({ name: collectionName })
@@ -10,7 +50,6 @@ const getAllRecipesForCollection = asyncHandler(async (req, res) => {
     .lean();
 
   if (!collection) {
-
     return res.status(204).json({ message: "Collection not found!" });
   }
 
@@ -59,6 +98,7 @@ const addRecipe = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+  getAllRecipes,
   getAllRecipesForCollection,
   getRecipeById,
   getMyRecipes,

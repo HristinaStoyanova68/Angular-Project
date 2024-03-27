@@ -7,24 +7,23 @@ import { Recipe } from 'src/app/types/recipe';
   templateUrl: './last-arrivals.component.html',
   styleUrls: ['./last-arrivals.component.css'],
 })
-export class LastArrivalsComponent implements OnInit{
-    collection: string = 'salads';
-    recipesList: Recipe[] = [];
-    isLoading: boolean = true;
+export class LastArrivalsComponent implements OnInit {
+  lastArrivals: Recipe[] | [] = [];
+  hasLastArrivals: boolean = false;
+  isLoading: boolean = true;
 
-    constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
 
-    ngOnInit(): void {
-        // this.apiService.getRecipesList(this.collection).subscribe
-        // //TODO implement last 4 from all
-        // ((recipesList) => {
-        //     this.recipesList = recipesList.slice(-3);
+  ngOnInit(): void {
+    this.apiService.getLastArrivals().subscribe((recipesList) => {
+      this.isLoading = false;
 
-        //     setTimeout(() => {
-        //         this.isLoading = false;
-        //     }, 1000)
-        // });  
-    }
-
-
+      if (recipesList.length !== 0) {
+        this.lastArrivals = recipesList;
+        this.hasLastArrivals = true;
+      } else {
+        this.hasLastArrivals = false;
+      }
+    });
+  }
 }

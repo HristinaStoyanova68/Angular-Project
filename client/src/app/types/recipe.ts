@@ -11,6 +11,8 @@ export interface Recipe {
   difficulty: string;
   userId: User;
   image: string;
+  createdAt: number;
+  updatedAt: number;
   mealType: string;
 }
 
