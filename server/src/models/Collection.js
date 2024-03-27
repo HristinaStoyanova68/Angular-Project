@@ -5,8 +5,8 @@ const Recipe = require('./Recipe');
 const collectionSchema = new mongoose.Schema({
     name: {
         type: String,
-        enum: ['Salads', 'Main Course', 'Desserts'],
-        default: 'Main Course',
+        enum: ['salads', 'mains', 'desserts'],
+        default: 'mains',
     },
     recipes: [
         {
