@@ -16,7 +16,7 @@ export class LastArrivalsComponent implements OnInit{
 
     ngOnInit(): void {
         // this.apiService.getRecipesList(this.collection).subscribe
-        // //TODO implement last 3 from all
+        // //TODO implement last 4 from all
         // ((recipesList) => {
         //     this.recipesList = recipesList.slice(-3);
 
