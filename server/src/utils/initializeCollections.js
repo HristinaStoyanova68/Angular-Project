@@ -7,9 +7,9 @@ const initializeCollections = asyncHandler(async () => {
 
     if (existingCollections.length === 0) {
         await Collection.create([
-            { name: 'Salads' },
-            { name: 'Main Course' },
-            { name: 'Desserts' },
+            { name: 'salads' },
+            { name: 'mains' },
+            { name: 'desserts' },
         ]);
     }
 });
