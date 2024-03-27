@@ -9,6 +9,7 @@ import { HttpClientModule} from '@angular/common/http'
 import { ErrorComponent } from './error/error.component';
 import { MainModule } from './main/main.module';
 import { UserRoutingModule } from './user/user-routing.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,10 @@ import { UserRoutingModule } from './user/user-routing.module';
     SharedModule,
     HttpClientModule,
     MainModule,
+    UserModule,
     UserRoutingModule,
     AppRoutingModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
