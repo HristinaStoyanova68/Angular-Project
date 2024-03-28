@@ -61,12 +61,12 @@ select {
 
 input#ingredientQty {
   min-width: unset; 
-  width: 17%;
+  width: 23%;
 }
 
 input#ingredientName {
   min-width: unset; 
-  width: 80%;
+  width: 74%;
 }
 
 textarea {
@@ -88,7 +88,11 @@ button {
   box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
   outline: none;
   color: #fff;
-  font: 400 16px/2.5 Nunito, "Varela Round", Sans-serif;
+  font: 400 12px/2.5 Nunito, "Varela Round", Sans-serif;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.add-recipe {
+  font-size: 16px;
 }
