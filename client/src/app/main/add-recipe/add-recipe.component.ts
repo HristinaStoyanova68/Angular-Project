@@ -8,18 +8,41 @@ import { ApiService } from 'src/app/api.service';
 })
 export class AddRecipeComponent {
   allIngredients = [] as String[];
+  allInstructions = [] as String[];
 
     constructor(private apiService: ApiService) {}
 
-    addRecipe(ev: Event, recipeName: string) {
-        ev.preventDefault();
+    addRecipe(event: Event, inputImageUrl:string, recipeName: string, inputPrepTime: string, inputCoocTime: string, inputServings: string) {
+        event.preventDefault();
+        //TODO take current user Id
+        //TODO difficulty & mealTipe
 
-        this.apiService.createRecipe(recipeName);
+        const data = {
+          name: recipeName,
+          ingredients: this.allIngredients,
+          instructions: this.allInstructions,
+          prepTimeMinutes: inputPrepTime,
+          cookTimeMinutes: inputCoocTime,
+          servings: inputServings,
+          // difficulty: string;
+          // userId: User;
+          image: inputImageUrl,
+          // mealType: string;
+
+        }
+
+        this.apiService.createRecipe(data);
     }
 
-    addIngredient() {}
+    addIngredient(event: Event, inputIngredientQty: string, inputIngredientName: string) {
+      event.preventDefault();
 
-    addInstruction() {}
+
+    }
+
+    addInstruction(event: Event, textareaInstructions: string) {
+      event.preventDefault();
+    }
 
 }
 

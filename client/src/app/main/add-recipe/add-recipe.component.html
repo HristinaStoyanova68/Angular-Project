@@ -8,48 +8,44 @@
                 <div class="form-content">
                     <div class="form-group">
                         <label for="imageUrl">Image URL:</label>
-                        <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="https://...">
+                        <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="https://..."
+                            #inputImageUrl required>
                     </div>
                     <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        <!--  [(ngModel)]="newRecipe.name" -->
+                        <label for="recipeName">Recipe Name:</label>
+                        <input type="text" id="recipeName" name="recipeName" #inputRecipeName required>
                     </div>
                     <div class="form-group ingredients">
                         <label for="ingredientQty">Ingredients:</label>
                         <div id="ingredients-container">
-                            <input type="number" min="0" name="ingredientQty" id="ingredientQty">
-                            <input type="text" name="ingredientName" id="ingredientName">
+                            <input type="number" min="0" name="ingredientQty" id="ingredientQty" #inputIngredientQty>
+                            <input type="text" name="ingredientName" id="ingredientName" #inputIngredientName>
                         </div>
-                        <button type="button" (click)="addIngredient()">Add Ingredient</button>
-                        
+                        <button type="button" (click)="addIngredient($event, inputIngredientQty.value, inputIngredientName.value)">Add Ingredient</button>
+
                     </div>
                     <div class="form-group">
                         <label for="instructions">Instructions:</label>
                         <textarea id="instructions" name="instructions"
-                        placeholder="Please add your instructions step by step"
-                        required></textarea>
-                        <button type="button" (click)="addInstruction()">Add Step</button>
-                        
+                            placeholder="Please add your instructions step by step" #textareaInstructions required></textarea>
+                        <button type="button" (click)="addInstruction($event, textareaInstructions.value)">Add Step</button>
+
                     </div>
                     <div class="form-group">
-                        <label for="calories">Preparation Time (minutes):</label>
-                        <input type="number" id="calories" name="calories" required>
-                        <!--  [(ngModel)]="newRecipe.calories" -->
+                        <label for="prepTime">Preparation Time (minutes):</label>
+                        <input type="number" id="prepTime" name="prepTime" #inputPrepTime required>
                     </div>
                     <div class="form-group">
-                        <label for="prepTime">Cooking Time (minutes):</label>
-                        <input type="number" id="prepTime" name="prepTime" required>
-                        <!--  [(ngModel)]="newRecipe.prepTime" -->
+                        <label for="cookTime">Cooking Time (minutes):</label>
+                        <input type="number" id="cookTime" name="cookTime" #inputCookTime required>
                     </div>
                     <div class="form-group">
-                        <label for="prepTime">Servings:</label>
-                        <input type="number" id="prepTime" name="prepTime" required>
-                        <!--  [(ngModel)]="newRecipe.prepTime" -->
+                        <label for="servings">Servings:</label>
+                        <input type="number" id="servings" name="servings" #inputServings required>
                     </div>
                     <div class="form-group">
                         <label for="prepTime">Difficulty:</label>
-                        <select>
+                        <select >
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="difficult">Difficult</option>
@@ -59,13 +55,15 @@
                         <label for="prepTime">Meal type:</label>
                         <select>
                             <option value="salads">Salads</option>
-                            <option value="main-courses">Main Courses</option>
+                            <option value="mains">Mains</option>
                             <option value="desserts">Desserts</option>
                         </select>
                     </div>
                 </div>
                 <div class="buttons">
-                    <button type="submit" class="add-recipe">Add Recipe</button>
+                            
+                            <button type="submit" class="add-recipe" (click)="addRecipe($event, inputImageUrl.value, inputRecipeName.value, inputPrepTime.value, inputCookTime.value, inputServings.value)">Add
+                        Recipe</button>
                 </div>
             </form>
         </div>
