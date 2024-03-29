@@ -2,8 +2,7 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
-const { accessTokenGenerator, refreshTokenGenerator } = require('../utils/tokenGenerator');
-// const { validationResult } = require('express-validator');
+const { accessTokenGenerator } = require('../utils/tokenGenerator');
 
 // @desc Sign in existing user
 // @route POST /login
@@ -11,13 +10,6 @@ const { accessTokenGenerator, refreshTokenGenerator } = require('../utils/tokenG
 
 const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-    console.log(email, password);
-    // const { errors } = validationResult(req);
-
-    // if (errors.length) {
-    //     res.status(400);
-    //     throw new Error(errors.map(err => err.msg));
-    // }
 
     if (!email) {
         return res.status(400).json({ message: 'Email is required!' });
@@ -27,7 +19,7 @@ const login = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Password is required!' });
     }
 
-    const user = await User.findOne({ email }).populate('appointments');
+    const user = await User.findOne({ email }).populate('myRecipes');
 
     if (!user) {
         return res.status(401).json({ message: 'Unauthorized: Invalid email or password!' });
@@ -40,21 +32,15 @@ const login = asyncHandler(async (req, res) => {
     }
 
     const accessToken = await accessTokenGenerator(user);
-    const refreshToken = await refreshTokenGenerator(user);
 
-    res.cookie('jwt', refreshToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'None',
-        maxAge: 7 * 24 * 60 * 60 * 1000
-    });
+    res.setHeader('Authorization', `Bearer ${accessToken}`);
 
-    // Have to check if it is necessary to make this userData object or to send only the accessToken
-    
+    //TODO remove password from userData !!!
     const userData = {
         id: user._id,
         username: user.username,
         email: user.email,
+        password: user.password, 
         accessToken,
     };
 
@@ -67,8 +53,6 @@ const login = asyncHandler(async (req, res) => {
 
 const register = asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
-    console.log('server');
-    console.log(username, email, password);
 
     if (!username) {
         return res.status(400).json({ message: 'Username is required!' });
@@ -112,24 +96,9 @@ const register = asyncHandler(async (req, res) => {
 // @access Public
 
 const logout = (req, res) => {
-    const cookies = req.cookies;
+    res.removeHeader('Authorization');
 
-    if (!cookies?.jwt) {
-        return res.sendStatus(204);
-    }
-
-    req.user = {};
-
-    res.clearCookie('jwt', {
-        httpOnly: true,
-        sameSite: 'None',
-        secure: true
-    });
-
-    res.json({
-        message: 'Cookie cleared',
-        success: 'Successfully logged out!'
-    });
+    res.json({message: 'Successfully logged out!'});
 };
 
 module.exports = {
