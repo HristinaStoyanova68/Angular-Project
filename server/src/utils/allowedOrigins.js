@@ -1,7 +1,7 @@
 const allowedOrigins = [
     'http://localhost:4200',
-    'https://www.pyrography-art-gallery.onrender.com',
-    'https://pyrography-art-gallery.onrender.com'
+    'https://www.delicious-to-you.onrender.com',
+    'https://delicious-to-you.onrender.com'
 ];
 
 module.exports = allowedOrigins;
