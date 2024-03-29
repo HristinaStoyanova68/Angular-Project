@@ -33,11 +33,16 @@ export class UserService {
       .post<User>(`${apiUrl}/users/login`, { email, password })
       .subscribe((currUser) => {
 
+        console.log(currUser);
+        
+
         this.user = {
           username: currUser.username,
           email: currUser.email,
           password: currUser.password,
           id: currUser._id,
+          accessToken: currUser.accessToken,
+
         };
 
         localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));

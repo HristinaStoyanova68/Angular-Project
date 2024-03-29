@@ -6,7 +6,7 @@ export interface User {
     email: string;
     username: string;
     password: string;
-    appointments: any[];
+    accessToken: string;
     // created_at: string;
     // updatedAt: string;
     __v: number;
@@ -17,4 +17,5 @@ export interface UserForAuth {
     email: string;
     password: string;
     id: string;
+    accessToken: string,
 }
