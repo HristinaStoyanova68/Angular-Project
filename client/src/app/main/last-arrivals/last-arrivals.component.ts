@@ -15,6 +15,8 @@ export class LastArrivalsComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    //TODO implement pipe prop for ngFor
+
     this.apiService.getLastArrivals().subscribe((recipesList) => {
       this.isLoading = false;
 
