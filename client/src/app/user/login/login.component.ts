@@ -21,7 +21,7 @@ export class LoginComponent {
     this.isActive = true;
   }
 
-  loginFormSubmitHandler(form: NgForm) {
+  loginFormSubmitHandler(form: NgForm | undefined) {
     const { email, password } = form?.value;
 
     if (form?.invalid) {
@@ -34,10 +34,10 @@ export class LoginComponent {
     
     this.router.navigate(['/']);
 
-    form.setValue({ email: '', password: '' });
+    form?.setValue({ email: '', password: '' });
   }
 
-  registerFormSubmitHandler(form: NgForm) {
+  registerFormSubmitHandler(form: NgForm | undefined) {
     const { username, registerEmail, registerPassword, rePassword } =
       form?.value;
 
@@ -52,7 +52,7 @@ export class LoginComponent {
 
       console.log('The passwords are no matching!');
 
-      form.setValue({
+      form?.setValue({
         username: '',
         registerEmail: '',
         registerPassword: '',
@@ -62,11 +62,11 @@ export class LoginComponent {
       return;
     }
 
-    console.log(form.value);
+    console.log(form?.value);
 
     this.userService.register(username, registerEmail, registerPassword);
 
-    form.setValue({
+    form?.setValue({
       username: '',
       registerEmail: '',
       registerPassword: '',
