@@ -19,8 +19,8 @@ export class ProfileComponent implements OnInit {
     this.userService.getMyRecipes().subscribe((myRecipes) => {
       this.isLoading = false;
 
-      if (myRecipes.length !== 0) {
-        this.recipes = [...myRecipes];
+      if (myRecipes?.length !== 0) {
+        this.recipes = myRecipes;
         this.hasRecipes = true;
       } else {
         this.hasRecipes = false;
