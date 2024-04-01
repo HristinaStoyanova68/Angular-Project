@@ -1,37 +1,46 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { Recipe } from './types/recipe';
+import { AddRecipe, Recipe } from './types/recipe';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  constructor(private http: HttpClient, private router: Router) {}
 
-  constructor(private http: HttpClient) { }
-
-  getLastArrivals () {
-    const { apiUrl} = environment;
+  getLastArrivals() {
+    const { apiUrl } = environment;
 
     return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/last-arrivals`);
   }
 
-  getRecipesForCollectionName (collectionName: string) {
-    const { apiUrl} = environment;
+  getRecipesForCollectionName(collectionName: string) {
+    const { apiUrl } = environment;
 
     return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/${collectionName}`);
   }
 
-  getRecipeById (id: string) {
-    const {apiUrl} = environment;
+  getRecipeById(id: string) {
+    const { apiUrl } = environment;
 
     return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`);
   }
 
-  createRecipe(data: {}) {
-    const {apiUrl} = environment;
-    const payload = {data};
+  createRecipe(recipeData: AddRecipe) {
+    const { apiUrl } = environment;
 
-    return this.http.post<Recipe>(`${apiUrl}/recipes-list`, payload);
+    return this.http
+      .post<Recipe>(`${apiUrl}/recipes/add-recipe`, recipeData)
+      .subscribe(
+        (newRecipe) => {
+          console.log(`Successfully added new recipe: ${newRecipe.recipeName}`);
+
+          this.router.navigate(['/']);
+        },
+
+        (error) => console.log(error)
+      );
   }
 }

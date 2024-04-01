@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'add-recipe', 
     component: AddRecipeComponent,
-    canActivate: [AuthActivate],
+    // canActivate: [AuthActivate],
   },
   {
     path: 'update-recipe',

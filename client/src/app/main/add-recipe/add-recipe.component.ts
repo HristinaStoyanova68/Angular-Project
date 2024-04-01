@@ -1,86 +1,96 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
+import { AddRecipe } from 'src/app/types/recipe';
 
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
-  styleUrls: ['./add-recipe.component.css']
+  styleUrls: ['./add-recipe.component.css'],
 })
 export class AddRecipeComponent {
-  allIngredients = [] as String[];
-  allInstructions = [] as String[];
+  allIngredients = [] as string[];
+  allInstructions = [] as string[];
+  recipeData = {} as AddRecipe;
 
-    constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
 
-    addRecipe(event: Event, inputImageUrl:string, recipeName: string, inputPrepTime: string, inputCoocTime: string, inputServings: string) {
-        event.preventDefault();
-        //TODO take current user Id
-        //TODO difficulty & mealTipe
+  addRecipe(form: NgForm) {
+    //TODO take current user Id
+    //TODO ask for last nonadded ingredient and instruction
+    //TODO difficulty & mealTipe
 
-        const data = {
-          name: recipeName,
-          ingredients: this.allIngredients,
-          instructions: this.allInstructions,
-          prepTimeMinutes: inputPrepTime,
-          cookTimeMinutes: inputCoocTime,
-          servings: inputServings,
-          // difficulty: string;
-          // userId: User;
-          image: inputImageUrl,
-          // mealType: string;
+    const {
+      imageUrl,
+      recipeName,
+      ingredientQty,
+      ingredientType,
+      ingredientName,
+      instruction,
+      prepTime,
+      cookTime,
+      servings,
+      difficulty,
+      mealType,
+    } = form?.value;
 
-        }
+    if (form?.invalid) {
 
-        this.apiService.createRecipe(data);
+      console.log('invalid');
+      
+      return;
     }
 
-    addIngredient(event: Event, inputIngredientQty: string, inputIngredientName: string) {
-      event.preventDefault();
+    if (ingredientQty || ingredientType || ingredientName) {
 
+      const currIngredientAsStr = `${form.value.ingredientQty}${form.value.ingredientType} ${form.value.ingredientName}`;
 
+      this.allIngredients.push(currIngredientAsStr);
     }
 
-    addInstruction(event: Event, textareaInstructions: string) {
-      event.preventDefault();
+    if (instruction) {
+
+      this.allInstructions.push(form.value.instruction);
     }
 
+    
+
+    this.recipeData = {
+      imageUrl,
+      recipeName,
+      ingredients: this.allIngredients,
+      instructions: this.allInstructions,
+      prepTime,
+      cookTime,
+      servings,
+      difficulty,
+      mealType,
+    };
+
+    console.log(this.recipeData);
+    
+
+    this.apiService.createRecipe(this.recipeData);
+
+    form.reset();
+  }
+
+  addIngredient(event: Event, form: NgForm) {
+    event.preventDefault();
+
+    const currIngredientAsStr = `${form.value.ingredientQty}${form.value.ingredientType} ${form.value.ingredientName}`;
+
+    this.allIngredients.push(currIngredientAsStr);
+    form.value.ingredientQty = '';
+    form.value.ingredientType = '';
+    form.value.ingredientName = '';
+  }
+
+  addInstruction(event: Event, form: NgForm) {
+    event.preventDefault();
+
+    this.allInstructions.push(form.value.instruction);
+
+    form.value.instruction = '';
+  }
 }
-
-
-// <div class="form-group ingredients">
-// <label for="ingredientQty">Ingredients:</label>
-// <div id="ingredients-container">
-//     <input type="number" min="0" name="ingredientQty" id="ingredientQty" [(ngModel)]="ingredientQty">
-//     <input type="text" name="ingredientName" id="ingredientName" [(ngModel)]="ingredientName">
-//     <button type="button" (click)="addIngredient()">Add Ingredient</button>
-// </div>
-// </div>
-// <div *ngFor="let ingredient of ingredients">
-// {{ ingredient.qty }} - {{ ingredient.name }}
-// </div>
-
-
-
-
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-your-component',
-//   templateUrl: './your-component.component.html',
-//   styleUrls: ['./your-component.component.css']
-// })
-// export class YourComponent {
-//   ingredientQty: number;
-//   ingredientName: string;
-//   ingredients: { qty: number, name: string }[] = [];
-
-//   addIngredient() {
-//     if (this.ingredientQty && this.ingredientName) {
-//       this.ingredients.push({ qty: this.ingredientQty, name: this.ingredientName });
-//       // Изчистване на стойностите на инпут полетата
-//       this.ingredientQty = null;
-//       this.ingredientName = '';
-//     }
-//   }
-// }
-

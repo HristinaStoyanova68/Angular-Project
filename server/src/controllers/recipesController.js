@@ -94,7 +94,56 @@ const getMyRecipes = asyncHandler(async (req, res) => {
 });
 
 const addRecipe = asyncHandler(async (req, res) => {
-  // const {}
+
+  const {
+    recipeName,
+    imageUrl,
+    ingredients,
+    instructions,
+    prepTime,
+    cookTime,
+    servings,
+    difficulty,
+    mealType
+  } = req.body;
+
+
+//   const userId = req.user.id; //TODO implement correct userId depending on Angular
+
+//   const currentUser = await User.findById({ _id: userId });
+  const currentUser = await User.findById({ _id: '6606952aef45ddfea712a7ab'});
+
+  if (!currentUser) {
+    return res.status(204).json({ message: "User not found!" });
+  }
+
+  const collection = await Collection.findOne({name: mealType});
+
+  if (!collection) {
+    return res.status(204).json({ message: "Collection not found!" });
+  }
+
+  const newRecipe = await Recipe.create({
+    recipeName,
+    imageUrl,
+    ingredients,
+    instructions,
+    prepTime,
+    cookTime,
+    servings,
+    difficulty,
+    mealType,
+    // ownerId: userId
+  });
+
+  collection.recipes.push(newRecipe._id);
+  await collection.save();
+
+  currentUser.myRecipes.push(newRecipe._id);
+  await currentUser.save();
+
+  res.status(201).json(newRecipe);
+
 });
 
 module.exports = {

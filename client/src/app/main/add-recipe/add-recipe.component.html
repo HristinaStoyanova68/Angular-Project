@@ -4,56 +4,70 @@
 
         <div class="card-content">
             <h2>Add New Recipe</h2>
-            <form>
+            <form #form="ngForm" (ngSubmit)="addRecipe(form)">
                 <div class="form-content">
                     <div class="form-group">
                         <label for="imageUrl">Image URL:</label>
-                        <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="https://..."
-                            #inputImageUrl required>
+                        <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."
+                            #inputImageUrl="ngModel" ngModel required />
                     </div>
                     <div class="form-group">
                         <label for="recipeName">Recipe Name:</label>
-                        <input type="text" id="recipeName" name="recipeName" #inputRecipeName required>
+                        <input type="text" id="recipeName" name="recipeName" #inputRecipeName="ngModel" ngModel
+                            minlength="5" required />
                     </div>
                     <div class="form-group ingredients">
                         <label for="ingredientQty">Ingredients:</label>
                         <div id="ingredients-container">
-                            <input type="number" min="0" name="ingredientQty" id="ingredientQty" #inputIngredientQty>
-                            <input type="text" name="ingredientName" id="ingredientName" #inputIngredientName>
+                            <input type="number" min="0" name="ingredientQty" id="ingredientQty"
+                                #inputIngredientQty="ngModel" ngModel />
+                            <select id="ingredientType" name="ingredientType" ngModel required>
+                                <option value="ml">ml</option>
+                                <option value="l">l</option>
+                                <option value="g">g</option>
+                                <option value="kg">kg</option>
+                                <option value="ts">ts</option>
+                                <option value="tbs">tbs</option>
+                                <option value="qty">qty</option>
+                            </select>
+                            <input type="text" name="ingredientName" id="ingredientName" #inputIngredientName="ngModel"
+                                ngModel />
                         </div>
-                        <button type="button" (click)="addIngredient($event, inputIngredientQty.value, inputIngredientName.value)">Add Ingredient</button>
+                        <button type="button" (click)="addIngredient($event, form)">Add Ingredient</button>
 
                     </div>
                     <div class="form-group">
-                        <label for="instructions">Instructions:</label>
-                        <textarea id="instructions" name="instructions"
-                            placeholder="Please add your instructions step by step" #textareaInstructions required></textarea>
-                        <button type="button" (click)="addInstruction($event, textareaInstructions.value)">Add Step</button>
+                        <label for="instruction">Instructions:</label>
+                        <textarea id="instruction" name="instruction"
+                            placeholder="Please add your instruction step by step" #textareaInstruction="ngModel"
+                            ngModel required>
+                        </textarea>
+                        <button type="button" (click)="addInstruction($event, form)">Add Step</button>
 
                     </div>
                     <div class="form-group">
                         <label for="prepTime">Preparation Time (minutes):</label>
-                        <input type="number" id="prepTime" name="prepTime" #inputPrepTime required>
+                        <input type="number" id="prepTime" name="prepTime" #inputPrepTime="ngModel" ngModel required>
                     </div>
                     <div class="form-group">
                         <label for="cookTime">Cooking Time (minutes):</label>
-                        <input type="number" id="cookTime" name="cookTime" #inputCookTime required>
+                        <input type="number" id="cookTime" name="cookTime" #inputCookTime="ngModel" ngModel required>
                     </div>
                     <div class="form-group">
                         <label for="servings">Servings:</label>
-                        <input type="number" id="servings" name="servings" #inputServings required>
+                        <input type="number" id="servings" name="servings" #inputServings="ngModel" ngModel required>
                     </div>
                     <div class="form-group">
-                        <label for="prepTime">Difficulty:</label>
-                        <select >
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty" name="difficulty" ngModel required>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="difficult">Difficult</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="prepTime">Meal type:</label>
-                        <select>
+                        <label for="mealType">Meal type:</label>
+                        <select id="mealType" name="mealType" ngModel required>
                             <option value="salads">Salads</option>
                             <option value="mains">Mains</option>
                             <option value="desserts">Desserts</option>
@@ -61,8 +75,8 @@
                     </div>
                 </div>
                 <div class="buttons">
-                            
-                            <button type="submit" class="add-recipe" (click)="addRecipe($event, inputImageUrl.value, inputRecipeName.value, inputPrepTime.value, inputCookTime.value, inputServings.value)">Add
+
+                    <button type="submit" class="add-recipe">Add
                         Recipe</button>
                 </div>
             </form>

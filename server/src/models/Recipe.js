@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 
 const recipeSchema = new mongoose.Schema(
   {
-    name: {
+    recipeName: {
       type: String,
       require: [true, "Recipe name is required!"],
-      minLength: [5, "Recipe name must be 5 to 20 characters!"],
-      maxLength: [20, "Recipe name must be 5 to 20 characters!"],
+      minLength: [5, "Recipe name must be at least 5 characters!"],
     },
     ingredients: [
       {
@@ -20,11 +19,11 @@ const recipeSchema = new mongoose.Schema(
         require: [true, "Recipe instructions are required!"],
       },
     ],
-    prepTimeMinutes: {
+    prepTime: {
         type: Number,
         min: 0,
     },
-    cookTimeMinutes: {
+    cookTime: {
         type: Number,
         min: 0,
     },
@@ -34,20 +33,20 @@ const recipeSchema = new mongoose.Schema(
     },
     difficulty: {
         type: String,
-        enum: ['Easy', 'Medium', 'Difficult'],
-        default: 'Easy',
+        enum: ['easy', 'medium', 'difficult'],
+        default: 'easy',
     },
     ownerId:  {
         type: String,
     },
-    image:  {
+    imageUrl:  {
         type: String,
         require: [true, "Recipe image is required!"]
     },
     mealType: {
         type: String,
-        enum: ['Salad', 'Main Course', 'Dessert'],
-        default: 'Main Course',
+        enum: ['salads', 'mains', 'desserts'],
+        default: 'mains',
     },
   },
   {

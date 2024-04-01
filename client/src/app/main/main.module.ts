@@ -12,8 +12,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     RecipeDetailsComponent,
   ],
   imports: [
-    CommonModule, SharedModule, MainRoutingModule,
+    CommonModule, SharedModule, MainRoutingModule, FormsModule,
   ],
   exports: [
     HomeComponent,
