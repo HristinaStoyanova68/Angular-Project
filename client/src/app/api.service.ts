@@ -22,10 +22,10 @@ export class ApiService {
     return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/${collectionName}`);
   }
 
-  getRecipeById(id: string) {
+  getRecipeById(collectionName: string, id: string) {
     const { apiUrl } = environment;
 
-    return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`);
+    return this.http.get<Recipe>(`${apiUrl}/recipes/${collectionName}/${id}`);
   }
 
   createRecipe(recipeData: AddRecipe) {

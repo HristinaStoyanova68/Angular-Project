@@ -16,11 +16,12 @@ export class RecipeDetailsComponent implements OnInit{
     private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((data) => {
-      const recipeId = data['recipeId'];
 
-      this.apiService.getRecipeById(recipeId).subscribe((currentRecipe) => {
-        console.log({currentRecipe});
+    this.activatedRoute.params.subscribe((data) => {
+      const collectionName = data['collectionName'];
+      const recipeId = data['recipeId'];
+      
+      this.apiService.getRecipeById(collectionName, recipeId).subscribe((currentRecipe) => {
         
         this.recipe = currentRecipe;
       })

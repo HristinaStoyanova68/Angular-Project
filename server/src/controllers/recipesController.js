@@ -3,7 +3,7 @@ const Collection = require("../models/Collection");
 const Recipe = require("../models/Recipe");
 const User = require("../models/User");
 
-const getAllRecipes = asyncHandler(async (req, res) => {
+const getLastArrivals = asyncHandler(async (req, res) => {
   const saladsCollection = await Collection.findOne({ name: "salads" })
     .populate("recipes")
     .lean();
@@ -34,7 +34,7 @@ const getAllRecipes = asyncHandler(async (req, res) => {
     allRecipes.push(...dessertsCollection.recipes);
   }
 
-  const lastArrivals = [];
+  let lastArrivals = [];
 
   if (allRecipes.length !== 0) {
     lastArrivals = allRecipes.sort((a,b) => b.createdAt - a.createdAt).slice(0, 4);
@@ -64,7 +64,8 @@ const getAllRecipesForCollection = asyncHandler(async (req, res) => {
 
 const getRecipeById = asyncHandler(async (req, res) => {
   const { recipeId } = req.params;
-  const recipe = await Recipe.findById({ _id: recipeId }).lean();
+
+  const recipe = await Recipe.findById(recipeId).lean();
 
   if (!recipe) {
     return res.status(204).json({ message: "Recipe not found!" });
@@ -73,14 +74,26 @@ const getRecipeById = asyncHandler(async (req, res) => {
   res.status(200).json(recipe);
 });
 
-const getMyRecipes = asyncHandler(async (req, res) => {
-  const userId = req.user.id; //TODO implement correct userId depending on Angular
 
-  const currentUser = await User.findById({ _id: userId })
-    .populate("myRecipes")
-    .lean();
+
+const getMyRecipes = asyncHandler(async (req, res) => {
+
+    console.log('server');
+//   const userId = req.user.id; //TODO implement correct userId depending on Angular
+
+//   const currentUser = await User.findById({ _id: userId })
+//     .populate("myRecipes")
+//     .lean();
+
+   
+
+  const currentUser = await User.findById({ _id: '6606952aef45ddfea712a7ab'}).populate('myRecipes').lean();
+
+  console.log(currentUser);
 
   if (!currentUser) {
+
+    console.log('not found');
     return res.status(204).json({ message: "User not found!" });
   }
 
@@ -147,7 +160,7 @@ const addRecipe = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  getAllRecipes,
+  getLastArrivals,
   getAllRecipesForCollection,
   getRecipeById,
   getMyRecipes,
