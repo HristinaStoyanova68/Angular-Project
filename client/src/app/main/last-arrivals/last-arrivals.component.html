@@ -8,7 +8,7 @@
     <div class="component-container" *ngIf="!isLoading">
         <div *ngIf="hasLastArrivals">
             <section class="container" *ngFor="let recipe of lastArrivals">
-                <div class="card"><img src="{{recipe.image}}" alt="{{recipe.name}}"></div>
+                <div class="card"><img src="{{recipe.imageUrl}}" alt="{{recipe.recipeName}}"></div>
             </section>
         </div>
         <div *ngIf="!hasLastArrivals">
