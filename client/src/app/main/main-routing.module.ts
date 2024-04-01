@@ -15,9 +15,10 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
   { path: 'salads', component: RecipesListComponent },
-  { path: 'main-courses', component: RecipesListComponent },
+  { path: 'mains', component: RecipesListComponent },
   { path: 'desserts', component: RecipesListComponent },
-  {path: ':collectionName/:recipeId', component: RecipeDetailsComponent},
+  // {path: ':collectionName/:recipeId', component: RecipeDetailsComponent},
+  {path: 'details', component: RecipeDetailsComponent},
   {
     path: 'add-recipe', 
     component: AddRecipeComponent,
