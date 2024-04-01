@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const {validationResult} = require('express-validator');
 const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
@@ -10,14 +11,13 @@ const { accessTokenGenerator } = require('../utils/tokenGenerator');
 
 const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    const {errors} = validationResult(req);
 
-    if (!email) {
-        return res.status(400).json({ message: 'Email is required!' });
+    if (errors.length !== 0) {
+        return res.status(400).json({ message: errors[0].msg });
     }
 
-    if (!password) {
-        return res.status(400).json({ message: 'Password is required!' });
-    }
+    
 
     const user = await User.findOne({ email }).populate('myRecipes');
 
@@ -53,17 +53,10 @@ const login = asyncHandler(async (req, res) => {
 
 const register = asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
+    const {errors} = validationResult(req);
 
-    if (!username) {
-        return res.status(400).json({ message: 'Username is required!' });
-    }
-
-    if (!email) {
-        return res.status(400).json({ message: 'Email is required!' });
-    }
-
-    if (!password) {
-        return res.status(400).json({ message: 'Password is required!' });
+    if (errors.length !== 0) {
+        return res.status(400).json({ message: errors[0].msg });
     }
 
     const usernameExists = await User.findOne({ username }).lean();
