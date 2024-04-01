@@ -24,7 +24,7 @@ const routes: Routes = [
     // canActivate: [AuthActivate],
   },
   {
-    path: 'update-recipe',
+    path: ':collectionName/:recipeId/edit',
     component: UpdateRecipeComponent,
     canActivate: [AuthActivate],
   },
