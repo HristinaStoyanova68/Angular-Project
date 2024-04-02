@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
 
     <div *ngIf="isLoading">
         <app-loader />
@@ -16,5 +16,35 @@
         </div>
     </div>
     
-</main>
+</main> -->
+
+<div>
+    <div *ngIf="isLoading">
+        <app-loader />
+    </div>
+
+    <div class="component-container" *ngIf="!isLoading">
+
+        <div class="section-menu" *ngIf="hasLastArrivals">
+            
+            <div class="menu-breakfast section-content" *ngFor="let recipe of lastArrivals">
+                <article>
+                    <div class="media">
+                        <img src="{{recipe.imageUrl}}" alt="{{recipe.recipeName}}">
+                    </div>
+                    <div class="entry-content">
+                        <h2>{{recipe.recipeName}}</h2>
+                        <p>{{recipe.ingredients}}</p>
+
+                        <a [routerLink]="['/', recipe.mealType, recipe._id]">view more</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <div *ngIf="!hasLastArrivals">
+            <p>There are no recipes in this collection yet.</p>
+        </div>
+    </div>
+</div>
 
