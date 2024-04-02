@@ -5,9 +5,9 @@ export interface Recipe {
   recipeName: string;
   ingredients: string[];
   instructions: string[];
-  prepTime: string;
-  cookTime: string;
-  servings: string;
+  prepTime: number;
+  cookTime: number;
+  servings: number;
   difficulty: string;
   ownerId: User;
   imageUrl: string;
@@ -21,9 +21,9 @@ export interface AddRecipe {
   recipeName: string,
       ingredients: string[],
       instructions: string[],
-      prepTime: string,
-      cookTime: string,
-      servings: string,
+      prepTime: number,
+      cookTime: number,
+      servings: number,
       difficulty: string,
       mealType: string,
 }
