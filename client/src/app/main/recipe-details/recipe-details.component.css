@@ -86,19 +86,23 @@
 
 .buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 2em;
 }
 
-button {
+button, a {
   background: linear-gradient(#b55c6b, #d74d8b);
-  padding: 0 12px;
+  padding: 0 1.5em;
   border: none;
-  border-radius: 20px;
+  border-radius: 1.5em;
   box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.6);
   outline: none;
   color: #fff;
   font: 400 16px/2.5 Nunito, "Varela Round", Sans-serif;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
