@@ -28,4 +28,6 @@ export class RecipeDetailsComponent implements OnInit{
 
     })
   }
+
+  onLike() {}
 }
