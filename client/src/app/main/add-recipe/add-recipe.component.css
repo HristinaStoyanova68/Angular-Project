@@ -59,14 +59,15 @@ select {
   background-color: rgb(236, 221, 232, 0.5);
 }
 
-input#ingredientQty {
+input#ingredientQty,
+select#ingredientType {
   min-width: unset; 
-  width: 23%;
+  width: 16%;
 }
 
 input#ingredientName {
   min-width: unset; 
-  width: 74%;
+  width: 49%;
 }
 
 textarea {
