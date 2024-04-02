@@ -36,6 +36,7 @@
 }
 
 .media img {
+  box-shadow: 0 0 1em rgb(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
   left: 0;
@@ -67,6 +68,11 @@
   border: 2px solid rgb(209, 174, 174);
   padding: 0.7em;
   margin-bottom: 0.5em;
+}
+
+.icon i:hover {
+  color: black;
+  border-color: rgb(181, 92, 107);
 }
 
 .icon .text {
