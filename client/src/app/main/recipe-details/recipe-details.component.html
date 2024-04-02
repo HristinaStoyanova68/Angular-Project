@@ -3,33 +3,50 @@
         <article class="card-content">
 
             <div class="media">
-                <img src="https://cdn.dummyjson.com/recipe-images/1.webp" alt="recipe">
+                <img src="{{recipe.imageUrl}}" alt="{{recipe.recipeName}}">
             </div>
 
             <div class="recipe-icons">
                 <div class="icon">
                     <i class="fa-regular fa-clock"></i>
-                    <span class="text">Cook Time: 10 min</span>
+                    <span class="text">Prep Time:</span>
+                    <span class="text">{{recipe.prepTime}} min</span>
                 </div>
                 <div class="icon">
                     <i class="fa-solid fa-hourglass-start"></i>
-                    <span class="text">Prep Time: 30 min</span>
+                    <span class="text">Cook Time:</span>
+                    <span class="text">{{recipe.cookTime}} min</span>
                 </div>
                 <div class="icon">
                     <i class="fa-solid fa-utensils"></i>
-                    <span class="text">Servings: 4</span>
+                    <span class="text">Servings:</span>
+                    <span class="text">{{recipe.servings}}</span>
                 </div>
+
+                <div class="icon">
+                    <i class="fa-solid fa-person-digging"></i>
+                    <span class="text">Difficulty:</span>
+                    <span class="text">{{recipe.difficulty}}</span>
+                </div>
+
+                
             </div>
 
             <div class="entry-content">
                 <div class="title">
-                    <h4 class="sub-title">mains</h4>
-
-                    <h2>Classic Margherita Pizza</h2>
+                    <h2>{{recipe.recipeName}}</h2>
+                    
+                    <h5 class="sub-title">Meal type: <span>{{recipe.mealType}}</span></h5>
                 </div>
 
-                <p>900g Pizza dough</p>
-                <p>Preheat the oven to 475°F (245°C).</p>
+                <ul *ngFor="let ingredient of recipe.ingredients">
+                    <li>{{ingredient}}</li>
+                </ul>
+                <p>Instructions:</p>
+
+                <ul *ngFor="let instruction of recipe.instructions">
+                    <li>{{instruction}}</li>
+                </ul>
             </div>
 
             <div class="buttons">

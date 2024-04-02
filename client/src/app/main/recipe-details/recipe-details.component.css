@@ -28,6 +28,17 @@
   margin: 0 auto;
 }
 
+.sub-title {
+  font-weight: normal;
+  padding: 0.5em 0 1em 0.2em;
+
+}
+
+.sub-title > span{
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
 .media {
   width: 100%;
   padding-top: calc(100% * 9 / 15);
