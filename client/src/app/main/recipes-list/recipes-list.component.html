@@ -16,8 +16,7 @@
                         <h2>{{recipe.recipeName}}</h2>
                         <p>{{recipe.ingredients}}</p>
 
-                        <a [routerLink]="[recipe.mealType.toLowerCase(), recipe._id]">view more</a>
-                        <!-- TODO add edit and like buttons -->
+                        <a [routerLink]="['/', recipe.mealType, recipe._id]">view more</a>
                     </div>
                 </article>
             </div>

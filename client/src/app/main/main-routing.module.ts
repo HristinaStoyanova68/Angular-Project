@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: 'salads', component: RecipesListComponent },
   { path: 'mains', component: RecipesListComponent },
   { path: 'desserts', component: RecipesListComponent },
-  {path: ':collectionName/:recipeId', component: RecipeDetailsComponent},
-  // {path: 'details', component: RecipeDetailsComponent},
+  // {path: ':collectionName/:recipeId', component: RecipeDetailsComponent},
+  {path: 'details', component: RecipeDetailsComponent},
   {
     path: 'add-recipe', 
     component: AddRecipeComponent,
