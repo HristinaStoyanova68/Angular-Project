@@ -73,6 +73,7 @@
 .icon i:hover {
   color: black;
   border-color: rgb(181, 92, 107);
+  box-shadow: 0 0 1em rgb(0, 0, 0, 0.3);
 }
 
 .icon .text {
