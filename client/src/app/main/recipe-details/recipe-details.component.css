@@ -45,6 +45,10 @@
   object-fit: cover;
 }
 
+.media img:hover {
+  box-shadow: 0 0 1em rgb(0, 0, 0, 0.8);
+}
+
 .entry-content {
   padding: 0.5em;
 }
