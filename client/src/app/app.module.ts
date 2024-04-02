@@ -10,6 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import { MainModule } from './main/main.module';
 import { UserRoutingModule } from './user/user-routing.module';
 import { UserModule } from './user/user.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { UserModule } from './user/user.module';
     UserModule,
     UserRoutingModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent]
 })

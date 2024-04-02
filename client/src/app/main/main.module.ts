@@ -12,7 +12,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     RecipeDetailsComponent,
   ],
   imports: [
-    CommonModule, SharedModule, MainRoutingModule, FormsModule,
+    CommonModule, SharedModule, MainRoutingModule, FormsModule, ReactiveFormsModule,
   ],
   exports: [
     HomeComponent,

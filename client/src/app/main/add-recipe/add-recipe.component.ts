@@ -43,7 +43,7 @@ export class AddRecipeComponent {
 
     if (ingredientQty || ingredientType || ingredientName) {
 
-      const currIngredientAsStr = `${form.value.ingredientQty}${form.value.ingredientType} ${form.value.ingredientName}`;
+      const currIngredientAsStr = `${form.value.ingredientQty} ${form.value.ingredientType} ${form.value.ingredientName}`;
 
       this.allIngredients.push(currIngredientAsStr);
     }
