@@ -35,8 +35,12 @@ form {
   gap: 1em;
 }
 
+
+
 .form-group,
-#ingredients-container {
+.ingredients-container,
+.edit-ingredients-container,
+.curr-ingredients-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,7 +48,8 @@ form {
   gap: 0.5em;
 }
 
-#ingredients-container {
+.ingredients-container,
+.edit-ingredients-container {
   flex-direction: row;
 }
 
@@ -59,14 +64,25 @@ select {
   background-color: rgb(236, 221, 232, 0.5);
 }
 
-input#ingredientQty {
+input#ingredientQty,
+select#ingredientType {
   min-width: unset; 
-  width: 23%;
+  width: 16%;
+}
+
+.curr-ingredients-container ul {
+  list-style-type: none;
 }
 
 input#ingredientName {
   min-width: unset; 
-  width: 74%;
+  width: 49%;
+}
+
+.edit-ingredients-container input#ingredientName {
+  width: unset;
+  min-width: unset; 
+  width: 40%;
 }
 
 textarea {
@@ -86,6 +102,7 @@ button {
   border: none;
   border-radius: 20px;
   box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.6);
+ 
   outline: none;
   color: #fff;
   font: 400 12px/2.5 Nunito, "Varela Round", Sans-serif;
@@ -93,13 +110,27 @@ button {
   cursor: pointer;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 3em;
+.edit-ingredient {
+  background: unset;
+  padding: unset;
+  border-radius: unset;
+  box-shadow: unset;
+  /* background-color: rgb(29, 221, 29); */
+  /* color: #fff; */
+  width: 1.5em;
+  height: 2em;
+  /* border-radius: 50%; */
+  padding: 0;
+  font-size: 23px;
+  font-weight: 500;
 }
 
-.update,
-.delete {
+.edit-ingredient  i {
+  color: rgb(29, 221, 29);
+  /* border: 2px solid black; */
+  /* background-color: rgb(216, 182, 207, 0.4); */
+}
+
+.add-recipe {
   font-size: 16px;
 }
