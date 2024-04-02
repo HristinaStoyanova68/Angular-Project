@@ -78,12 +78,23 @@ export class AddRecipeComponent {
   addIngredient(event: Event, form: NgForm) {
     event.preventDefault();
 
+    if (
+      form.value.ingredientQty === null ||
+      form.value.ingredientQty === 0 ||
+      form.value.ingredientType === '' ||
+      form.value.ingredientName === ''
+      ) {
+        // TODO have to implement error handling !!!
+
+        return;
+    }
+
     const currIngredientAsStr = `${form.value.ingredientQty}${form.value.ingredientType} ${form.value.ingredientName}`;
 
     this.allIngredients.push(currIngredientAsStr);
-    form.value.ingredientQty = '';
-    form.value.ingredientType = '';
-    form.value.ingredientName = '';
+    form.controls['ingredientQty'].reset();
+    form.controls['ingredientType'].reset();
+    form.controls['ingredientName'].reset();
   }
 
   addInstruction(event: Event, form: NgForm) {
@@ -91,6 +102,6 @@ export class AddRecipeComponent {
 
     this.allInstructions.push(form.value.instruction);
 
-    form.value.instruction = '';
+    form.controls['instruction'].reset();
   }
 }
