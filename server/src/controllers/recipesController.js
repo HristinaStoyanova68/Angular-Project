@@ -53,10 +53,10 @@ const getAllRecipesForCollection = asyncHandler(async (req, res) => {
     return res.status(204).json({ message: "Collection not found!" });
   }
 
-  const allRecipes = [];
+  let allRecipes = [];
 
   if (collection.recipes.length !== 0) {
-    allRecipes = [...collection.recipes];
+    allRecipes = collection.recipes;
   }
 
   res.status(200).json(allRecipes);
@@ -97,10 +97,10 @@ const getMyRecipes = asyncHandler(async (req, res) => {
     return res.status(204).json({ message: "User not found!" });
   }
 
-  const myRecipes = [];
+  let myRecipes = [];
 
   if (currentUser.myRecipes.length !== 0) {
-    myRecipes = [...currentUser.myRecipes];
+    myRecipes = currentUser.myRecipes;
   }
 
   res.status(200).json(myRecipes);
