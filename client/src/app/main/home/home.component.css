@@ -1,17 +1,31 @@
 .component-container {
     display: flex;
+    flex-direction: row;
+}
+
+.component-content {
+    display: flex;
     flex-direction: column;
+    align-items: flex-end;
     justify-content: space-around;
     height: 100vh;
     margin: 0.5em;
     padding: 0.5em;
 }
 
+.title {
+    width: 40%;
+    padding-top: 2em;
+    text-align: justify;
+}
+
 h2 {
     text-align: right;
-    padding-right: 2em;
-    font-size: 5em;
-    color: rgb(104, 54, 63);
+    font-style: italic;
+    padding-right: 1em;
+    font-size: 3em;
+    font-weight: 650;
+    color: rgb(74, 34, 41);
     transition: color 0.5s; 
     opacity: 0.7;
 }
@@ -21,6 +35,8 @@ h2:hover {
 }
 
 .choices-container {
+    width: 60%;
+
     display: flex;
     flex-direction: column;
     align-items: flex-end;
