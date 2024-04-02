@@ -4,19 +4,19 @@ const recipeSchema = new mongoose.Schema(
   {
     recipeName: {
       type: String,
-      require: [true, "Recipe name is required!"],
+      required: [true, "Recipe name is required!"],
       minLength: [5, "Recipe name must be at least 5 characters!"],
     },
     ingredients: [
       {
         type: String,
-        require: [true, "Recipe ingredients are required!"],
+        required: [true, "Recipe ingredients are required!"],
       },
     ],
     instructions: [
       {
         type: String,
-        require: [true, "Recipe instructions are required!"],
+        required: [true, "Recipe instructions are required!"],
       },
     ],
     prepTime: {
@@ -41,7 +41,7 @@ const recipeSchema = new mongoose.Schema(
     },
     imageUrl:  {
         type: String,
-        require: [true, "Recipe image is required!"]
+        required: [true, "Recipe image is required!"]
     },
     mealType: {
         type: String,
