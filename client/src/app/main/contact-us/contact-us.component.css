@@ -7,7 +7,7 @@
   .card {
     display: flex;
     align-items: flex-start;
-    background-color: rgb(216, 182, 207, 0.4);
+    background-color: rgb(216, 182, 207, 0.7);
     box-shadow: 0 30px 15px rgba(0, 0, 0, 0.15);
     border: 1px solid rgb(202, 202, 202, 0.5);
     border-radius: 5px;
@@ -24,16 +24,15 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 1em;
+    align-items: center;
+    font-style: italic;
   }
   
   .card-title {
     font-weight: bold;
     font-style: italic;
     color: #423c3c;
-    padding-bottom: 0.5em;
-    text-align: center;
-    font-style: italic;
   }
   
   ul.icons {
