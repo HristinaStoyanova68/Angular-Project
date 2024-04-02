@@ -9,7 +9,7 @@
             <li class="meal-choices"><a (click)="toggleChoices()">Meal choices</a>
                 <ul class="choices" *ngIf="isShownChoices">
                     <li class="hover"><a routerLink="salads">Salads</a></li>
-                    <li class="hover"><a routerLink="main-courses">Mains</a></li>
+                    <li class="hover"><a routerLink="mains">Mains</a></li>
                     <li class="hover"><a routerLink="desserts">Desserts</a></li>
                 </ul>
             </li>
@@ -17,7 +17,7 @@
         </ul>
         <ul *ngIf="isLoggedIn">
             <li><a routerLink="/add-recipe">add recipe</a></li>
-            <li><a routerLink="/my-recipes">my profile</a></li>
+            <li><a routerLink="/profile">my profile</a></li>
             <li><a (click)="signOut()" class="sign-out">sign out</a></li>
         </ul>
 
