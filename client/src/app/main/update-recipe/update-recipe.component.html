@@ -9,85 +9,120 @@
                     <div class="form-group">
                         <label for="imageUrl">Image URL:</label>
                         <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."
-                            formControlName="imageUrl" [value]="recipe.imageUrl"/>
+                            formControlName="imageUrl" />
                     </div>
                     <div class="form-group">
                         <label for="recipeName">Recipe Name:</label>
-                        <input type="text" id="recipeName" name="recipeName" formControlName="recipeName" [value]="recipe.recipeName"/>
+                        <input type="text" id="recipeName" name="recipeName" formControlName="recipeName" />
                     </div>
                     <div class="form-group ingredients">
                         <label for="ingredientQty">Ingredients:</label>
                         <div class="curr-ingredients">
-                            
-                            <!-- <ng-container> -->
-                                <div class="curr-ingredients-container">
-                                    <ul *ngFor="let ingredient of recipe.ingredients; let i = index">
-                                        <li>
-                                            <ng-container *ngIf="isEditted && editIngredientIndex === i">
-                                                <div class="edit-ingredients-container">
-                                                    <input type="number" min="0" name="editIngredientQty" id="editIngredientQty"
-                                                        formControlName="editIngredientQty" [value]="ingredient.split(' ')[0]"/>
-                                                    <select id="editIngredientType" name="editIngredientType" formControlName="editIngredientType" [value]="ingredient.split(' ')[1]">
-                                                        <option value="ml">ml</option>
-                                                        <option value="l">l</option>
-                                                        <option value="g">g</option>
-                                                        <option value="kg">kg</option>
-                                                        <option value="ts">ts</option>
-                                                        <option value="tbs">tbs</option>
-                                                        <option value="qty">qty</option>
-                                                    </select>
-                                                    <input type="text" name="editIngredientName" id="editIngredientName"
-                                                        formControlName="editIngredientName" [value]="ingredient.split(' ').slice(2).join(' ')"/>
-                                                    <button class="edit-ingredient" (click)="onChecked($event, i)"><i class="fa-solid fa-check"></i></button>
-                                                </div>
+                            <div class="curr-ingredients-container">
+                                <ul class="ul-content">
+                                    <li class="li-content" *ngFor="let ingredient of recipe.ingredients; let i = index">
+                                        <div class="edit-ingredients-container"
+                                            *ngIf="isIngredientEdited && editIngredientIndex === i">
+                                            <ng-container formGroupName="editIngredientGroup">
+                                                <input type="number" min="0" name="editIngredientQty"
+                                                    id="editIngredientQty" formControlName="editIngredientQty" />
+                                                <select id="editIngredientType" name="editIngredientType"
+                                                    formControlName="editIngredientType">
+                                                    <option value="ml">ml</option>
+                                                    <option value="l">l</option>
+                                                    <option value="g">g</option>
+                                                    <option value="kg">kg</option>
+                                                    <option value="cup">cup</option>
+                                                    <option value="ts">ts</option>
+                                                    <option value="tbs">tbs</option>
+                                                    <option value="qty">qty</option>
+                                                </select>
+                                                <input type="text" name="editIngredientName" id="editIngredientName"
+                                                    formControlName="editIngredientName" />
                                             </ng-container>
-                                            <ng-container *ngIf="!isEditted || editIngredientIndex !== i">
-                                                {{ingredient}}
-                                                <button class="pencil" (click)="onPencil($event, i)"><i class="fa-solid fa-pencil"></i></button>
-                                                <button class="trash" (click)="onTrash(i)"><i class="fa-solid fa-trash"></i></button>
-                                            </ng-container>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            <button class="edit-ingredient" (click)="onIngredientChecked($event, i)"><i
+                                                    class="fa-solid fa-check"></i></button>
+                                        </div>
+                                        <ng-container *ngIf="!isIngredientEdited || editIngredientIndex !== i">
+                                            {{ingredient}}
+                                            <div class="btn-icons">
+                                                <button class="pencil" (click)="onIngredientPencil($event, i)"><i
+                                                        class="fa-solid fa-pencil"></i></button>
+                                                <button class="trash" (click)="onIngredientTrash($event, i)"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </div>
+                                        </ng-container>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="ingredients-container">
-                            <input type="number" min="0" name="ingredientQty" id="ingredientQty"
-                                formControlName="ingredientQty" />
-                            <select id="ingredientType" name="ingredientType" formControlName="ingredientType">
-                                <option value="ml">ml</option>
-                                <option value="l">l</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ts">ts</option>
-                                <option value="tbs">tbs</option>
-                                <option value="qty">qty</option>
-                            </select>
-                            <input type="text" name="ingredientName" id="ingredientName" formControlName="ingredientName" />
+                            <ng-container formGroupName="addIngredientGroup">
+                                <input type="number" min="0" name="ingredientQty" id="ingredientQty"
+                                    formControlName="ingredientQty" />
+                                <select id="ingredientType" name="ingredientType" formControlName="ingredientType">
+                                    <option value="ml">ml</option>
+                                    <option value="l">l</option>
+                                    <option value="g">g</option>
+                                    <option value="kg">kg</option>
+                                    <option value="cup">cup</option>
+                                    <option value="ts">ts</option>
+                                    <option value="tbs">tbs</option>
+                                    <option value="qty">qty</option>
+                                </select>
+                                <input type="text" name="ingredientName" id="ingredientName"
+                                    formControlName="ingredientName" />
+                            </ng-container>
                         </div>
                         <button type="button" (click)="addIngredient($event)">Add Ingredient</button>
                     </div>
                     <div class="form-group">
-                        <label for="instruction">Instructions:</label>
-                        <textarea id="instruction" name="instruction"
-                            placeholder="Please add your instruction step by step" formControlName="instruction">
-                        </textarea>
+                        <label for="editInstruction">Instructions:</label>
+                        <ul class="ul-content">
+                            <li class="li-content" *ngFor="let instruction of recipe.instructions; let i = index;">
+                                <div class="edit-instruction-container"
+                                    *ngIf="isInstructionEdited && editInstructionIndex === i">
+                                    <ng-container formGroupName="editInstructionGroup">
+                                        <textarea id="edit-instruction" name="editInstruction"
+                                            formControlName="editInstruction">
+                                    </textarea>
+                                    </ng-container>
+                                    <button class="edit-instruction" (click)="onInstructionChecked($event, i)"><i
+                                            class="fa-solid fa-check"></i></button>
+                                </div>
+                                <ng-container *ngIf="!isInstructionEdited || editInstructionIndex !== i">
+                                    {{instruction}}
+                                    <div class="btn-icons">
+                                        <button class="pencil" (click)="onInstructionPencil($event, i)"><i
+                                                class="fa-solid fa-pencil"></i></button>
+                                        <button class="trash" (click)="onInstructionTrash($event, i)"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </ng-container>
+                            </li>
+                        </ul>
+                        <ng-container formGroupName="addInstructionGroup">
+                            <textarea id="instruction" name="instruction"
+                                placeholder="Please add your instructions step by step" formControlName="instruction">
+                                    </textarea>
+                        </ng-container>
                         <button type="button" (click)="addInstruction($event)">Add Step</button>
                     </div>
                     <div class="form-group">
                         <label for="prepTime">Preparation Time (minutes):</label>
-                        <input type="number" id="prepTime" name="prepTime" formControlName="prepTime" [value]="recipe.prepTime">
+                        <input type="number" id="prepTime" name="prepTime" formControlName="prepTime">
                     </div>
                     <div class="form-group">
                         <label for="cookTime">Cooking Time (minutes):</label>
-                        <input type="number" id="cookTime" name="cookTime" formControlName="cookTime" [value]="recipe.cookTime">
+                        <input type="number" id="cookTime" name="cookTime" formControlName="cookTime">
                     </div>
                     <div class="form-group">
                         <label for="servings">Servings:</label>
-                        <input type="number" id="servings" name="servings" formControlName="servings" [value]="recipe.servings">
+                        <input type="number" id="servings" name="servings" formControlName="servings">
                     </div>
                     <div class="form-group">
                         <label for="difficulty">Difficulty:</label>
-                        <select id="difficulty" name="difficulty" ngModel required>
+                        <select id="difficulty" name="difficulty" formControlName="difficulty">
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="difficult">Difficult</option>
@@ -95,7 +130,7 @@
                     </div>
                     <div class="form-group">
                         <label for="mealType">Meal type:</label>
-                        <select id="mealType" name="mealType" ngModel required>
+                        <select id="mealType" name="mealType" formControlName="mealType">
                             <option value="salads">Salads</option>
                             <option value="mains">Mains</option>
                             <option value="desserts">Desserts</option>
@@ -103,16 +138,10 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button type="button" class="update">Update</button>
+                    <button type="submit" class="update">Update</button>
                     <button type="button" class="delete">Delete</button>
                 </div>
             </form>
         </div>
-
     </div>
-
 </div>
-
-
-
-<!--  *ngFor="let ingredient of recipe.ingredients" -->

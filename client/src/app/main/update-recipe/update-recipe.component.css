@@ -35,8 +35,6 @@ form {
   gap: 1em;
 }
 
-
-
 .form-group,
 .ingredients-container,
 .edit-ingredients-container,
@@ -65,7 +63,9 @@ select {
 }
 
 input#ingredientQty,
-select#ingredientType {
+select#ingredientType,
+input#editIngredientQty,
+select#editIngredientType {
   min-width: unset; 
   width: 16%;
 }
@@ -77,6 +77,11 @@ select#ingredientType {
 input#ingredientName {
   min-width: unset; 
   width: 49%;
+}
+
+input#editIngredientName {
+  min-width: unset;
+  width: 40%;
 }
 
 .edit-ingredients-container input#ingredientName {
@@ -96,18 +101,37 @@ select:focus {
   outline-color: rgb(181, 92, 107);
 }
 
+.ul-content {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.li-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  width: 25em;
+  overflow-x: auto;
+  padding: 0.5em;
+}
+
 button {
   background: linear-gradient(#b55c6b, #d74d8b);
   padding: 0 12px;
   border: none;
   border-radius: 20px;
   box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.6);
- 
   outline: none;
   color: #fff;
   font: 400 12px/2.5 Nunito, "Varela Round", Sans-serif;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.btn-icons {
+  display: flex;
 }
 
 .edit-ingredient {
