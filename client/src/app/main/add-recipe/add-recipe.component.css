@@ -48,6 +48,11 @@ form {
   flex-direction: row;
 }
 
+label {
+  font-weight: 600;
+  padding-top: 0.7em;
+}
+
 input,
 textarea,
 select {
@@ -87,12 +92,18 @@ button {
   border: none;
   border-radius: 20px;
   box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.6);
- 
   outline: none;
   color: #fff;
   font: 400 12px/2.5 Nunito, "Varela Round", Sans-serif;
+  font-style: italic;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+button:hover {
+  color: #000;
+  outline: 1px solid #8a8585;
+  box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.6);
 }
 
 .add-recipe {
