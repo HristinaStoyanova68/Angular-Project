@@ -54,14 +54,19 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 1em;
 }
 
 .media img:hover {
-  box-shadow: 0 0 1em rgb(0, 0, 0, 0.8);
+  box-shadow: 0 0 2em rgb(0, 0, 0, 0.8);
 }
 
 .entry-content {
   padding: 0.5em;
+}
+
+ul {
+  margin-bottom: 0.5em;
 }
 
 .recipe-icons {
@@ -93,6 +98,10 @@
 
 .icon .text {
   font-size: 14px;
+}
+
+.icon .text.info {
+  font-weight: 600;
 }
 
 .buttons {
