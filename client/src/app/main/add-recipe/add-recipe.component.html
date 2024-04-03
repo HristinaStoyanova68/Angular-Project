@@ -26,6 +26,7 @@
                                 <option value="l">l</option>
                                 <option value="g">g</option>
                                 <option value="kg">kg</option>
+                                <option value="cup">cup</option>
                                 <option value="ts">ts</option>
                                 <option value="tbs">tbs</option>
                                 <option value="qty">qty</option>
@@ -39,7 +40,7 @@
                     <div class="form-group">
                         <label for="instruction">Instructions:</label>
                         <textarea id="instruction" name="instruction"
-                            placeholder="Please add your instruction step by step" #textareaInstruction="ngModel"
+                            placeholder="Please add your instructions step by step" #textareaInstruction="ngModel"
                             ngModel required>
                         </textarea>
                         <button type="button" (click)="addInstruction($event, form)">Add Step</button>

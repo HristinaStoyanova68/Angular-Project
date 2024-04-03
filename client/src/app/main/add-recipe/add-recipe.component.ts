@@ -89,7 +89,7 @@ export class AddRecipeComponent {
         return;
     }
 
-    const currIngredientAsStr = `${form.value.ingredientQty}${form.value.ingredientType} ${form.value.ingredientName}`;
+    const currIngredientAsStr = `${form.value.ingredientQty} ${form.value.ingredientType} ${form.value.ingredientName}`;
 
     this.allIngredients.push(currIngredientAsStr);
     form.controls['ingredientQty'].reset();
