@@ -81,7 +81,7 @@ input#ingredientName {
 
 input#editIngredientName {
   min-width: unset;
-  width: 40%;
+  /* width: 40%; */
 }
 
 .edit-ingredients-container input#ingredientName {
@@ -93,6 +93,12 @@ input#editIngredientName {
 textarea {
   overflow-y: auto;
   min-height: 100px;
+}
+
+#edit-instruction {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
 }
 
 input:focus,
@@ -109,12 +115,17 @@ select:focus {
 
 .li-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 2em;
   width: 25em;
   overflow-x: auto;
-  padding: 0.5em;
+  padding: 0.2em 0.4em;
+}
+
+.buttons {
+  display: flex;
+  gap: 1.5em;
 }
 
 button {
@@ -126,15 +137,33 @@ button {
   outline: none;
   color: #fff;
   font: 400 12px/2.5 Nunito, "Varela Round", Sans-serif;
+  font-style: italic;
+
   text-transform: uppercase;
   cursor: pointer;
 }
 
-.btn-icons {
-  display: flex;
+button:hover {
+  color: #000;
+  outline: 1px solid #8a8585;
+  box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.6);
 }
 
-.edit-ingredient {
+.btn-icons {
+  display: flex;
+  /* background-color: blue; */
+
+}
+
+.pencil,
+.trash {
+  background: unset;
+  box-shadow: unset;
+  color: #000;
+}
+
+.edit-ingredient,
+.edit-instruction {
   background: unset;
   padding: unset;
   border-radius: unset;
@@ -142,14 +171,15 @@ button {
   /* background-color: rgb(29, 221, 29); */
   /* color: #fff; */
   width: 1.5em;
-  height: 2em;
+  height: 1.5emem;
   /* border-radius: 50%; */
   padding: 0;
   font-size: 23px;
   font-weight: 500;
 }
 
-.edit-ingredient  i {
+.edit-ingredient i,
+.edit-instruction i {
   color: rgb(29, 221, 29);
   /* border: 2px solid black; */
   /* background-color: rgb(216, 182, 207, 0.4); */
