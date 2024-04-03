@@ -103,7 +103,7 @@ button {
 button:hover {
   color: #000;
   outline: 1px solid #8a8585;
-  box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.6);
+  box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.7);
 }
 
 .add-recipe {

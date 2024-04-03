@@ -65,6 +65,11 @@
   padding: 0.5em;
 }
 
+.instructions {
+    font-weight: 600;
+    padding-top: 0.7em;
+}
+
 ul {
   margin-bottom: 0.5em;
 }
@@ -119,8 +124,16 @@ button, a {
   outline: none;
   color: #fff;
   font: 400 16px/2.5 Nunito, "Varela Round", Sans-serif;
+  font-style: italic;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+button:hover,
+a:hover {
+  color: #000;
+  outline: 1px solid #8a8585;
+  box-shadow: 0 0 0.7em rgb(0, 0, 0, 0.7);
 }
 
 a {
