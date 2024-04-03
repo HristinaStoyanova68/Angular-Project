@@ -37,10 +37,23 @@ export class ApiService {
         (newRecipe) => {
           console.log(`Successfully added new recipe: ${newRecipe.recipeName}`);
 
-          this.router.navigate(['/']);
+          this.router.navigate(['/', newRecipe.mealType, newRecipe._id]);
         },
 
         (error) => console.log(error)
       );
+  }
+
+  updateRecipe(collectionName: string, recipeId: string, recipeData: Recipe) {
+    const { apiUrl } = environment;
+
+    return this.http.put<Recipe>(`${apiUrl}/recipes/${collectionName}/${recipeId}/edit`, recipeData).subscribe((updatedRecipe) => {
+      console.log('Successfully edited recipe: ', updatedRecipe.recipeName);
+
+      this.router.navigate(['/', updatedRecipe.mealType, updatedRecipe._id]);
+    }, 
+
+      (error) => console.log(error)
+    );
   }
 }

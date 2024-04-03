@@ -15,6 +15,8 @@ export class UpdateRecipeComponent implements OnInit {
   editIngredientIndex: number = 0;
   editInstructionIndex: number = 0;
   recipe = {} as Recipe;
+  collectionName: string = '';
+  recipeId: string = '';
 
   updateForm = this.fb.group({
     imageUrl: ['', [Validators.required]],
@@ -52,11 +54,11 @@ export class UpdateRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((data) => {
-      const collectionName = data['collectionName'];
-      const recipeId = data['recipeId'];
+      this.collectionName = data['collectionName'];
+      this.recipeId = data['recipeId'];
 
       this.apiService
-        .getRecipeById(collectionName, recipeId)
+        .getRecipeById(this.collectionName, this.recipeId)
         .subscribe((currentRecipe) => {
           this.recipe = currentRecipe;
 
@@ -95,6 +97,41 @@ export class UpdateRecipeComponent implements OnInit {
 
       return;
     }
+
+    if (this.updateForm.controls.addIngredientGroup.controls.ingredientQty.value || this.updateForm.controls.addIngredientGroup.controls.ingredientType.value || this.updateForm.controls.addIngredientGroup.controls.ingredientName.value) {
+
+      const currIngredientAsStr = `${this.updateForm.controls.addIngredientGroup.controls.ingredientQty.value} ${this.updateForm.controls.addIngredientGroup.controls.ingredientType.value} ${this.updateForm.controls.addIngredientGroup.controls.ingredientName.value}`;
+
+      this.recipe.ingredients.push(currIngredientAsStr);
+    }
+
+    if (this.updateForm.controls.addInstructionGroup.controls.instruction.value) {
+
+      this.recipe.instructions.push(this.updateForm.controls.addInstructionGroup.controls.instruction.value);
+    }
+
+    if (
+      this.updateForm.controls.imageUrl.value !== null &&
+      this.updateForm.controls.recipeName.value !== null &&
+      this.updateForm.controls.prepTime.value !== null &&
+      this.updateForm.controls.cookTime.value !== null &&
+      this.updateForm.controls.difficulty.value !== null &&
+      this.updateForm.controls.servings.value !== null &&
+      this.updateForm.controls.mealType.value !== null
+    ) {
+
+      this.recipe.imageUrl = this.updateForm.controls.imageUrl.value;
+      this.recipe.recipeName = this.updateForm.controls.recipeName.value;
+      this.recipe.prepTime = this.updateForm.controls.prepTime.value;
+      this.recipe.cookTime = this.updateForm.controls.cookTime.value;
+      this.recipe.difficulty = this.updateForm.controls.difficulty.value;
+      this.recipe.servings = this.updateForm.controls.servings.value;
+      this.recipe.mealType = this.updateForm.controls.mealType.value;
+    }
+
+    this.apiService.updateRecipe(this.collectionName, this.recipeId, this.recipe);
+
+    this.updateForm.reset();
 
     console.log(this.recipe);
   }

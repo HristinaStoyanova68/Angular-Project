@@ -37,7 +37,9 @@ const getLastArrivals = asyncHandler(async (req, res) => {
   let lastArrivals = [];
 
   if (allRecipes.length !== 0) {
-    lastArrivals = allRecipes.sort((a,b) => b.createdAt - a.createdAt).slice(0, 4);
+    lastArrivals = allRecipes
+      .sort((a, b) => b.createdAt - a.createdAt)
+      .slice(0, 4);
   }
 
   res.status(200).json(lastArrivals);
@@ -74,26 +76,22 @@ const getRecipeById = asyncHandler(async (req, res) => {
   res.status(200).json(recipe);
 });
 
-
-
 const getMyRecipes = asyncHandler(async (req, res) => {
+  console.log("server");
+  //   const userId = req.user.id; //TODO implement correct userId depending on Angular
 
-    console.log('server');
-//   const userId = req.user.id; //TODO implement correct userId depending on Angular
+  //   const currentUser = await User.findById({ _id: userId })
+  //     .populate("myRecipes")
+  //     .lean();
 
-//   const currentUser = await User.findById({ _id: userId })
-//     .populate("myRecipes")
-//     .lean();
-
-   
-
-  const currentUser = await User.findById({ _id: '6606952aef45ddfea712a7ab'}).populate('myRecipes').lean();
+  const currentUser = await User.findById({ _id: "6606952aef45ddfea712a7ab" })
+    .populate("myRecipes")
+    .lean();
 
   console.log(currentUser);
 
   if (!currentUser) {
-
-    console.log('not found');
+    console.log("not found");
     return res.status(204).json({ message: "User not found!" });
   }
 
@@ -107,7 +105,6 @@ const getMyRecipes = asyncHandler(async (req, res) => {
 });
 
 const addRecipe = asyncHandler(async (req, res) => {
-
   const {
     recipeName,
     imageUrl,
@@ -117,20 +114,19 @@ const addRecipe = asyncHandler(async (req, res) => {
     cookTime,
     servings,
     difficulty,
-    mealType
+    mealType,
   } = req.body;
 
+  //   const userId = req.user.id; //TODO implement correct userId depending on Angular
 
-//   const userId = req.user.id; //TODO implement correct userId depending on Angular
-
-//   const currentUser = await User.findById({ _id: userId });
-  const currentUser = await User.findById({ _id: '6606952aef45ddfea712a7ab'});
+  //   const currentUser = await User.findById({ _id: userId });
+  const currentUser = await User.findById({ _id: "6606952aef45ddfea712a7ab" });
 
   if (!currentUser) {
     return res.status(204).json({ message: "User not found!" });
   }
 
-  const collection = await Collection.findOne({name: mealType});
+  const collection = await Collection.findOne({ name: mealType });
 
   if (!collection) {
     return res.status(204).json({ message: "Collection not found!" });
@@ -156,7 +152,81 @@ const addRecipe = asyncHandler(async (req, res) => {
   await currentUser.save();
 
   res.status(201).json(newRecipe);
+});
 
+const editRecipe = asyncHandler(async (req, res) => {
+  const {
+    _id,
+    recipeName,
+    imageUrl,
+    ingredients,
+    instructions,
+    prepTime,
+    cookTime,
+    servings,
+    difficulty,
+    // ownerId,
+    mealType,
+  } = req.body;
+
+  const { collectionName } = req.params;
+
+  //   const userId = req.user.id;  //TODO implement correct userId depending on Angular
+
+  //   if (ownerId !== userId) {
+  //     return res.status(403).json({message: 'Forbiden!'});
+  //   }
+
+  //   const currentUser = await User.findById({ _id: userId });
+
+  const recipe = await Recipe.findById(_id).lean();
+
+  if (!recipe) {
+    return res.status(204).json({ message: "Recipe not found!" });
+  }
+
+  const currentUser = await User.findById({ _id: "6606952aef45ddfea712a7ab" });
+
+  if (!currentUser) {
+    return res.status(204).json({ message: "User not found!" });
+  }
+
+  const currCollection = await Collection.findOne({ name: collectionName });
+  const editedCollection = await Collection.findOne({ name: mealType });
+
+  if (!currCollection || !editedCollection) {
+    return res.status(204).json({ message: "Collection not found!" });
+  }
+
+  const updatedRecipe = await Recipe.findByIdAndUpdate(_id, {
+    recipeName,
+    imageUrl,
+    ingredients,
+    instructions,
+    prepTime,
+    cookTime,
+    servings,
+    difficulty,
+    // ownerId: userId,
+    mealType,
+  });
+
+  if (collectionName === mealType) {
+
+    await Collection.findOneAndUpdate({name: mealType, 'recipes._id': _id}, {$set: {'recipes.$.fieldToUpdate': updatedRecipe}});
+  } else {
+    await Collection.findOneAndUpdate({name: collectionName}, {$pull: {recipes: _id}});
+
+    editedCollection.recipes.push(updatedRecipe._id);
+
+    await editedCollection.save();
+
+    const recipeIndexInUserRecipes = currentUser.myRecipes.indexOf(updatedRecipe._id);
+
+    currentUser.myRecipes.splice(recipeIndexInUserRecipes, 1, updatedRecipe._id);
+  }
+
+  res.status(200).json(updatedRecipe);
 });
 
 module.exports = {
@@ -165,4 +235,5 @@ module.exports = {
   getRecipeById,
   getMyRecipes,
   addRecipe,
+  editRecipe,
 };

@@ -7,5 +7,6 @@ router.post('/add-recipe', recipesController.addRecipe);
 router.get('/my-recipes', recipesController.getMyRecipes);
 router.get('/:collectionName', recipesController.getAllRecipesForCollection);
 router.get('/:collectionName/:recipeId', recipesController.getRecipeById);
+router.put('/:collectionName/:recipeId/edit', recipesController.editRecipe);
 
 module.exports = router;
