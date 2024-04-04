@@ -24,7 +24,7 @@ export class RecipesListComponent implements OnInit {
 
     if (
         this.collectionName === 'salads' ||
-        this.collectionName === 'meals' || 
+        this.collectionName === 'mains' || 
         this.collectionName === 'desserts'
         ) {
       this.apiService

@@ -7,15 +7,14 @@
 
         <div class="section-menu" *ngIf="hasRecipes">
             
-            <div class="menu-breakfast section-content" *ngFor="let recipe of recipes">
+            <div class="section-content" *ngFor="let recipe of recipes">
                 <article>
                     <div class="media">
                         <img src="{{recipe.imageUrl}}" alt="{{recipe.recipeName}}">
                     </div>
                     <div class="entry-content">
                         <h2>{{recipe.recipeName}}</h2>
-                        <p>{{recipe.ingredients}}</p>
-
+                        <h4>{{recipe.mealType}}</h4>
                         <a [routerLink]="['/', recipe.mealType, recipe._id]">view more</a>
                     </div>
                 </article>
