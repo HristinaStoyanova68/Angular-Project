@@ -82,10 +82,19 @@ article {
 }
 
 .section-content .entry-content {
-  padding: 1.5em 1.5em 0 1.5em;
+  padding: 1.5em 1em 0 1em;
   font-style: italic;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
   flex-grow: 1;
+}
+
+.description-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
 }
 
 .section-content .entry-content p {
@@ -93,9 +102,6 @@ article {
 }
 
 .section-content .entry-content a {
-  position: absolute;
-  bottom: 2em;
-  right: 2em;
   text-decoration: none;
   border: 1px solid #882262;
   background-color: rgb(181, 92, 107);
