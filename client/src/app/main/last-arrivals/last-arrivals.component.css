@@ -7,6 +7,20 @@ main {
   min-height: 100vh;
 }
 
+h1 {
+  text-align: right;
+  padding: 0 1em 1em 0;
+  font-size: 4em;
+  font-style: italic;
+  color: rgb(104, 54, 63);
+  transition: color 0.5s;
+  opacity: 0.7;
+}
+
+h1:hover {
+  color: #000;
+}
+
 img {
   display: block;
   width: 100%;
@@ -25,14 +39,15 @@ img {
   position: relative;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.4);
-  border-radius: 0.3em;
+  box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.6);
+  border-radius: 0.5em;
   transition: all 0.3s ease-in;
 }
 
 .card:hover {
   width: 400px;
   flex: 0 0 400px;
+  box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.8);
 }
 
 .card img {
