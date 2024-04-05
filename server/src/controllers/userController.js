@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
 const { accessTokenGenerator } = require('../utils/tokenGenerator');
+const authCookieName = process.env.AUTH_COOKIE_NAME;
 
 // @desc Sign in existing user
 // @route POST /login
@@ -16,8 +17,6 @@ const login = asyncHandler(async (req, res) => {
     if (errors.length !== 0) {
         return res.status(400).json({ message: errors[0].msg });
     }
-
-    
 
     const user = await User.findOne({ email }).populate('myRecipes');
 
@@ -34,6 +33,12 @@ const login = asyncHandler(async (req, res) => {
     const accessToken = await accessTokenGenerator(user);
 
     res.setHeader('Authorization', `Bearer ${accessToken}`);
+
+    if (process.env.NODE_ENV === 'production') {
+        res.cookie(authCookieName, accessToken, { httpOnly: true, sameSite: 'none', secure: true })
+    } else {
+        res.cookie(authCookieName, accessToken, { httpOnly: true })
+    }
 
     //TODO remove password from userData !!!
     const userData = {
@@ -71,14 +76,20 @@ const register = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Inavlid user data received!' });
     }
 
-    const token = await accessTokenGenerator(createUser);
+    const accessToken = await accessTokenGenerator(createUser);
+
+    if (process.env.NODE_ENV === 'production') {
+        res.cookie(authCookieName, accessToken, { httpOnly: true, sameSite: 'none', secure: true })
+    } else {
+        res.cookie(authCookieName, accessToken, { httpOnly: true })
+    }
 
     const userData = {
         id: createUser._id,
         username: createUser.username,
         email: createUser.email,
         password: createUser.password,
-        token
+        accessToken,
     };
 
     res.status(201).json(userData);
@@ -90,6 +101,8 @@ const register = asyncHandler(async (req, res) => {
 
 const logout = (req, res) => {
     res.removeHeader('Authorization');
+
+    res.clearCookie(authCookieName);
 
     res.json({message: 'Successfully logged out!'});
 };

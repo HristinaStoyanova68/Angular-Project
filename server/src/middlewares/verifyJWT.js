@@ -26,10 +26,14 @@ const verifyJWT = async (req, res, next) => {
         delete req.headers['Authorization'] || delete req.headers['authorization'];
         
         if (error.name === 'TokenExpiredError') {
+            res.clearCookie(process.env.AUTH_COOKIE_NAME);
+
             return res.status(401).json({message: 'Token has expired!'});
         } else {
             console.log(error.name);
             console.log('Problem with token verification!');
+            
+            res.clearCookie(process.env.AUTH_COOKIE_NAME);
 
             return res.status(403).json({message: 'Problem with token verification!'});
         }

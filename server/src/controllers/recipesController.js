@@ -84,7 +84,7 @@ const getMyRecipes = asyncHandler(async (req, res) => {
   //     .populate("myRecipes")
   //     .lean();
 
-  const currentUser = await User.findById({ _id: "6606952aef45ddfea712a7ab" })
+  const currentUser = await User.findById({ _id: "660747ffb68088f6810f9464" })
     .populate("myRecipes")
     .lean();
 
@@ -120,7 +120,7 @@ const addRecipe = asyncHandler(async (req, res) => {
   //   const userId = req.user.id; //TODO implement correct userId depending on Angular
 
   //   const currentUser = await User.findById({ _id: userId });
-  const currentUser = await User.findById({ _id: "6606952aef45ddfea712a7ab" });
+  const currentUser = await User.findById({ _id: "660747ffb68088f6810f9464" });
 
   if (!currentUser) {
     return res.status(204).json({ message: "User not found!" });
@@ -185,7 +185,7 @@ const editRecipe = asyncHandler(async (req, res) => {
     return res.status(204).json({ message: "Recipe not found!" });
   }
 
-  const currentUser = await User.findById({ _id: "6606952aef45ddfea712a7ab" });
+  const currentUser = await User.findById({ _id: "660747ffb68088f6810f9464" });
 
   if (!currentUser) {
     return res.status(204).json({ message: "User not found!" });
