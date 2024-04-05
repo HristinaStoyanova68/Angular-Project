@@ -27,10 +27,9 @@ export class UserService {
   }
 
   login(email: string, password: string) {
-    const { apiUrl } = environment;
 
     this.http
-      .post<User>(`${apiUrl}/users/login`, { email, password })
+      .post<User>(`/users/login`, { email, password })
       .subscribe((currUser) => {
 
         console.log(currUser);
@@ -50,10 +49,9 @@ export class UserService {
   }
 
   register(username: string, email: string, password: string) {
-    const { apiUrl } = environment;
 
     this.http
-      .post<User>(`${apiUrl}/users/register`, { username, email, password })
+      .post<User>(`/users/register`, { username, email, password })
       .subscribe(
         (newUser) => {
           console.log(`${newUser.username} registered successfully`);
@@ -67,14 +65,17 @@ export class UserService {
   }
 
   getMyRecipes () {
-    const {apiUrl} = environment;
 
-    return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/my-recipes`);
+    return this.http.get<Recipe[] | []>(`/recipes/my-recipes`);
   }
 
   signOut() {
     this.user = undefined;
 
     localStorage.removeItem(this.USER_KEY);
+
+    //TODO see this is .subscribe necessary
+
+    this.http.get<void>('/users/logout').subscribe();
   }
 }

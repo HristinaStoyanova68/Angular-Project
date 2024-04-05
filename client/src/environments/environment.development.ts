@@ -1,3 +1,4 @@
 export const environment = {
-    apiUrl: 'http://localhost:3500',
+    usersApiUrl: 'http://localhost:3500/users',
+    recipesApiUrl: 'http://localhost:3500/recipes',
 };

@@ -11,28 +11,24 @@ export class ApiService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getLastArrivals() {
-    const { apiUrl } = environment;
 
-    return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/last-arrivals`);
+    return this.http.get<Recipe[] | []>(`/recipes/last-arrivals`);
   }
 
   getRecipesForCollectionName(collectionName: string) {
-    const { apiUrl } = environment;
 
-    return this.http.get<Recipe[] | []>(`${apiUrl}/recipes/${collectionName}`);
+    return this.http.get<Recipe[] | []>(`/recipes/${collectionName}`);
   }
 
   getRecipeById(collectionName: string, id: string) {
-    const { apiUrl } = environment;
 
-    return this.http.get<Recipe>(`${apiUrl}/recipes/${collectionName}/${id}`);
+    return this.http.get<Recipe>(`/recipes/${collectionName}/${id}`);
   }
 
   createRecipe(recipeData: AddRecipe) {
-    const { apiUrl } = environment;
 
     return this.http
-      .post<Recipe>(`${apiUrl}/recipes/add-recipe`, recipeData)
+      .post<Recipe>(`/recipes/add-recipe`, recipeData)
       .subscribe(
         (newRecipe) => {
           console.log(`Successfully added new recipe: ${newRecipe.recipeName}`);
@@ -45,15 +41,16 @@ export class ApiService {
   }
 
   updateRecipe(collectionName: string, recipeId: string, recipeData: Recipe) {
-    const { apiUrl } = environment;
 
-    return this.http.put<Recipe>(`${apiUrl}/recipes/${collectionName}/${recipeId}/edit`, recipeData).subscribe((updatedRecipe) => {
+    return this.http.put<Recipe>(`/recipes/${collectionName}/${recipeId}/edit`, recipeData).subscribe((updatedRecipe) => {
       console.log('Successfully edited recipe: ', updatedRecipe.recipeName);
 
       this.router.navigate(['/', updatedRecipe.mealType, updatedRecipe._id]);
     }, 
 
-      (error) => console.log(error)
+      (error) => {
+        console.log(error)
+      }
     );
   }
 }
