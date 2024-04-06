@@ -11,8 +11,11 @@ const authCookieName = process.env.AUTH_COOKIE_NAME;
 // @access Public
 
 const login = asyncHandler(async (req, res) => {
+    
     const { email, password } = req.body;
     const {errors} = validationResult(req);
+    
+    console.log(email);
 
     if (errors.length !== 0) {
         return res.status(400).json({ message: errors[0].msg });
@@ -45,7 +48,6 @@ const login = asyncHandler(async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
-        password: user.password, 
         accessToken,
     };
 
@@ -88,7 +90,6 @@ const register = asyncHandler(async (req, res) => {
         id: createUser._id,
         username: createUser.username,
         email: createUser.email,
-        password: createUser.password,
         accessToken,
     };
 
