@@ -7,13 +7,13 @@
         <div class="choices-container">
             <div class="row-items">
                 <button (click)="toggleChoices()">Meal choices</button>
-                <button routerLink="/add-recipe" *ngIf="isLoggedIn">Add recipe</button>
-                <button routerLink="/last-arrivals">Last arrivals</button>
+                <button routerLink="/site/add-recipe" *ngIf="isLoggedIn">Add recipe</button>
+                <button routerLink="/site/last-arrivals">Last arrivals</button>
             </div>
             <div class="choices" *ngIf="isShownChoices">
-                <button routerLink="/salads">Salads</button>
-                <button routerLink="/mains">Mains</button>
-                <button routerLink="/desserts">Desserts</button>
+                <button routerLink="/site/salads">Salads</button>
+                <button routerLink="/site/mains">Mains</button>
+                <button routerLink="/site/desserts">Desserts</button>
             </div>
         </div>
     </div>

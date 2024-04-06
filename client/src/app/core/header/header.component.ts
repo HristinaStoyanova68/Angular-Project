@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+// import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -16,9 +17,9 @@ export class HeaderComponent {
     return this.userService.isLogged;
   }
 
-  get firstName(): string {
-    return this.userService.user?.username || '';
-  }
+  // get username(): string {
+  //   return this.userService.user?.username || '';
+  // }
 
   toggleChoices() {
     this.isShownChoices = !this.isShownChoices;

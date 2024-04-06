@@ -1,16 +1,13 @@
 <main>
-
-
     <h1>Last Arrivals</h1>
     <div *ngIf="isLoading">
         <app-loader />
     </div>
 
-
     <div class="component-container" *ngIf="!isLoading">
         <div class="dynamic-content" *ngIf="hasLastArrivals">
             <section class="container" *ngFor="let recipe of lastArrivals">
-                <div class="card" [routerLink]="['/', recipe.mealType, recipe._id]"><img src="{{recipe.imageUrl}}" alt="{{recipe.recipeName}}"></div>
+                <div class="card" [routerLink]="['/site/', recipe.mealType, recipe._id]"><img src="{{recipe.imageUrl}}" alt="{{recipe.recipeName}}"></div>
             </section>
         </div>
         <div *ngIf="!hasLastArrivals">
