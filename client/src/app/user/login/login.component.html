@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="container" [class.active]="isActive" id="container">
+    <div class="container" [class.active]="!isLoginActive" id="container">
         <div class="form-container sign-up">
             <form #registerForm="ngForm" (ngSubmit)="registerFormSubmitHandler(registerForm)">
                 <h1>Create Account</h1>
@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <input type="email" placeholder="Email" name="email" id="email" ngModel required>
                 </div>
-                
+
                 <div class="form-group">
                     <input type="password" placeholder="Password" name="password" id="password" ngModel required>
                 </div>
@@ -86,12 +86,12 @@
                 <div class="toggle-panel toggle-left">
                     <h1>Welcome Back!</h1>
                     <p>Enter your personal details to use all of site features</p>
-                    <button class="hidden" id="login" (click)="onLoginActive()">Sign In</button>
+                    <button type="button" class="hidden" id="login" (click)="toggleMode()">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
                     <h1>Hello!</h1>
                     <p>Register with your personal details to use all of site features</p>
-                    <button class="hidden" id="register" (click)="onRegisterActive()">Sign Up</button>
+                    <button type="button" class="hidden" id="register" (click)="toggleMode()">Sign Up</button>
                 </div>
             </div>
         </div>

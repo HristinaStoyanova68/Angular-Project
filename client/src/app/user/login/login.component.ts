@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
-import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,68 +8,59 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  isActive: boolean = false;
+  isLoginActive: boolean = true;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService) {}
 
-  onLoginActive() {
-    this.isActive = false;
-  }
-
-  onRegisterActive() {
-    this.isActive = true;
+  toggleMode() {
+    this.isLoginActive = !this.isLoginActive;
   }
 
   loginFormSubmitHandler(form: NgForm | undefined) {
-    const { email, password } = form?.value;
+    if (this.isLoginActive) {
+      const { email, password } = form?.value;
 
-    if (form?.invalid) {
-      console.log('Form is invalid!');
+      if (form?.invalid) {
+        console.log('Form is invalid!');
 
-      return;
+        return;
+      }
+
+      this.userService.login(email, password);
+
+      form?.reset();
     }
-
-    this.userService.login(email, password);
-    
-    this.router.navigate(['/']);
-
-    form?.setValue({ email: '', password: '' });
   }
 
   registerFormSubmitHandler(form: NgForm | undefined) {
-    const { username, registerEmail, registerPassword, rePassword } =
-      form?.value;
+    if (!this.isLoginActive) {
+      const { username, registerEmail, registerPassword, rePassword } =
+        form?.value;
 
-    if (form?.invalid) {
-      console.log('Form is invalid!');
+      if (form?.invalid) {
+        console.log('Form is invalid!');
 
-      return;
+        return;
+      }
+
+      if (registerPassword !== rePassword) {
+        //TODO validation
+
+        console.log('The passwords are no matching!');
+
+        form?.setValue({
+          registerPassword: '',
+          rePassword: '',
+        });
+
+        return;
+      }
+
+      console.log(form?.value);
+
+      this.userService.register(username, registerEmail, registerPassword);
+
+      form?.reset();
     }
-
-    if (registerPassword !== rePassword) {
-      //TODO validation
-
-      console.log('The passwords are no matching!');
-
-      form?.setValue({
-        username: '',
-        registerEmail: '',
-        registerPassword: '',
-        rePassword: '',
-      });
-
-      return;
-    }
-
-    console.log(form?.value);
-
-    this.userService.register(username, registerEmail, registerPassword);
-
-    form?.setValue({
-      username: '',
-      registerEmail: '',
-      registerPassword: '',
-      rePassword: '',
-    });
   }
 }
