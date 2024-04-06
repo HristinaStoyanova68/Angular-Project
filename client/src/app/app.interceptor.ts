@@ -17,27 +17,54 @@ class AppInterceptor implements HttpInterceptor {
     API_USERS = '/users';
     API_RECIPES = '/recipes';
 
+    // constructor(private authService: AuthService) {}
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    
-    if (req.url.startsWith(this.API_USERS)) {
-        req = req.clone({
-            url: req.url.replace(this.API_USERS, usersApiUrl),
-            withCredentials: true,
-        });
-    }
-
-    if (req.url.startsWith(this.API_RECIPES)) {
-        req = req.clone({
-            url: req.url.replace(this.API_RECIPES, recipesApiUrl),
-            withCredentials: true,
-        });
-    }
 
     console.log(req);
 
+    // const authToken = this.authService.getToken();
+    
+    
+    if (req.url.startsWith(this.API_USERS)) {
+
+        // if (authToken) {
+        //     req = req.clone({
+        //         url: req.url.replace(this.API_USERS, usersApiUrl),
+        //         headers: {
+        //             Authorization: `Bearer ${authToken}`,
+        //         }
+        //         withCredentials: true,
+        //     });
+        // } else {
+            req = req.clone({
+                url: req.url.replace(this.API_USERS, usersApiUrl),
+                
+                withCredentials: true,
+            });
+        // }
+    }
+
+    if (req.url.startsWith(this.API_RECIPES)) {
+        // if (authToken) {
+        //     req = req.clone({
+        //         url: req.url.replace(this.API_RECIPES, recipesApiUrl),
+        //         headers: {
+        //             Authorization: `Bearer ${authToken}`,
+        //         }
+        //         withCredentials: true,
+        //     });
+        // } else {
+            req = req.clone({
+                url: req.url.replace(this.API_RECIPES, recipesApiUrl),
+                
+                withCredentials: true,
+            });
+        // }
+    }
     return next.handle(req);
   }
 }
