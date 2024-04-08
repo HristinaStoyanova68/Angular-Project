@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
+// import { environment } from 'src/environments/environment.development';
 import { AddRecipe, Recipe } from './types/recipe';
 import { Router } from '@angular/router';
 
@@ -33,7 +33,7 @@ export class ApiService {
         (newRecipe) => {
           console.log(`Successfully added new recipe: ${newRecipe.recipeName}`);
 
-          this.router.navigate(['/', newRecipe.mealType, newRecipe._id]);
+          this.router.navigate(['/site/', newRecipe.mealType, newRecipe._id]);
         },
 
         (error) => console.log(error)
@@ -45,7 +45,7 @@ export class ApiService {
     return this.http.put<Recipe>(`/recipes/${collectionName}/${recipeId}/edit`, recipeData).subscribe((updatedRecipe) => {
       console.log('Successfully edited recipe: ', updatedRecipe.recipeName);
 
-      this.router.navigate(['/', updatedRecipe.mealType, updatedRecipe._id]);
+      this.router.navigate(['/site/', updatedRecipe.mealType, updatedRecipe._id]);
     }, 
 
       (error) => {
