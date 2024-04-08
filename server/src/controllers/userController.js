@@ -25,16 +25,20 @@ const login = asyncHandler(async (req, res) => {
 
         return res.status(401).json({ message: 'Unauthorized: Invalid email or password!' });
     }
+const logout = (req, res) => {
+  const currUser = req.user;
 
-    const isValidPassword = await bcrypt.compare(password, user.password);
+  if (!currUser) {
+    res.clearCookie(authCookieName);
 
-    if (!isValidPassword) {
-        return res.status(401).json({ message: 'Unauthorized: Invalid email or password!' });
-    }
+    return res.status(403).json({ message: "This page not allowed!" });
+  }
 
-    const accessToken = await accessTokenGenerator(user);
+  res.removeHeader("Authorization");
+  res.clearCookie(authCookieName);
+  res.json({ message: "Successfully logged out!" });
+};
 
-    res.setHeader('Authorization', `Bearer ${accessToken}`);
 
     if (process.env.NODE_ENV === 'production') {
         res.cookie(authCookieName, accessToken, { httpOnly: true, sameSite: 'none', secure: true })
