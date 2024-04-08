@@ -136,6 +136,12 @@ export class UpdateRecipeComponent implements OnInit {
     console.log(this.recipe);
   }
 
+  deleteSubmitHandler(event: Event): void {
+    event.preventDefault();
+
+    this.apiService.deleteRecipe(this.collectionName, this.recipeId);
+  }
+
   onIngredientPencil(event: Event, i: number) {
     event.preventDefault();
 
