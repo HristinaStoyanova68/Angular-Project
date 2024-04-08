@@ -9,11 +9,13 @@ import { HttpClientModule} from '@angular/common/http'
 import { ErrorComponent } from './error/error.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorComponent,
+    AuthenticateComponent,
   ],
   imports: [
     BrowserModule,
