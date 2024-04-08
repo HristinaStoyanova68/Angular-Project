@@ -14,8 +14,6 @@ const login = asyncHandler(async (req, res) => {
     
     const { email, password } = req.body;
     const {errors} = validationResult(req);
-    
-    console.log(email);
 
     if (errors.length !== 0) {
         return res.status(400).json({ message: errors[0].msg });
@@ -24,6 +22,7 @@ const login = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email }).populate('myRecipes');
 
     if (!user) {
+
         return res.status(401).json({ message: 'Unauthorized: Invalid email or password!' });
     }
 
@@ -43,7 +42,6 @@ const login = asyncHandler(async (req, res) => {
         res.cookie(authCookieName, accessToken, { httpOnly: true })
     }
 
-    //TODO remove password from userData !!!
     const userData = {
         id: user._id,
         username: user.username,
@@ -101,10 +99,16 @@ const register = asyncHandler(async (req, res) => {
 // @access Public
 
 const logout = (req, res) => {
+    const currUser = req.user;
+
+    if (!currUser) {
+        res.clearCookie(authCookieName);
+
+        return res.status(403).json({message: 'This page not alLowed!'})
+    }
+    
     res.removeHeader('Authorization');
-
     res.clearCookie(authCookieName);
-
     res.json({message: 'Successfully logged out!'});
 };
 

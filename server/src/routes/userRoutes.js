@@ -5,10 +5,8 @@ const { loginValidation, registerValidation } = require('../middlewares/userVali
 const loginLimiter = require('../middlewares/loginLimiter');
 const verifyJWT = require('../middlewares/verifyJWT');
 
-
 router.post('/login', loginValidation, loginLimiter, userController.login);
 router.post('/register', registerValidation, userController.register);
-// router.post('/logout', verifyJWT, userController.logout);
-router.post('/logout', userController.logout);
+router.post('/logout', verifyJWT, userController.logout);
 
 module.exports = router;

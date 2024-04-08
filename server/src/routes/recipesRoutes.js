@@ -1,12 +1,13 @@
 const router = require('express').Router();
 
 const recipesController = require('../controllers/recipesController');
+const verifyJWT = require('../middlewares/verifyJWT');
 
 router.get('/last-arrivals', recipesController.getLastArrivals);
-router.post('/add-recipe', recipesController.addRecipe);
-router.get('/my-recipes', recipesController.getMyRecipes);
+router.post('/add-recipe', verifyJWT, recipesController.addRecipe);
+router.get('/my-recipes', verifyJWT, recipesController.getMyRecipes);
 router.get('/:collectionName', recipesController.getAllRecipesForCollection);
 router.get('/:collectionName/:recipeId', recipesController.getRecipeById);
-router.put('/:collectionName/:recipeId/edit', recipesController.editRecipe);
+router.put('/:collectionName/:recipeId/edit',  verifyJWT,recipesController.editRecipe);
 
 module.exports = router;
