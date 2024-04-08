@@ -128,8 +128,6 @@ const logout = (req, res) => {
 const getUserData = asyncHandler(async (req, res) => {
   const token = req.cookies[authCookieName];
 
-  console.log(token);
-
   if (!token) {
 
     return res.status(204).json(undefined);
