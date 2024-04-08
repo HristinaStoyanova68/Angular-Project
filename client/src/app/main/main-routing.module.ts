@@ -6,7 +6,7 @@ import { ShareOnSocialMediaComponent } from './share-on-social-media/share-on-so
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
-// import { AuthActivate } from '../guards/auth.activate';
+import { AuthActivate } from '../guards/auth.activate';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
@@ -18,12 +18,12 @@ const routes: Routes = [
   {
     path: 'add-recipe', 
     component: AddRecipeComponent,
-    // canActivate: [AuthActivate],
+    canActivate: [AuthActivate],
   },
   {
     path: ':collectionName/:recipeId/edit',
     component: UpdateRecipeComponent,
-    // canActivate: [AuthActivate],
+    canActivate: [AuthActivate],
   },
   {path: 'last-arrivals', component: LastArrivalsComponent},
   {path: 'about-us', component: AboutUsComponent},
