@@ -83,8 +83,6 @@ const getMyRecipes = asyncHandler(async (req, res) => {
     .populate("myRecipes")
     .lean();
 
-  console.log(currentUser);
-
   if (!currentUser) {
     console.log("not found");
     return res.status(204).json({ message: "User not found!" });
