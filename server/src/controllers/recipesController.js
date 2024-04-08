@@ -230,6 +230,24 @@ const editRecipe = asyncHandler(async (req, res) => {
   res.status(200).json(updatedRecipe);
 });
 
+const deleteRecipe = asyncHandler(async (req, res) => {
+  const {collectionName, recipeId} = req.params;
+  const userId = req.user._id;
+
+  const recipe = await Recipe.findById({_id: recipeId}).lean();
+
+  if (recipe.ownerId !== userId) {
+    return res.status(401).json({message: 'You are not allowed to delete this recipe!'});
+  }
+
+  await Recipe.findByIdAndDelete({_id: recipeId});
+
+  await Collection.findOneAndUpdate({name: collectionName}, {$pull: {recipes: recipeId}});
+  await User.findByIdAndUpdate({_id: userId}, {$pull: {myRecipes: recipeId}});
+
+  res.status(204).json({message: 'Successfully deleted recipe!'});
+});
+
 module.exports = {
   getLastArrivals,
   getAllRecipesForCollection,
@@ -237,4 +255,5 @@ module.exports = {
   getMyRecipes,
   addRecipe,
   editRecipe,
+  deleteRecipe,
 };
