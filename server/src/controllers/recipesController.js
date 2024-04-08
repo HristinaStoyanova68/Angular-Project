@@ -77,14 +77,9 @@ const getRecipeById = asyncHandler(async (req, res) => {
 });
 
 const getMyRecipes = asyncHandler(async (req, res) => {
-  console.log("server");
-  //   const userId = req.user.id; //TODO implement correct userId depending on Angular
+  const userId = req.user._id;
 
-  //   const currentUser = await User.findById({ _id: userId })
-  //     .populate("myRecipes")
-  //     .lean();
-
-  const currentUser = await User.findById({ _id: "660747ffb68088f6810f9464" })
+  const currentUser = await User.findById({ _id: userId })
     .populate("myRecipes")
     .lean();
 
@@ -117,10 +112,9 @@ const addRecipe = asyncHandler(async (req, res) => {
     mealType,
   } = req.body;
 
-  //   const userId = req.user.id; //TODO implement correct userId depending on Angular
+  const userId = req.user._id;
 
-  //   const currentUser = await User.findById({ _id: userId });
-  const currentUser = await User.findById({ _id: "660747ffb68088f6810f9464" });
+  const currentUser = await User.findById({ _id: userId });
 
   if (!currentUser) {
     return res.status(204).json({ message: "User not found!" });
@@ -142,7 +136,7 @@ const addRecipe = asyncHandler(async (req, res) => {
     servings,
     difficulty,
     mealType,
-    // ownerId: userId
+    ownerId: userId,
   });
 
   collection.recipes.push(newRecipe._id);
@@ -165,27 +159,25 @@ const editRecipe = asyncHandler(async (req, res) => {
     cookTime,
     servings,
     difficulty,
-    // ownerId,
+    ownerId,
     mealType,
   } = req.body;
 
   const { collectionName } = req.params;
 
-  //   const userId = req.user.id;  //TODO implement correct userId depending on Angular
+  const userId = req.user._id;
 
-  //   if (ownerId !== userId) {
-  //     return res.status(403).json({message: 'Forbiden!'});
-  //   }
+  if (ownerId !== userId) {
+    return res.status(403).json({ message: "Forbidden!" });
+  }
 
-  //   const currentUser = await User.findById({ _id: userId });
+  const currentUser = await User.findById({ _id: userId });
 
   const recipe = await Recipe.findById(_id).lean();
 
   if (!recipe) {
     return res.status(204).json({ message: "Recipe not found!" });
   }
-
-  const currentUser = await User.findById({ _id: "660747ffb68088f6810f9464" });
 
   if (!currentUser) {
     return res.status(204).json({ message: "User not found!" });
@@ -207,23 +199,34 @@ const editRecipe = asyncHandler(async (req, res) => {
     cookTime,
     servings,
     difficulty,
-    // ownerId: userId,
+    ownerId: userId,
     mealType,
   });
 
   if (collectionName === mealType) {
-
-    await Collection.findOneAndUpdate({name: mealType, 'recipes._id': _id}, {$set: {'recipes.$.fieldToUpdate': updatedRecipe}});
+    await Collection.findOneAndUpdate(
+      { name: mealType, "recipes._id": _id },
+      { $set: { "recipes.$.fieldToUpdate": updatedRecipe } }
+    );
   } else {
-    await Collection.findOneAndUpdate({name: collectionName}, {$pull: {recipes: _id}});
+    await Collection.findOneAndUpdate(
+      { name: collectionName },
+      { $pull: { recipes: _id } }
+    );
 
     editedCollection.recipes.push(updatedRecipe._id);
 
     await editedCollection.save();
 
-    const recipeIndexInUserRecipes = currentUser.myRecipes.indexOf(updatedRecipe._id);
+    const recipeIndexInUserRecipes = currentUser.myRecipes.indexOf(
+      updatedRecipe._id
+    );
 
-    currentUser.myRecipes.splice(recipeIndexInUserRecipes, 1, updatedRecipe._id);
+    currentUser.myRecipes.splice(
+      recipeIndexInUserRecipes,
+      1,
+      updatedRecipe._id
+    );
   }
 
   res.status(200).json(updatedRecipe);
