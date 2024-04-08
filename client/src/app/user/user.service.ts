@@ -104,6 +104,10 @@ export class UserService implements OnDestroy{
     });
   }
 
+  getUser() {
+    return this.http.get<UserForAuth>('/users/get-user').pipe(tap(user => this.user$$.next(user)));
+  }
+
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
