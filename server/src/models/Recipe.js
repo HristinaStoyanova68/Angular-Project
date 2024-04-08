@@ -48,6 +48,13 @@ const recipeSchema = new mongoose.Schema(
         enum: ['salads', 'mains', 'desserts'],
         default: 'mains',
     },
+    likes: [
+      {
+        user: {
+          type: String,
+        }
+      }
+    ],
   },
   {
     timestamps: true,
