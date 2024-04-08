@@ -9,62 +9,31 @@ import { Injectable, Provider } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
-const {usersApiUrl, recipesApiUrl} = environment;
+const { usersApiUrl, recipesApiUrl } = environment;
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
-
-    API_USERS = '/users';
-    API_RECIPES = '/recipes';
-
-    // constructor(private authService: AuthService) {}
+  API_USERS = '/users';
+  API_RECIPES = '/recipes';
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
     console.log(req);
 
-    // const authToken = this.authService.getToken();
-    
-    
-    if (req.url.startsWith(this.API_USERS)) {
-
-        // if (authToken) {
-        //     req = req.clone({
-        //         url: req.url.replace(this.API_USERS, usersApiUrl),
-        //         headers: {
-        //             Authorization: `Bearer ${authToken}`,
-        //         }
-        //         withCredentials: true,
-        //     });
-        // } else {
-            req = req.clone({
-                url: req.url.replace(this.API_USERS, usersApiUrl),
-                
-                withCredentials: true,
-            });
-        // }
+    if (
+      req.url.startsWith(this.API_USERS) ||
+      req.url.startsWith(this.API_RECIPES)
+    ) {
+      req = req.clone({
+        url: req.url.startsWith(this.API_USERS)
+          ? req.url.replace(this.API_USERS, usersApiUrl)
+          : req.url.replace(this.API_RECIPES, recipesApiUrl),
+        withCredentials: true,
+      });
     }
 
-    if (req.url.startsWith(this.API_RECIPES)) {
-        // if (authToken) {
-        //     req = req.clone({
-        //         url: req.url.replace(this.API_RECIPES, recipesApiUrl),
-        //         headers: {
-        //             Authorization: `Bearer ${authToken}`,
-        //         }
-        //         withCredentials: true,
-        //     });
-        // } else {
-            req = req.clone({
-                url: req.url.replace(this.API_RECIPES, recipesApiUrl),
-                
-                withCredentials: true,
-            });
-        // }
-    }
     return next.handle(req);
   }
 }
