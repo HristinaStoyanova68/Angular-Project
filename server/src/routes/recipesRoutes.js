@@ -10,5 +10,6 @@ router.get('/:collectionName', recipesController.getAllRecipesForCollection);
 router.get('/:collectionName/:recipeId', recipesController.getRecipeById);
 router.put('/:collectionName/:recipeId/edit',  verifyJWT,recipesController.editRecipe);
 router.delete('/:collectionName/:recipeId/delete', verifyJWT, recipesController.deleteRecipe);
+router.put('/:collectionName/:recipeId/like', verifyJWT, recipesController.likeRecipe);
 
 module.exports = router;

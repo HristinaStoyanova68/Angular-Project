@@ -213,39 +213,47 @@ const editRecipe = asyncHandler(async (req, res) => {
     );
 
     editedCollection.recipes.push(updatedRecipe._id);
-
     await editedCollection.save();
-
-    const recipeIndexInUserRecipes = currentUser.myRecipes.indexOf(
-      updatedRecipe._id
-    );
-
-    currentUser.myRecipes.splice(
-      recipeIndexInUserRecipes,
-      1,
-      updatedRecipe._id
-    );
   }
 
   res.status(200).json(updatedRecipe);
 });
 
 const deleteRecipe = asyncHandler(async (req, res) => {
-  const {collectionName, recipeId} = req.params;
+  const { collectionName, recipeId } = req.params;
   const userId = req.user._id;
 
-  const recipe = await Recipe.findById({_id: recipeId}).lean();
+  const recipe = await Recipe.findById({ _id: recipeId }).lean();
 
   if (recipe.ownerId !== userId) {
-    return res.status(401).json({message: 'You are not allowed to delete this recipe!'});
+    return res
+      .status(401)
+      .json({ message: "You are not allowed to delete this recipe!" });
   }
 
-  await Recipe.findByIdAndDelete({_id: recipeId});
+  await Recipe.findByIdAndDelete({ _id: recipeId });
 
-  await Collection.findOneAndUpdate({name: collectionName}, {$pull: {recipes: recipeId}});
-  await User.findByIdAndUpdate({_id: userId}, {$pull: {myRecipes: recipeId}});
+  await Collection.findOneAndUpdate(
+    { name: collectionName },
+    { $pull: { recipes: recipeId } }
+  );
+  await User.findByIdAndUpdate(
+    { _id: userId },
+    { $pull: { myRecipes: recipeId } }
+  );
 
-  res.status(204).json({message: 'Successfully deleted recipe!'});
+  res.status(204).json({ message: "Successfully deleted recipe!" });
+});
+
+const likeRecipe = asyncHandler(async (req, res) => {
+  const { recipeId } = req.params;
+  const userId = req.user._id;
+
+  const recipe = await Recipe.findById({ _id: recipeId });
+  recipe.likes.push(userId);
+  await recipe.save();
+
+  res.status(200).json(recipe);
 });
 
 module.exports = {
@@ -256,4 +264,5 @@ module.exports = {
   addRecipe,
   editRecipe,
   deleteRecipe,
+  likeRecipe,
 };

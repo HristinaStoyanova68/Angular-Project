@@ -20,40 +20,38 @@ const recipeSchema = new mongoose.Schema(
       },
     ],
     prepTime: {
-        type: Number,
-        min: 0,
+      type: Number,
+      min: 0,
     },
     cookTime: {
-        type: Number,
-        min: 0,
+      type: Number,
+      min: 0,
     },
     servings: {
-        type: Number,
-        min: 1,
+      type: Number,
+      min: 1,
     },
     difficulty: {
-        type: String,
-        enum: ['easy', 'medium', 'difficult'],
-        default: 'easy',
+      type: String,
+      enum: ["easy", "medium", "difficult"],
+      default: "easy",
     },
-    ownerId:  {
-        type: String,
+    ownerId: {
+      type: String,
     },
-    imageUrl:  {
-        type: String,
-        required: [true, "Recipe image is required!"]
+    imageUrl: {
+      type: String,
+      required: [true, "Recipe image is required!"],
     },
     mealType: {
-        type: String,
-        enum: ['salads', 'mains', 'desserts'],
-        default: 'mains',
+      type: String,
+      enum: ["salads", "mains", "desserts"],
+      default: "mains",
     },
     likes: [
       {
-        user: {
-          type: String,
-        }
-      }
+        type: String,
+      },
     ],
   },
   {
