@@ -61,4 +61,9 @@ export class ApiService {
       (error) => console.log(error)
     );
   }
+
+  likeRecipe(collectionName: string, recipeId: string) {
+
+    this.http.put<Recipe>(`/recipes/${collectionName}/${recipeId}/like`, {}).subscribe();
+  }
 }

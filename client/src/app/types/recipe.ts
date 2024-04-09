@@ -1,5 +1,3 @@
-import { User } from "./user";
-
 export interface Recipe {
   _id: string;
   recipeName: string;
@@ -9,22 +7,22 @@ export interface Recipe {
   cookTime: number;
   servings: number;
   difficulty: string;
-  ownerId: User;
+  ownerId: string;
   imageUrl: string;
   createdAt: number;
   updatedAt: number;
   mealType: string;
+  likes: string[];
 }
 
 export interface AddRecipe {
-  imageUrl: string,
-  recipeName: string,
-      ingredients: string[],
-      instructions: string[],
-      prepTime: number,
-      cookTime: number,
-      servings: number,
-      difficulty: string,
-      mealType: string,
+  imageUrl: string;
+  recipeName: string;
+  ingredients: string[];
+  instructions: string[];
+  prepTime: number;
+  cookTime: number;
+  servings: number;
+  difficulty: string;
+  mealType: string;
 }
-

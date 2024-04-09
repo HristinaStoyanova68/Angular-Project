@@ -7,7 +7,7 @@
         <div class="choices-container">
             <div class="row-items">
                 <button (click)="toggleChoices()">Meal choices</button>
-                <button routerLink="/site/add-recipe" *ngIf="isLoggedIn">Add recipe</button>
+                <!-- <button routerLink="/site/add-recipe" *ngIf="isLoggedIn">Add recipe</button> -->
                 <button routerLink="/site/last-arrivals">Last arrivals</button>
             </div>
             <div class="choices" *ngIf="isShownChoices">

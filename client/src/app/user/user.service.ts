@@ -32,25 +32,6 @@ export class UserService implements OnDestroy{
 
   login(email: string, password: string) {
 
-    // this.http
-    //   .post<User>(`/users/login`, { email, password })
-    //   .subscribe((currUser) => {
-
-    //     console.log(currUser);
-        
-
-    //     this.user = {
-    //       username: currUser.username,
-    //       email: currUser.email,
-    //       password: currUser.password,
-    //       id: currUser._id,
-    //       accessToken: currUser.accessToken,
-
-    //     };
-
-    //     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-    //   });
-
       this.http
       .post<UserForAuth>(`/users/login`, { email, password })
       .pipe(tap(user => this.user$$.next(user))).subscribe(() => {
@@ -59,19 +40,6 @@ export class UserService implements OnDestroy{
   }
 
   register(username: string, email: string, password: string) {
-
-    // this.http
-    //   .post<User>(`/users/register`, { username, email, password })
-    //   .subscribe(
-    //     (newUser) => {
-    //       console.log(`${newUser.username} registered successfully`);
-
-    //       this.login(email, password);
-    //       this.router.navigate(['/']);
-    //     },
-
-    //     (error) => console.log(error)
-    //   );
 
     this.http
     .post<UserForAuth>(`/users/register`, { username, email, password })
@@ -86,10 +54,6 @@ export class UserService implements OnDestroy{
   }
 
   signOut() {
-    // this.user = undefined;
-
-    // localStorage.removeItem(this.USER_KEY);
-
     //TODO see this is .subscribe necessary
 
     this.http.post('/users/logout', {})

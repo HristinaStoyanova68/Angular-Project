@@ -49,9 +49,17 @@
                 </ul>
             </div>
 
-            <div class="buttons"> 
-                <a [routerLink]="['/site/', recipe.mealType, recipe._id, 'edit']">Edit</a>
-                <button type="button" (click)="onLike()">Like</button>
+            <div class="buttons">
+                <ng-container *ngIf="isLoggedIn">
+                    <ng-container *ngIf="isOwner">
+                        <a [routerLink]="['/site/', recipe.mealType, recipe._id, 'edit']">Edit</a>
+                    </ng-container>
+                    <ng-container *ngIf="!isOwner">
+                        <ng-container *ngIf="!isLiked">
+                            <button type="button" (click)="onLike()">Like</button>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>              
             </div>
         </article>
     </div>
