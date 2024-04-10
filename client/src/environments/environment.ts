@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost:3500',
+    usersApiUrl: 'https://angular-project-9pgu.onrender.com/users',
+    recipesApiUrl: 'https://angular-project-9pgu.onrender.com/recipes',
 };
