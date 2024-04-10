@@ -30,8 +30,13 @@
 
 .sub-title {
   font-weight: normal;
-  padding: 0.5em 0 1em 0.2em;
+  padding: 0.5em 0 0 0.2em;
+  margin-bottom: unset;
+}
 
+.sub-title.second {
+  padding: unset;
+  padding: 0.2em 0 1em 0.2em;
 }
 
 .sub-title > span{

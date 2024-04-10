@@ -15,6 +15,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe = {} as Recipe;
   isOwner: boolean = false;
   isLiked: boolean = false;
+  likesAmount: number = 0;
 
   constructor(
     private apiService: ApiService,
@@ -36,6 +37,7 @@ export class RecipeDetailsComponent implements OnInit {
         .subscribe((currentRecipe) => {
 
           this.recipe = currentRecipe;
+          this.likesAmount = this.recipe.likes.length;
 
           if (this.isLoggedIn) {
             const userId = this.userService.user!.id;
