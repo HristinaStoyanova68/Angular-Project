@@ -92,22 +92,25 @@ export class UpdateRecipeComponent implements OnInit {
   }
 
   updateSubmitHandler(): void {
-    if (this.updateForm.invalid) {
-      console.log('not valid');
 
-      return;
-    }
-
-    if (this.updateForm.controls.addIngredientGroup.controls.ingredientQty.value || this.updateForm.controls.addIngredientGroup.controls.ingredientType.value || this.updateForm.controls.addIngredientGroup.controls.ingredientName.value) {
-
+    if (
+      this.updateForm.controls.addIngredientGroup.controls.ingredientQty
+        .value ||
+      this.updateForm.controls.addIngredientGroup.controls.ingredientType
+        .value ||
+      this.updateForm.controls.addIngredientGroup.controls.ingredientName.value
+    ) {
       const currIngredientAsStr = `${this.updateForm.controls.addIngredientGroup.controls.ingredientQty.value} ${this.updateForm.controls.addIngredientGroup.controls.ingredientType.value} ${this.updateForm.controls.addIngredientGroup.controls.ingredientName.value}`;
 
       this.recipe.ingredients.push(currIngredientAsStr);
     }
 
-    if (this.updateForm.controls.addInstructionGroup.controls.instruction.value) {
-
-      this.recipe.instructions.push(this.updateForm.controls.addInstructionGroup.controls.instruction.value);
+    if (
+      this.updateForm.controls.addInstructionGroup.controls.instruction.value
+    ) {
+      this.recipe.instructions.push(
+        this.updateForm.controls.addInstructionGroup.controls.instruction.value
+      );
     }
 
     if (
@@ -119,7 +122,6 @@ export class UpdateRecipeComponent implements OnInit {
       this.updateForm.controls.servings.value !== null &&
       this.updateForm.controls.mealType.value !== null
     ) {
-
       this.recipe.imageUrl = this.updateForm.controls.imageUrl.value;
       this.recipe.recipeName = this.updateForm.controls.recipeName.value;
       this.recipe.prepTime = this.updateForm.controls.prepTime.value;
@@ -129,7 +131,11 @@ export class UpdateRecipeComponent implements OnInit {
       this.recipe.mealType = this.updateForm.controls.mealType.value;
     }
 
-    this.apiService.updateRecipe(this.collectionName, this.recipeId, this.recipe);
+    this.apiService.updateRecipe(
+      this.collectionName,
+      this.recipeId,
+      this.recipe
+    );
 
     this.updateForm.reset();
 
@@ -141,6 +147,8 @@ export class UpdateRecipeComponent implements OnInit {
 
     this.apiService.deleteRecipe(this.collectionName, this.recipeId);
   }
+
+  openDeleteConfirmationModal() {}
 
   onIngredientPencil(event: Event, i: number) {
     event.preventDefault();
@@ -267,7 +275,7 @@ export class UpdateRecipeComponent implements OnInit {
 
     const { instruction } = this.updateForm.controls.addInstructionGroup.value;
     console.log(instruction);
-    
+
     if (
       instruction === undefined ||
       instruction === null ||
@@ -283,3 +291,5 @@ export class UpdateRecipeComponent implements OnInit {
     this.updateForm.controls.addInstructionGroup.controls.instruction.reset();
   }
 }
+
+
