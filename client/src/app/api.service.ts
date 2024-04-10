@@ -63,7 +63,8 @@ export class ApiService {
   }
 
   likeRecipe(collectionName: string, recipeId: string) {
-
-    this.http.put<Recipe>(`/recipes/${collectionName}/${recipeId}/like`, {}).subscribe();
+    this.http
+      .put<Recipe>(`/recipes/${collectionName}/${recipeId}/like`, {})
+      .subscribe();
   }
 }
