@@ -34,12 +34,12 @@ export class AddRecipeComponent {
       mealType,
     } = form?.value;
 
-    if (form?.invalid) {
+    // if (form?.invalid) {
 
-      console.log('invalid');
+    //   console.log('invalid');
       
-      return;
-    }
+    //   return;
+    // }
 
     if (ingredientQty || ingredientType || ingredientName) {
 
