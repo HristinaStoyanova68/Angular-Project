@@ -8,7 +8,7 @@ import {
 import { Injectable, Provider } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { ErrorService } from './core/error/error.service';
+import { ErrorService } from './error.service';
 import { Router } from '@angular/router';
 
 const { usersApiUrl, recipesApiUrl } = environment;
@@ -39,12 +39,12 @@ export class AppInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       catchError(err => {
+        this.errorService.setError(err);
+
         if (err.status === 401) {
           this.router.navigate(['/auth/login']);
-        } else {
-          this.errorService.setError(err);
-          // this.router.navigate(['/error']);
         }
+        
         return [err];
       })
     );

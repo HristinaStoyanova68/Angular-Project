@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorService } from './core/error/error.service';
+import { ErrorService } from './error.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,10 @@ export class AppComponent implements OnInit{
     this.errorService.apiError$.subscribe((err: any) => {
       this.errorMessage = err?.error?.message || '';
       console.log(err);
+
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 3000);
     })
   }
 }

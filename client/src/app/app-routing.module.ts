@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorComponent } from './core/error/error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './main/home/home.component';
 
@@ -15,7 +14,6 @@ const routes: Routes = [
     path: 'site',
     loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
   },
-  { path: 'error', component: ErrorComponent },
   { path: '**', redirectTo: '/404' },
   { path: '404', component: NotFoundComponent },
 ];

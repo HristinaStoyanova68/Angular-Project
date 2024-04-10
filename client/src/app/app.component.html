@@ -1,14 +1,7 @@
 <app-authenticate>
-
     <app-header />
     <div class="wrapper">
-        <!-- <ng-content *ngIf="!errorMessage"></ng-content>
-
-        <ng-container *ngIf="errorMessage"> -->
-            <p class="notification error-message" *ngIf="errorMessage">{{errorMessage}}</p>
-            <!-- <ng-content></ng-content>
-        </ng-container> -->
-
+            <p class="notification" *ngIf="errorMessage">{{errorMessage}}</p>
         <router-outlet />
     </div>
     <app-footer />

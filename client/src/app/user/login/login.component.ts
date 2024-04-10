@@ -46,12 +46,10 @@ export class LoginComponent {
       if (registerPassword !== rePassword) {
         //TODO validation
 
-        console.log('The passwords are no matching!');
+        console.log('The passwords are not matching!');
 
-        form?.setValue({
-          registerPassword: '',
-          rePassword: '',
-        });
+        form?.controls['registerPassword'].reset();
+        form?.controls['rePassword'].reset();
 
         return;
       }
