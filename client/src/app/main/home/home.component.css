@@ -1,88 +1,84 @@
 @import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
 
 .component-container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .component-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-around;
-    height: 100vh;
-    margin: 0.5em;
-    padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 100vh;
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 .title {
-    width: 40%;
-    padding-top: 2em;
-    text-align: justify;
+  width: 40%;
+  padding-top: 2em;
+  text-align: justify;
 }
 
 h2 {
-    text-align: right;
-    font-style: italic;
-    padding-right: 1em;
-    font-size: 3em;
-    font-weight: 650;
-    color: rgb(74, 34, 41);
-    transition: color 0.5s; 
-    opacity: 0.7;
+  text-align: right;
+  font-style: italic;
+  padding-right: 1em;
+  font-size: 3em;
+  font-weight: 650;
+  color: rgb(74, 34, 41);
+  transition: color 0.5s;
+  opacity: 0.7;
 }
 
 .title span {
-    font-family: 'Aladin', cursive;
-    color: #000;
+  font-family: "Aladin", cursive;
+  color: #000;
 }
 
 h2:hover {
-    color: #000;
+  color: #000;
 }
 
 .choices-container {
-    width: 60%;
+  width: 60%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-right: 5em;
-    margin-bottom: 2em;
-    padding-right: 1em;
-    gap: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 5em;
+  margin-bottom: 2em;
+  padding-right: 1em;
+  gap: 2em;
 }
 
 .choices-container button {
-    padding: 1em 1.5em;
-    margin: 0 1.5em;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-style: italic;
-    color: rgb(104, 54, 63);
-    border-radius: 1em;
-    background-color: rgb(230, 187, 215);
-    border: none;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.5s ease;
-    opacity: 0.7;
+  padding: 1em 1.5em;
+  margin: 0 1.5em;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-style: italic;
+  color: rgb(104, 54, 63);
+  border-radius: 1em;
+  background-color: rgb(230, 187, 215);
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.5s ease;
+  opacity: 0.7;
 }
 
 .choices-container button:hover {
-    color: #000;
-    background-color: rgb(211, 147, 189);
+  color: #000;
+  background-color: rgb(211, 147, 189);
 }
 
 .choices {
-    display: flex;
-    flex-direction: column;
-    margin-right: 26em;
-    gap: 1em;
-    
+  display: flex;
+  flex-direction: column;
+  margin-right: 26em;
+  gap: 1em;
 }
-
-
-

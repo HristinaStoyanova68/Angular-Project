@@ -92,7 +92,6 @@ export class UpdateRecipeComponent implements OnInit {
   }
 
   updateSubmitHandler(): void {
-
     if (
       this.updateForm.controls.addIngredientGroup.controls.ingredientQty
         .value ||
@@ -148,7 +147,7 @@ export class UpdateRecipeComponent implements OnInit {
     this.apiService.deleteRecipe(this.collectionName, this.recipeId);
   }
 
-  openDeleteConfirmationModal() {}
+  // openDeleteConfirmationModal() {}
 
   onIngredientPencil(event: Event, i: number) {
     event.preventDefault();
@@ -291,5 +290,3 @@ export class UpdateRecipeComponent implements OnInit {
     this.updateForm.controls.addInstructionGroup.controls.instruction.reset();
   }
 }
-
-

@@ -35,7 +35,6 @@ export class RecipeDetailsComponent implements OnInit {
       this.apiService
         .getRecipeById(this.collectionName, this.recipeId)
         .subscribe((currentRecipe) => {
-
           this.recipe = currentRecipe;
           this.likesAmount = this.recipe.likes.length;
 

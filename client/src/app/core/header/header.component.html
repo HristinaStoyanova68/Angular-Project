@@ -2,7 +2,6 @@
     <div class="site-logo">
         <a routerLink="/">delicious to you</a>
     </div>
-
     <nav>
         <ul *ngIf="!isLoggedIn">
             <li><a routerLink="/">home</a></li>
@@ -27,7 +26,5 @@
             <li><a routerLink="/auth/profile">my profile</a></li>
             <li><a (click)="signOut()" class="sign-out">sign out</a></li>
         </ul>
-
-
     </nav>
 </header>

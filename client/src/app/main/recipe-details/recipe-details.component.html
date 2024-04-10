@@ -1,11 +1,9 @@
 <div class="card-container">
     <div class="card">
         <article class="card-content">
-
             <div class="media">
                 <img src="{{recipe.imageUrl}}" alt="{{recipe.recipeName}}">
             </div>
-
             <div class="recipe-icons">
                 <div class="icon">
                     <i class="fa-regular fa-clock"></i>
@@ -28,28 +26,21 @@
                     <span class="text info">Difficulty:</span>
                     <span class="text">{{recipe.difficulty}}</span>
                 </div>
-
-                
             </div>
-
             <div class="entry-content">
                 <div class="title">
                     <h2>{{recipe.recipeName}}</h2>
-                    
                     <h5 class="sub-title">Meal type: <span>{{recipe.mealType}}</span></h5>
                     <h5 class="sub-title second">Likes: <span>{{likesAmount}}</span></h5>
                 </div>
-
                 <ul *ngFor="let ingredient of recipe.ingredients">
                     <li>{{ingredient}}</li>
                 </ul>
                 <p class="instructions">Instructions:</p>
-
                 <ul *ngFor="let instruction of recipe.instructions">
                     <li>{{instruction}}</li>
                 </ul>
             </div>
-
             <div class="buttons">
                 <ng-container *ngIf="isLoggedIn">
                     <ng-container *ngIf="isOwner">
@@ -60,7 +51,7 @@
                             <button type="button" (click)="onLike()">Like</button>
                         </ng-container>
                     </ng-container>
-                </ng-container>              
+                </ng-container>
             </div>
         </article>
     </div>

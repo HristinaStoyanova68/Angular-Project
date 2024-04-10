@@ -1,14 +1,10 @@
 <div>
-
     <h1>My Recipes</h1>
     <div *ngIf="isLoading">
         <app-loader />
     </div>
-
     <div class="component-container" *ngIf="!isLoading">
-
         <div class="section-menu" *ngIf="hasRecipes">
-            
             <div class="section-content" *ngFor="let recipe of recipes">
                 <article>
                     <div class="media">
@@ -18,13 +14,12 @@
                         <h2>{{recipe.recipeName}}</h2>
                         <div class="description-info">
                             <h4>{{recipe.mealType}}</h4>
-                        <a [routerLink]="['/site/', recipe.mealType, recipe._id]">view more</a>
+                            <a [routerLink]="['/site/', recipe.mealType, recipe._id]">view more</a>
                         </div>
                     </div>
                 </article>
             </div>
         </div>
-
         <div *ngIf="!hasRecipes">
             <p>You have not post any recipes yet. Make the first one! :)</p>
         </div>

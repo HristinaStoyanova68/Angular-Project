@@ -28,11 +28,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RecipeDetailsComponent,
   ],
   imports: [
-    CommonModule, SharedModule, MainRoutingModule, FormsModule, ReactiveFormsModule,
+    CommonModule,
+    SharedModule,
+    MainRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  exports: [
-    HomeComponent,
-    MainComponent,
-  ]
+  exports: [HomeComponent, MainComponent],
 })
-export class MainModule { }
+export class MainModule {}

@@ -3,11 +3,10 @@
         <div class="title">
             <h2>Taste the difference: Your culinary journey begins here with <span>DELICIOUS to YOU</span>!</h2>
         </div>
-    
+
         <div class="choices-container">
             <div class="row-items">
                 <button (click)="toggleChoices()">Meal choices</button>
-                <!-- <button routerLink="/site/add-recipe" *ngIf="isLoggedIn">Add recipe</button> -->
                 <button routerLink="/site/last-arrivals">Last arrivals</button>
             </div>
             <div class="choices" *ngIf="isShownChoices">

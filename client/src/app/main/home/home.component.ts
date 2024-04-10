@@ -5,18 +5,18 @@ import { UserService } from 'src/app/user/user.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-    isShownChoices: boolean = false;
+  isShownChoices: boolean = false;
 
-    constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
 
-    toggleChoices() {
-        this.isShownChoices = !this.isShownChoices;
-    }
+  toggleChoices() {
+    this.isShownChoices = !this.isShownChoices;
+  }
 }

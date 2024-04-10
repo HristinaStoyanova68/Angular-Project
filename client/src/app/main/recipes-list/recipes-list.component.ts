@@ -23,14 +23,14 @@ export class RecipesListComponent implements OnInit {
     this.collectionName = this.activatedRoute.snapshot.routeConfig?.path;
 
     if (
-        this.collectionName === 'salads' ||
-        this.collectionName === 'mains' || 
-        this.collectionName === 'desserts'
-        ) {
+      this.collectionName === 'salads' ||
+      this.collectionName === 'mains' ||
+      this.collectionName === 'desserts'
+    ) {
       this.apiService
         .getRecipesForCollectionName(this.collectionName)
         .subscribe((allRecipes) => {
-            this.isLoading = false;
+          this.isLoading = false;
 
           if (allRecipes.length === 0) {
             this.hasRecipes = false;
@@ -38,7 +38,6 @@ export class RecipesListComponent implements OnInit {
             this.recipes = [...allRecipes];
             this.hasRecipes = true;
           }
-
         });
     }
   }

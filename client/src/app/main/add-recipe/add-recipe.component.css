@@ -66,12 +66,12 @@ select {
 
 input#ingredientQty,
 select#ingredientType {
-  min-width: unset; 
+  min-width: unset;
   width: 16%;
 }
 
 input#ingredientName {
-  min-width: unset; 
+  min-width: unset;
   width: 49%;
 }
 

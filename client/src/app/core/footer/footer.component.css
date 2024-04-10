@@ -1,7 +1,6 @@
 footer {
   margin-top: auto;
   flex-shrink: 0;
-  
 }
 
 .site-footer {
@@ -21,7 +20,7 @@ footer {
 }
 
 .site-footer p span {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .site-footer ul li {

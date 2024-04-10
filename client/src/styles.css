@@ -1,51 +1,52 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap"); */
 
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
-*, ::before, ::after {
-    box-sizing: inherit;
+*,
+::before,
+::after {
+  box-sizing: inherit;
 }
 
 html {
-    box-sizing: border-box;
-    font: inherit;
-    line-height: 1.3;
+  box-sizing: border-box;
+  font: inherit;
+  line-height: 1.3;
 }
 
 .wrapper {
-    background-image: url('https://img.freepik.com/free-photo/sauce-bottle-oil-tomatoes-with-pedicels-lemon-sauce-garlic_140725-73766.jpg?t=st=1710164347~exp=1710167947~hmac=6558ea61d868a2dd119d620d9e30139517b7cb7ab7f5d7b6767d6e98f5d405bc&w=996');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    min-height: 100vh;
+  background-image: url("https://img.freepik.com/free-photo/sauce-bottle-oil-tomatoes-with-pedicels-lemon-sauce-garlic_140725-73766.jpg?t=st=1710164347~exp=1710167947~hmac=6558ea61d868a2dd119d620d9e30139517b7cb7ab7f5d7b6767d6e98f5d405bc&w=996");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100vh;
 }
 
 .site-logo a {
-    margin-left: 2em;
-    display: block;
-    width: 6em;
-    height: 6em;
-    overflow: hidden;
-    text-indent: -200vw;
-    background-image: url(./assets/images/delicious-to-you-high-resolution-logo-transparent.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #423c3c;
+  margin-left: 2em;
+  display: block;
+  width: 6em;
+  height: 6em;
+  overflow: hidden;
+  text-indent: -200vw;
+  background-image: url(./assets/images/delicious-to-you-high-resolution-logo-transparent.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #423c3c;
 }
 
-header, footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(181, 92, 107);
-    /* background: linear-gradient(#B55C6B, #d74d8b); */
-    color: #423c3c;
-    min-height: 7em;
+header,
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(181, 92, 107);
+  color: #423c3c;
+  min-height: 7em;
 }
-

@@ -39,7 +39,7 @@
   padding: 0.2em 0 1em 0.2em;
 }
 
-.sub-title > span{
+.sub-title > span {
   text-transform: capitalize;
   font-weight: 600;
 }
@@ -71,8 +71,8 @@
 }
 
 .instructions {
-    font-weight: 600;
-    padding-top: 0.7em;
+  font-weight: 600;
+  padding-top: 0.7em;
 }
 
 ul {
@@ -120,7 +120,8 @@ ul {
   gap: 2em;
 }
 
-button, a {
+button,
+a {
   background: linear-gradient(#b55c6b, #d74d8b);
   padding: 0 1.5em;
   border: none;

@@ -1,58 +1,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
 
 .card-container {
-    display: flex;
-    font-style: italic;
-    height: 100vh;
-    position: relative;
-  }
+  display: flex;
+  font-style: italic;
+  height: 100vh;
+  position: relative;
+}
 
-  .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(216, 182, 207, 0.7);
-    border: 1px solid rgb(202, 202, 202, 0.5);
-    border-radius: 5px;
-    width: 700px;
-    height: fit-content;
-    padding: 20px;
-    box-shadow: 0 0 1em rgb(0, 0, 0, 0.5);
-    position: absolute;
-    bottom: 3em;
-    right: 7em;
-  }
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(216, 182, 207, 0.7);
+  border: 1px solid rgb(202, 202, 202, 0.5);
+  border-radius: 5px;
+  width: 700px;
+  height: fit-content;
+  padding: 20px;
+  box-shadow: 0 0 1em rgb(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 3em;
+  right: 7em;
+}
 
-  .card-content {
-    padding: 1em;
-  }
+.card-content {
+  padding: 1em;
+}
 
 .card-title {
   text-align: center;
-    padding-bottom: 1em;
+  padding-bottom: 1em;
 }
 
 .description {
-    font-size: 18px;
-    text-align: justify;
+  font-size: 18px;
+  text-align: justify;
 }
 
 .card-title span,
 .description span {
   font-weight: bold;
   letter-spacing: 2px;
-  font-family: 'Aladin', cursive;
-    color: #000;
+  font-family: "Aladin", cursive;
+  color: #000;
 }
 
 .card-content p.first {
   text-align: justify;
   font-size: 18px;
   text-indent: 20px;
-  margin-top: 0; /* Добавете това, за да премахнете горния марджин на първия параграф */
+  margin-top: 0;
 }
 
 .card-content p.description {
-  text-indent: 0; /* Нулиране на text-indent за останалите параграфи */
-  margin-top: 15px; /* Променете тази стойност според вашите предпочитания */
+  text-indent: 0;
+  margin-top: 15px;
 }

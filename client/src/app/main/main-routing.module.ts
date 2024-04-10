@@ -14,9 +14,9 @@ const routes: Routes = [
   { path: 'salads', component: RecipesListComponent },
   { path: 'mains', component: RecipesListComponent },
   { path: 'desserts', component: RecipesListComponent },
-  {path: ':collectionName/:recipeId', component: RecipeDetailsComponent},
+  { path: ':collectionName/:recipeId', component: RecipeDetailsComponent },
   {
-    path: 'add-recipe', 
+    path: 'add-recipe',
     component: AddRecipeComponent,
     canActivate: [AuthActivate],
   },
@@ -25,10 +25,10 @@ const routes: Routes = [
     component: UpdateRecipeComponent,
     canActivate: [AuthActivate],
   },
-  {path: 'last-arrivals', component: LastArrivalsComponent},
-  {path: 'about-us', component: AboutUsComponent},
-  {path: 'contact-us', component: ContactUsComponent},
-  {path: 'share', component: ShareOnSocialMediaComponent},
+  { path: 'last-arrivals', component: LastArrivalsComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'share', component: ShareOnSocialMediaComponent },
 ];
 
 @NgModule({

@@ -54,8 +54,6 @@ export class LoginComponent {
         return;
       }
 
-      console.log(form?.value);
-
       this.userService.register(username, registerEmail, registerPassword);
 
       form?.reset();

@@ -18,7 +18,6 @@ export class AddRecipeComponent {
   addRecipe(form: NgForm) {
     //TODO take current user Id
     //TODO ask for last nonadded ingredient and instruction
-    //TODO difficulty & mealTipe
 
     const {
       imageUrl,
@@ -34,26 +33,15 @@ export class AddRecipeComponent {
       mealType,
     } = form?.value;
 
-    // if (form?.invalid) {
-
-    //   console.log('invalid');
-      
-    //   return;
-    // }
-
     if (ingredientQty || ingredientType || ingredientName) {
-
       const currIngredientAsStr = `${form.value.ingredientQty} ${form.value.ingredientType} ${form.value.ingredientName}`;
 
       this.allIngredients.push(currIngredientAsStr);
     }
 
     if (instruction) {
-
       this.allInstructions.push(form.value.instruction);
     }
-
-    
 
     this.recipeData = {
       imageUrl,
@@ -68,7 +56,6 @@ export class AddRecipeComponent {
     };
 
     console.log(this.recipeData);
-    
 
     this.apiService.createRecipe(this.recipeData);
 
@@ -83,10 +70,10 @@ export class AddRecipeComponent {
       form.value.ingredientQty === 0 ||
       form.value.ingredientType === '' ||
       form.value.ingredientName === ''
-      ) {
-        // TODO have to implement error handling !!!
+    ) {
+      // TODO have to implement error handling !!!
 
-        return;
+      return;
     }
 
     const currIngredientAsStr = `${form.value.ingredientQty} ${form.value.ingredientType} ${form.value.ingredientName}`;

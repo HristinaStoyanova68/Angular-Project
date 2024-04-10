@@ -24,7 +24,6 @@ export class AppInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
     if (
       req.url.startsWith(this.API_USERS) ||
       req.url.startsWith(this.API_RECIPES)
@@ -38,13 +37,13 @@ export class AppInterceptor implements HttpInterceptor {
     }
 
     return next.handle(req).pipe(
-      catchError(err => {
+      catchError((err) => {
         this.errorService.setError(err);
 
         if (err.status === 401) {
           this.router.navigate(['/auth/login']);
         }
-        
+
         return [err];
       })
     );
