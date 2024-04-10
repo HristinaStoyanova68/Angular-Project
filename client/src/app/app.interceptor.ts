@@ -43,7 +43,7 @@ export class AppInterceptor implements HttpInterceptor {
           this.router.navigate(['/auth/login']);
         } else {
           this.errorService.setError(err);
-          this.router.navigate(['/error']);
+          // this.router.navigate(['/error']);
         }
         return [err];
       })

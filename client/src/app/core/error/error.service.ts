@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ErrorService {
-private apiError$$ = new BehaviorSubject(null);
+private apiError$$ = new BehaviorSubject<any>(null);
 public apiError$ = this.apiError$$.asObservable();
 
   constructor() {}
