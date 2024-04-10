@@ -6,21 +6,24 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { ErrorService } from './core/error/error.service';
+import { Router } from '@angular/router';
 
 const { usersApiUrl, recipesApiUrl } = environment;
 
 @Injectable()
-class AppInterceptor implements HttpInterceptor {
+export class AppInterceptor implements HttpInterceptor {
   API_USERS = '/users';
   API_RECIPES = '/recipes';
+
+  constructor(private errorService: ErrorService, private router: Router) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(req);
 
     if (
       req.url.startsWith(this.API_USERS) ||
@@ -34,7 +37,23 @@ class AppInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError(err => {
+
+        if (err.status === 401) {
+          this.errorService.setError(err);
+
+          this.router.navigate(['/auth/login']);
+        } else {
+          this.errorService.setError(err);
+          console.log(err);
+          
+
+          this.router.navigate(['/error']);
+        }
+        return [err];
+      })
+    );
   }
 }
 
