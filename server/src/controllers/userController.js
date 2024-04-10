@@ -23,7 +23,7 @@ const login = asyncHandler(async (req, res) => {
 
   if (!user) {
     return res
-      .status(401)
+      .status(400)
       .json({ message: "Unauthorized: Invalid email or password!" });
   }
 
@@ -32,7 +32,7 @@ const login = asyncHandler(async (req, res) => {
 
   if (!isValidPassword) {
     return res
-      .status(401)
+      .status(400)
       .json({ message: "Unauthorized: Invalid email or password!" });
   }
 

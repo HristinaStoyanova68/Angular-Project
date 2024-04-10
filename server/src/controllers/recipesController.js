@@ -17,7 +17,7 @@ const getLastArrivals = asyncHandler(async (req, res) => {
     .lean();
 
   if (!saladsCollection || !mainsCollection || !dessertsCollection) {
-    return res.status(204).json({ message: "Collection not found!" });
+    return res.status(400).json({ message: "Collection not found!" });
   }
 
   const allRecipes = [];
@@ -52,7 +52,7 @@ const getAllRecipesForCollection = asyncHandler(async (req, res) => {
     .lean();
 
   if (!collection) {
-    return res.status(204).json({ message: "Collection not found!" });
+    return res.status(400).json({ message: "Collection not found!" });
   }
 
   let allRecipes = [];
@@ -70,7 +70,7 @@ const getRecipeById = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(recipeId).lean();
 
   if (!recipe) {
-    return res.status(204).json({ message: "Recipe not found!" });
+    return res.status(400).json({ message: "Recipe not found!" });
   }
 
   res.status(200).json(recipe);
@@ -85,7 +85,7 @@ const getMyRecipes = asyncHandler(async (req, res) => {
 
   if (!currentUser) {
     console.log("not found");
-    return res.status(204).json({ message: "User not found!" });
+    return res.status(400).json({ message: "User not found!" });
   }
 
   let myRecipes = [];
@@ -115,13 +115,13 @@ const addRecipe = asyncHandler(async (req, res) => {
   const currentUser = await User.findById({ _id: userId });
 
   if (!currentUser) {
-    return res.status(204).json({ message: "User not found!" });
+    return res.status(400).json({ message: "User not found!" });
   }
 
   const collection = await Collection.findOne({ name: mealType });
 
   if (!collection) {
-    return res.status(204).json({ message: "Collection not found!" });
+    return res.status(400).json({ message: "Collection not found!" });
   }
 
   const newRecipe = await Recipe.create({
@@ -168,7 +168,7 @@ const editRecipe = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
   if (ownerId !== userId) {
-    return res.status(403).json({ message: "Forbidden!" });
+    return res.status(403).json({ message: "Only owner can update recipe!"});
   }
 
   const currentUser = await User.findById({ _id: userId });
@@ -176,18 +176,18 @@ const editRecipe = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(_id).lean();
 
   if (!recipe) {
-    return res.status(204).json({ message: "Recipe not found!" });
+    return res.status(400).json({ message: "Recipe not found!" });
   }
 
   if (!currentUser) {
-    return res.status(204).json({ message: "User not found!" });
+    return res.status(400).json({ message: "User not found!" });
   }
 
   const currCollection = await Collection.findOne({ name: collectionName });
   const editedCollection = await Collection.findOne({ name: mealType });
 
   if (!currCollection || !editedCollection) {
-    return res.status(204).json({ message: "Collection not found!" });
+    return res.status(400).json({ message: "Collection not found!" });
   }
 
   const updatedRecipe = await Recipe.findByIdAndUpdate(_id, {
@@ -229,7 +229,7 @@ const deleteRecipe = asyncHandler(async (req, res) => {
 
   if (recipe.ownerId !== userId) {
     return res
-      .status(401)
+      .status(403)
       .json({ message: "You are not allowed to delete this recipe!" });
   }
 
