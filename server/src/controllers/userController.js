@@ -27,6 +27,7 @@ const login = asyncHandler(async (req, res) => {
       .json({ message: "Unauthorized: Invalid email or password!" });
   }
 
+  console.log(password, user.password);
   const isValidPassword = await bcrypt.compare(password, user.password);
 
   if (!isValidPassword) {
@@ -129,7 +130,6 @@ const getUserData = asyncHandler(async (req, res) => {
   const token = req.cookies[authCookieName];
 
   if (!token) {
-
     return res.status(204).json(undefined);
   }
 
@@ -137,24 +137,22 @@ const getUserData = asyncHandler(async (req, res) => {
     const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     const userData = decoded.UserInfo;
     const currUser = await User.findById({
-        _id: userData._id,
+      _id: userData._id,
     }).lean();
 
     if (!currUser) {
-        return res.status(204).json({message: 'This user was not found!'});
+      return res.status(204).json({ message: "This user was not found!" });
     }
 
     const payloadUserData = {
-        id: currUser._id,
-        username: currUser.username,
-        email: currUser.email,
-        accessToken: token,
-    }
+      id: currUser._id,
+      username: currUser.username,
+      email: currUser.email,
+      accessToken: token,
+    };
 
     res.status(200).json(payloadUserData);
-
   } catch (error) {
-
     if (error.name === "TokenExpiredError") {
       res.clearCookie(authCookieName);
 

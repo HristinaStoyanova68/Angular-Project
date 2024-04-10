@@ -140,8 +140,10 @@ const addRecipe = asyncHandler(async (req, res) => {
   collection.recipes.push(newRecipe._id);
   await collection.save();
 
-  currentUser.myRecipes.push(newRecipe._id);
-  await currentUser.save();
+  await User.findByIdAndUpdate(
+    { _id: userId },
+    { $push: { myRecipes: newRecipe._id } }
+  );
 
   res.status(201).json(newRecipe);
 });
