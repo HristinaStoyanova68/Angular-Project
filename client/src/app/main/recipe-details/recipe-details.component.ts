@@ -54,8 +54,12 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   onLike() {
-    this.apiService.likeRecipe(this.collectionName, this.recipeId);
-
-    this.isLiked = true;
+    this.apiService
+      .likeRecipe(this.collectionName, this.recipeId)
+      .subscribe((likedRecipe) => {
+        this.recipe = likedRecipe;
+        this.likesAmount = this.recipe.likes.length;
+        this.isLiked = true;
+      });
   }
 }
