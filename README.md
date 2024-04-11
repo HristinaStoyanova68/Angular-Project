@@ -138,7 +138,7 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
     - _Response:_
     ```json
     {
-        "User": "user"
+        "user": "user"
     }
     ```
 
