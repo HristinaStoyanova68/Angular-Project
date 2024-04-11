@@ -138,7 +138,7 @@ export class UpdateRecipeComponent implements OnInit {
 
     this.updateForm.reset();
 
-    console.log(this.recipe);
+    // console.log(this.recipe);
   }
 
   deleteSubmitHandler(event: Event): void {
@@ -273,14 +273,13 @@ export class UpdateRecipeComponent implements OnInit {
     event.preventDefault();
 
     const { instruction } = this.updateForm.controls.addInstructionGroup.value;
-    console.log(instruction);
+    // console.log(instruction);
 
     if (
       instruction === undefined ||
       instruction === null ||
       instruction === ''
     ) {
-      //TODO implement error handling
 
       return;
     }

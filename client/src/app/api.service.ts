@@ -2,15 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddRecipe, Recipe } from './types/recipe';
 import { Router } from '@angular/router';
-import { UserService } from './user/user.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  isOwner: boolean = false;
+  private isOwner$$ = new BehaviorSubject<boolean>(false);
+  private isOwner$ = this.isOwner$$.asObservable();
+  private isOwner: Observable<boolean> = this.isOwner$;
 
-  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
+  constructor(private http: HttpClient, private router: Router) {}
+
+  private setIsOwner(value: boolean): void {
+    this.isOwner$$.next(value);
+  }
+
+  getIsOwner(): Observable<boolean> {
+    return this.isOwner;
+  }
 
   getLastArrivals() {
     return this.http.get<Recipe[] | []>(`/recipes/last-arrivals`);
@@ -29,7 +39,7 @@ export class ApiService {
       (newRecipe) => {
         console.log(`Successfully added new recipe: ${newRecipe.recipeName}`);
 
-        this.isOwner = true;
+        this.setIsOwner(true);
 
         this.router.navigate(['/site/', newRecipe.mealType, newRecipe._id]);
       },
@@ -44,8 +54,6 @@ export class ApiService {
       .subscribe(
         (updatedRecipe) => {
           console.log('Successfully edited recipe: ', updatedRecipe.recipeName);
-
-
 
           this.router.navigate([
             '/site/',

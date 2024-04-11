@@ -21,7 +21,7 @@ export class OwnerActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    if (this.apiService.isOwner) {
+    if (this.apiService.getIsOwner()) {
       return true;
     } else {
       return this.router.navigate(['/404']);
