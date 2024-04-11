@@ -86,6 +86,10 @@ export class UserService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // this.user$$.next(undefined);
+
+    this.user = undefined;
+
     this.userSubscription.unsubscribe();
   }
 }
