@@ -7,11 +7,11 @@ import {
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
 import { ErrorService } from './error.service';
 import { Router } from '@angular/router';
-
-const { usersApiUrl, recipesApiUrl } = environment;
+import { isDevMode } from '@angular/core';
+import { devEnvironment } from 'src/environments/environment.development';
+import { prodEnvironment } from 'src/environments/environment';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
@@ -24,14 +24,16 @@ export class AppInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    const environment = isDevMode() ? devEnvironment : prodEnvironment;
+
     if (
       req.url.startsWith(this.API_USERS) ||
       req.url.startsWith(this.API_RECIPES)
     ) {
       req = req.clone({
         url: req.url.startsWith(this.API_USERS)
-          ? req.url.replace(this.API_USERS, usersApiUrl)
-          : req.url.replace(this.API_RECIPES, recipesApiUrl),
+          ? req.url.replace(this.API_USERS, environment.usersApiUrl)
+          : req.url.replace(this.API_RECIPES, environment.recipesApiUrl),
         withCredentials: true,
       });
     }
