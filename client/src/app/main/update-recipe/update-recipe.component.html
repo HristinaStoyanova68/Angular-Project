@@ -9,10 +9,27 @@
                         <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."
                             formControlName="imageUrl" />
                     </div>
+                    <ng-container *ngIf="updateForm.get('imageUrl')?.touched">
+                        <p class="error" *ngIf="updateForm.get('imageUrl')?.errors?.['required']">
+                            Image URL is required!
+                        </p>
+                        <p class="error" *ngIf="updateForm.get('imageUrl')?.errors?.['pattern']">
+                            Image URL must begin with 'http://...' or 'https://...'!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="recipeName">Recipe Name:</label>
-                        <input type="text" id="recipeName" name="recipeName" formControlName="recipeName" />
+                        <input type="text" id="recipeName" name="recipeName" placeholder="Brief recipe description..."
+                            formControlName="recipeName" />
                     </div>
+                    <ng-container *ngIf="updateForm.get('recipeName')?.touched">
+                        <p class="error" *ngIf="updateForm.get('recipeName')?.errors?.['required']">
+                            Recipe name is required!
+                        </p>
+                        <p class="error" *ngIf="updateForm.get('recipeName')?.errors?.['minlength']">
+                            Recipe name must be at least 5 characters!
+                        </p>
+                    </ng-container>
                     <div class="form-group ingredients">
                         <label for="ingredientQty">Ingredients:</label>
                         <div class="curr-ingredients">
@@ -83,7 +100,12 @@
                                     <ng-container formGroupName="editInstructionGroup">
                                         <textarea id="edit-instruction" name="editInstruction"
                                             formControlName="editInstruction">
-                                    </textarea>
+                                        </textarea>
+                                        <ng-container *ngIf="updateForm.get('editInstruction')?.touched">
+                                            <p class="error" *ngIf="updateForm.get('editInstruction')?.errors?.['required']">
+                                                Instruction is required!
+                                            </p>
+                                        </ng-container>
                                     </ng-container>
                                     <button class="edit-instruction" (click)="onInstructionChecked($event, i)"><i
                                             class="fa-solid fa-check"></i></button>
@@ -102,7 +124,7 @@
                         <ng-container formGroupName="addInstructionGroup">
                             <textarea id="instruction" name="instruction"
                                 placeholder="Please add your instructions step by step" formControlName="instruction">
-                                    </textarea>
+                            </textarea>
                         </ng-container>
                         <button type="button" (click)="addInstruction($event)">Add Step</button>
                     </div>
@@ -110,14 +132,29 @@
                         <label for="prepTime">Preparation Time (minutes):</label>
                         <input type="number" id="prepTime" name="prepTime" formControlName="prepTime">
                     </div>
+                    <ng-container *ngIf="updateForm.get('prepTime')?.touched">
+                        <p class="error" *ngIf="updateForm.get('prepTime')?.errors?.['min']">
+                            Preparation time must be more than 0!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="cookTime">Cooking Time (minutes):</label>
                         <input type="number" id="cookTime" name="cookTime" formControlName="cookTime">
                     </div>
+                    <ng-container *ngIf="updateForm.get('cookTime')?.touched">
+                        <p class="error" *ngIf="updateForm.get('cookTime')?.errors?.['min']">
+                            Cooking time must be more than 0!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="servings">Servings:</label>
                         <input type="number" id="servings" name="servings" formControlName="servings">
                     </div>
+                    <ng-container *ngIf="updateForm.get('servings')?.touched">
+                        <p class="error" *ngIf="updateForm.get('servings')?.errors?.['min']">
+                            Servings must be more than 0!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="difficulty">Difficulty:</label>
                         <select id="difficulty" name="difficulty" formControlName="difficulty">
@@ -126,6 +163,11 @@
                             <option value="difficult">Difficult</option>
                         </select>
                     </div>
+                    <ng-container *ngIf="updateForm.get('difficulty')?.touched">
+                        <p class="error" *ngIf="updateForm.get('difficulty')?.errors?.['pattern']">
+                            Difficulty level can only be Easy, Medium or Difficult!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="mealType">Meal type:</label>
                         <select id="mealType" name="mealType" formControlName="mealType">
@@ -134,6 +176,11 @@
                             <option value="desserts">Desserts</option>
                         </select>
                     </div>
+                    <ng-container *ngIf="updateForm.get('mealType')?.touched">
+                        <p class="error" *ngIf="updateForm.get('mealType')?.errors?.['pattern']">
+                            Meal types can only be Salads, Mains or Desserts!
+                        </p>
+                    </ng-container>
                 </div>
                 <div class="buttons">
                     <button type="submit" class="update">Update</button>

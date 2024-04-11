@@ -19,32 +19,30 @@ export class UpdateRecipeComponent implements OnInit {
   recipeId: string = '';
 
   updateForm = this.fb.group({
-    imageUrl: ['', [Validators.required]],
-    recipeName: ['', [Validators.required, Validators.minLength(5)]],
-    editIngredientGroup: this.fb.group({
-      editIngredientQty: [''],
-      editIngredientType: [''],
-      editIngredientName: [''],
-    }),
-    addIngredientGroup: this.fb.group({
-      ingredientQty: [''],
-      ingredientType: [''],
-      ingredientName: [''],
-    }),
-    editInstructionGroup: this.fb.group({
-      editInstruction: [''],
-    }),
-    addInstructionGroup: this.fb.group({
-      instruction: [''],
-    }),
-    prepTime: [0],
-    cookTime: [0],
-    servings: [0],
-    difficulty: [''],
-    mealType: [''],
-  });
-
-  //TODO add guard for owner of the recipe
+  imageUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\/.*/)]],
+  recipeName: ['', [Validators.required, Validators.minLength(5)]],
+  editIngredientGroup: this.fb.group({
+    editIngredientQty: [''],
+    editIngredientType: [''],
+    editIngredientName: [''],
+  }),
+  addIngredientGroup: this.fb.group({
+    ingredientQty: [''],
+    ingredientType: [''],
+    ingredientName: [''],
+  }),
+  editInstructionGroup: this.fb.group({
+    editInstruction: ['', [Validators.required]],
+  }),
+  addInstructionGroup: this.fb.group({
+    instruction: [''],
+  }),
+  prepTime: [0, [Validators.min(1)]],
+  cookTime: [0, [Validators.min(1)]],
+  servings: [0, [Validators.min(1)]],
+  difficulty: ['', [Validators.pattern(/easy|medium|difficult/)]],
+  mealType: ['', [Validators.pattern(/salads|mains|desserts/)]],
+});
 
   constructor(
     private fb: FormBuilder,
