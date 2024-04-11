@@ -23,6 +23,13 @@ export class UserService implements OnDestroy {
   }
 
   constructor(private http: HttpClient, private router: Router) {
+    const userString = localStorage.getItem(this.USER_KEY);
+
+    if (userString) {
+      const user = JSON.parse(userString) as UserForAuth;
+      this.user$$.next(user);
+    }
+
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
@@ -31,7 +38,10 @@ export class UserService implements OnDestroy {
   login(email: string, password: string) {
     this.http
       .post<UserForAuth>(`/users/login`, { email, password })
-      .pipe(tap((user) => this.user$$.next(user)))
+      .pipe(tap((user) => {
+        localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+        this.user$$.next(user);
+      }))
       .subscribe(() => {
         this.router.navigate(['/']);
       });
@@ -55,7 +65,10 @@ export class UserService implements OnDestroy {
 
     this.http
       .post('/users/logout', {})
-      .pipe(tap(() => this.user$$.next(undefined)))
+      .pipe(tap(() => {
+        localStorage.removeItem(this.USER_KEY);
+        this.user$$.next(undefined);
+      }))
       .subscribe({
         next: () => {
           this.router.navigate(['/']);
