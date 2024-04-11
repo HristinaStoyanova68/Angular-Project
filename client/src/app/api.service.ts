@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddRecipe, Recipe } from './types/recipe';
 import { Router } from '@angular/router';
+import { UserService } from './user/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient, private router: Router) {}
+  isOwner: boolean = false;
+
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
 
   getLastArrivals() {
     return this.http.get<Recipe[] | []>(`/recipes/last-arrivals`);
@@ -26,6 +29,8 @@ export class ApiService {
       (newRecipe) => {
         console.log(`Successfully added new recipe: ${newRecipe.recipeName}`);
 
+        this.isOwner = true;
+
         this.router.navigate(['/site/', newRecipe.mealType, newRecipe._id]);
       },
 
@@ -39,6 +44,8 @@ export class ApiService {
       .subscribe(
         (updatedRecipe) => {
           console.log('Successfully edited recipe: ', updatedRecipe.recipeName);
+
+
 
           this.router.navigate([
             '/site/',

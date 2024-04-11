@@ -9,6 +9,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { AuthActivate } from '../guards/auth.activate';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { OwnerActivate } from '../guards/owner.activate';
 
 const routes: Routes = [
   { path: 'salads', component: RecipesListComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
   {
     path: ':collectionName/:recipeId/edit',
     component: UpdateRecipeComponent,
-    canActivate: [AuthActivate],
+    canActivate: [AuthActivate, OwnerActivate],
   },
 ];
 

@@ -252,6 +252,11 @@ const likeRecipe = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
   const recipe = await Recipe.findById({ _id: recipeId });
+
+  if (userId === recipe.ownerId) {
+    return res.status(403).json({message: 'You are not allowed to like own recipes!'});
+  }
+  
   recipe.likes.push(userId);
   await recipe.save();
 
