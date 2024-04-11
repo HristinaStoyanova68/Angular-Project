@@ -55,7 +55,7 @@ export class AddRecipeComponent {
       mealType,
     };
 
-    console.log(this.recipeData);
+    // console.log(this.recipeData);
 
     this.apiService.createRecipe(this.recipeData);
 
