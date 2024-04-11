@@ -259,7 +259,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Description:_ Create item.
 
     - _Request:_
-    ```json
+    ```
     {
         "recipeData": {
             "imageUrl": "string",
@@ -281,7 +281,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     }
     ```
     - _Response:_
-    ```json
+    ```
     {
         "recipeData": {
             "_id": "unique_recipe_id",
@@ -321,7 +321,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Description:_ Get recipe and it's details.
 
     - _Response:_
-    ```json
+    ```
     {
         "recipeData": {
             "_id": "unique_recipe_id",
@@ -361,7 +361,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Description:_ Edit recipe's details.
 
     - _Request:_
-    ```json
+    ```
     {
         "recipeData": {
             "imageUrl": "string",
@@ -383,7 +383,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     }
     ```
     - _Response:_
-    ```json
+    ```
     {
         "recipeData": {
             "_id": "unique_recipe_id",
@@ -440,7 +440,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     ```
     - _Response:_
 
-    ```json
+    ```
     {
         "recipeData": {
             "_id": "unique_recipe_id",
