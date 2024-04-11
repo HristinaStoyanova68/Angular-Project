@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 
@@ -24,4 +24,14 @@ export class HeaderComponent {
     this.userService.signOut();
     this.router.navigate(['/']);
   }
+
+  @HostListener('document:click', ['$event'])
+  clickout(event: Event) {
+    const targetElement = event.target as HTMLElement;
+    if (!targetElement.closest('.meal-choices')) {
+      this.isShownChoices = false;
+    }
+  }
 }
+
+
