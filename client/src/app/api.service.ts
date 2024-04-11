@@ -41,7 +41,8 @@ export class ApiService {
 
         this.setIsOwner(true);
 
-        this.router.navigate(['/site/', newRecipe.mealType, newRecipe._id]);
+        // this.router.navigate(['/site/', newRecipe.mealType, newRecipe._id]);
+        this.router.navigate(['/site/last-arrivals']);
       },
 
       (error) => console.log(error)
