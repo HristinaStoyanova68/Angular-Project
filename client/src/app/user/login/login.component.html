@@ -104,28 +104,28 @@
                 </div>
                 <!-- <span>or use your email password</span> -->
                 <div class="form-group">
-                    <input type="email" placeholder="Email" name="email" id="email" ngModel #inputEmail="ngModel"
-                        required>
+                    <input type="email" placeholder="Email" name="loginEmail" id="loginEmail" ngModel #inputLoginEmail="ngModel"
+                        required email [appEmail]="domains">
                 </div>
-                <ng-container *ngIf="inputEmail.touched">
-                    <p class="error" *ngIf="inputEmail.errors?.['required']">
+                <ng-container *ngIf="inputLoginEmail.touched">
+                    <p class="error" *ngIf="inputLoginEmail.errors?.['required']">
                         Email is required!
                     </p>
-                    <!-- <p class="error">
+                    <p class="error" *ngIf="inputLoginEmail.errors?.['emailValidator']">
                         Email is not valid!
-                    </p> -->
+                    </p>
                 </ng-container>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" name="password" id="password" ngModel
-                        #inputPassword="ngModel" required>
+                    <input type="password" placeholder="Password" name="loginPassword" id="loginPassword" ngModel
+                        #inputLoginPassword="ngModel" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
                 </div>
-                <ng-container *ngIf="inputPassword.touched">
-                    <p class="error" *ngIf="inputPassword.errors?.['required']">
+                <ng-container *ngIf="inputLoginPassword.touched">
+                    <p class="error" *ngIf="inputLoginPassword.errors?.['required']">
                         Password is required!
                     </p>
-                    <!-- <p class="error">
-                        Email is not valid!
-                    </p> -->
+                    <p class="error" *ngIf="inputLoginPassword.errors?.['pattern']">
+                        Password must be at least 8 characters and must contain at least 1 Capital letter and 1 digit!
+                    </p>
                 </ng-container>
                 <!-- <a href="#">Forget Your Password?</a> -->
                 <button>Sign In</button>

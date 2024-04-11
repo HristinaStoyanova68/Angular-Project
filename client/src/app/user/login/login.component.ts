@@ -22,11 +22,11 @@ export class LoginComponent {
     if (this.isLoginActive) {
       const { email, password } = form?.value;
 
-      // if (form?.invalid) {
-      //   console.log('Form is invalid!');
+      if (form?.invalid) {
+        console.log('Form is invalid!');
 
-      //   return;
-      // }
+        return;
+      }
 
       this.userService.login(email, password);
 
