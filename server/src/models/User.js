@@ -22,11 +22,11 @@ const userSchema = new mongoose.Schema({
   ],
 });
 
-userSchema.virtual("rePassword").set(function (value) {
-  if (value !== this.password) {
-    throw new Error("Passwords don't match!");
-  }
-});
+// userSchema.virtual("rePassword").set(function (value) {
+//   if (value !== this.password) {
+//     throw new Error("Passwords don't match!");
+//   }
+// });
 
 userSchema.pre("save", async function () {
   const hash = await bcrypt.hash(this.password, 10);

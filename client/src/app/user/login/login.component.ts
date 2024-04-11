@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { NgForm } from '@angular/forms';
+import { EMAIL_DOMAINS } from 'src/app/constants';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   isLoginActive: boolean = true;
+  domains = EMAIL_DOMAINS;
 
   constructor(private userService: UserService) {}
 
@@ -20,11 +22,11 @@ export class LoginComponent {
     if (this.isLoginActive) {
       const { email, password } = form?.value;
 
-      if (form?.invalid) {
-        console.log('Form is invalid!');
+      // if (form?.invalid) {
+      //   console.log('Form is invalid!');
 
-        return;
-      }
+      //   return;
+      // }
 
       this.userService.login(email, password);
 
@@ -37,12 +39,14 @@ export class LoginComponent {
       const { username, registerEmail, registerPassword, rePassword } =
         form?.value;
 
-      if (form?.invalid) {
-        console.log('Form is invalid!');
+      // if (form?.invalid) {
+      //   console.log('Form is invalid!');
 
-        return;
-      }
+      //   return;
+      // }
 
+      console.log(registerPassword, rePassword);
+      
       if (registerPassword !== rePassword) {
         //TODO validation
 
@@ -51,10 +55,12 @@ export class LoginComponent {
         form?.controls['registerPassword'].reset();
         form?.controls['rePassword'].reset();
 
+        this.userService.register(username, registerEmail, registerPassword, rePassword);
+
         return;
       }
-
-      this.userService.register(username, registerEmail, registerPassword);
+      
+      this.userService.register(username, registerEmail, registerPassword, rePassword);
 
       form?.reset();
     }

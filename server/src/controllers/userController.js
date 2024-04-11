@@ -65,7 +65,7 @@ const login = asyncHandler(async (req, res) => {
 // @access Private
 
 const register = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, rePassword } = req.body;
   const { errors } = validationResult(req);
 
   if (errors.length !== 0) {
@@ -78,6 +78,10 @@ const register = asyncHandler(async (req, res) => {
     return res
       .status(409)
       .json({ message: "User with the same email already exists!" });
+  }
+
+  if (password !== rePassword) {
+    return res.status(400).json({message: "Passwords do not match!"})
   }
 
   const createUser = await User.create({ username, email, password });
