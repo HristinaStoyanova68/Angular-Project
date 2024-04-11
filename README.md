@@ -53,9 +53,9 @@ Our application includes a dropdown menu on navigation bar containing the names 
 
 - **Collections Dropdown Menu:**
 Our application features a dropdown menu **Meal Choices** showcasing the names of the following collections: 
-- salads 
-- mains
-- desserts
+    - salads 
+    - mains
+    - desserts
 
 - **Last Arrivals:**
 Additionally, we provide a last arrivals collection displaying the most recent recipes added to our platform. This will showcases the latest additions from all collections, providing users with a quick glance at the most recent recipes available.
