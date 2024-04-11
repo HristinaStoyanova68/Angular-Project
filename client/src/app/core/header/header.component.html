@@ -7,9 +7,9 @@
             <li><a routerLink="/">home</a></li>
             <li class="meal-choices"><a (click)="toggleChoices()">Meal choices</a>
                 <ul class="choices" *ngIf="isShownChoices">
-                    <li class="hover"><a routerLink="/site/salads">Salads</a></li>
-                    <li class="hover"><a routerLink="/site/mains">Mains</a></li>
-                    <li class="hover"><a routerLink="/site/desserts">Desserts</a></li>
+                    <li class="hover"><a (click)="toggleChoices()" routerLink="/site/salads">Salads</a></li>
+                    <li class="hover"><a (click)="toggleChoices()" routerLink="/site/mains">Mains</a></li>
+                    <li class="hover"><a (click)="toggleChoices()" routerLink="/site/desserts">Desserts</a></li>
                 </ul>
             </li>
             <li><a routerLink="/auth/login">sign in / sign up</a></li>
@@ -17,9 +17,9 @@
         <ul *ngIf="isLoggedIn">
             <li class="meal-choices"><a (click)="toggleChoices()">Meal choices</a>
                 <ul class="choices" *ngIf="isShownChoices">
-                    <li class="hover"><a routerLink="/site/salads">Salads</a></li>
-                    <li class="hover"><a routerLink="/site/mains">Mains</a></li>
-                    <li class="hover"><a routerLink="/site/desserts">Desserts</a></li>
+                    <li class="hover"><a (click)="toggleChoices()" routerLink="/site/salads">Salads</a></li>
+                    <li class="hover"><a (click)="toggleChoices()" routerLink="/site/mains">Mains</a></li>
+                    <li class="hover"><a (click)="toggleChoices()" routerLink="/site/desserts">Desserts</a></li>
                 </ul>
             </li>
             <li><a routerLink="/site/add-recipe">add recipe</a></li>
