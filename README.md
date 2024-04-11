@@ -248,7 +248,8 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
             "createdAt": "number",
             "updatedAt": "number",
             "__v": "number"
-        }
+        },
+        ...
        ]
     ```
 
@@ -261,56 +262,52 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Request:_
     ```
     {
-        "recipeData": {
-            "imageUrl": "string",
-            "recipeName": "string",
-            "ingredients": [
-                "string",
-                ...
-            ],
-            "instructions": [
-                "string",
-                ...
-            ],
-            "prepTime": "number",
-            "cookTime": "number",
-            "servings": "number",
-            "difficulty": "string",
-            "mealType": "string",
-        }
+        "imageUrl": "string",
+        "recipeName": "string",
+        "ingredients": [
+            "string",
+            ...
+        ],
+        "instructions": [
+            "string",
+            ...
+        ],
+        "prepTime": "number",
+        "cookTime": "number",
+        "servings": "number",
+        "difficulty": "string",
+        "mealType": "string",
     }
     ```
     - _Response:_
     ```
     {
-        "recipeData": {
-            "_id": "unique_recipe_id",
-            "imageUrl": "string",
-            "recipeName": "string",
-            "ingredients": [
-                "string",
-                ...
-            ],
-            "instructions": [
-                "string",
-                ...
-            ],
-            "prepTime": "number",
-            "cookTime": "number",
-            "servings": "number",
-            "difficulty": "string",
-            "mealType": "string",
-            "likes": [
-                {
-                    "user": "unique_user_id"
-                },
-                ...
-            ],
-            "ownerId": "unique_owner_id",
-            "createdAt": "number",
-            "updatedAt": "number",
-            "__v": "number"
-        }
+        "_id": "unique_recipe_id",
+        "imageUrl": "string",
+        "recipeName": "string",
+        "ingredients": [
+            "string",
+            ...
+        ],
+        "instructions": [
+            "string",
+            ...
+        ],
+        "prepTime": "number",
+        "cookTime": "number",
+        "servings": "number",
+        "difficulty": "string",
+        "mealType": "string",
+        "likes": [
+            {
+                "user": "unique_user_id"
+            },
+            ...
+        ],
+        "ownerId": "unique_owner_id",
+        "createdAt": "number",
+        "updatedAt": "number",
+        "__v": "number"
     }
     ```   
 
@@ -322,35 +319,33 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
 
     - _Response:_
     ```
-    {
-        "recipeData": {
-            "_id": "unique_recipe_id",
-            "imageUrl": "string",
-            "recipeName": "string",
-            "ingredients": [
-                "string",
-                ...
-            ],
-            "instructions": [
-                "string",
-                ...
-            ],
-            "prepTime": "number",
-            "cookTime": "number",
-            "servings": "number",
-            "difficulty": "string",
-            "mealType": "string",
-            "likes": [
-                {
-                    "user": "unique_user_id"
-                },
-                ...
-            ],
-            "ownerId": "unique_owner_id",
-            "createdAt": "number",
-            "updatedAt": "number",
-            "__v": "number"
-        }
+     {
+        "_id": "unique_recipe_id",
+        "imageUrl": "string",
+        "recipeName": "string",
+        "ingredients": [
+            "string",
+            ...
+        ],
+        "instructions": [
+            "string",
+            ...
+        ],
+        "prepTime": "number",
+        "cookTime": "number",
+        "servings": "number",
+        "difficulty": "string",
+        "mealType": "string",
+        "likes": [
+            {
+                "user": "unique_user_id"
+            },
+            ...
+        ],
+        "ownerId": "unique_owner_id",
+        "createdAt": "number",
+        "updatedAt": "number",
+        "__v": "number"
     }
     ```
 
@@ -362,57 +357,33 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
 
     - _Request:_
     ```
-    {
-        "recipeData": {
-            "imageUrl": "string",
-            "recipeName": "string",
-            "ingredients": [
-                "string",
-                ...
-            ],
-            "instructions": [
-                "string",
-                ...
-            ],
-            "prepTime": "number",
-            "cookTime": "number",
-            "servings": "number",
-            "difficulty": "string",
-            "mealType": "string",
-        }
-    }
-    ```
-    - _Response:_
-    ```
-    {
-        "recipeData": {
-            "_id": "unique_recipe_id",
-            "imageUrl": "string",
-            "recipeName": "string",
-            "ingredients": [
-                "string",
-                ...
-            ],
-            "instructions": [
-                "string",
-                ...
-            ],
-            "prepTime": "number",
-            "cookTime": "number",
-            "servings": "number",
-            "difficulty": "string",
-            "mealType": "string",
-            "likes": [
-                {
-                    "user": "unique_user_id"
-                },
-                ...
-            ],
-            "ownerId": "unique_owner_id",
-            "createdAt": "number",
-            "updatedAt": "number",
-            "__v": "number"
-        }
+     {
+        "_id": "unique_recipe_id",
+        "imageUrl": "string",
+        "recipeName": "string",
+        "ingredients": [
+            "string",
+            ...
+        ],
+        "instructions": [
+            "string",
+            ...
+        ],
+        "prepTime": "number",
+        "cookTime": "number",
+        "servings": "number",
+        "difficulty": "string",
+        "mealType": "string",
+        "likes": [
+            {
+                "user": "unique_user_id"
+            },
+            ...
+        ],
+        "ownerId": "unique_owner_id",
+        "createdAt": "number",
+        "updatedAt": "number",
+        "__v": "number"
     }
     ```
 
@@ -441,35 +412,33 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Response:_
 
     ```
-    {
-        "recipeData": {
-            "_id": "unique_recipe_id",
-            "imageUrl": "string",
-            "recipeName": "string",
-            "ingredients": [
-                "string",
-                ...
-            ],
-            "instructions": [
-                "string",
-                ...
-            ],
-            "prepTime": "number",
-            "cookTime": "number",
-            "servings": "number",
-            "difficulty": "string",
-            "mealType": "string",
-            "likes": [
-                {
-                    "user": "unique_user_id"
-                },
-                ...
-            ],
-            "ownerId": "unique_owner_id",
-            "createdAt": "number",
-            "updatedAt": "number",
-            "__v": "number"
-        }
+     {
+        "_id": "unique_recipe_id",
+        "imageUrl": "string",
+        "recipeName": "string",
+        "ingredients": [
+            "string",
+            ...
+        ],
+        "instructions": [
+            "string",
+            ...
+        ],
+        "prepTime": "number",
+        "cookTime": "number",
+        "servings": "number",
+        "difficulty": "string",
+        "mealType": "string",
+        "likes": [
+            {
+                "user": "unique_user_id"
+            },
+            ...
+        ],
+        "ownerId": "unique_owner_id",
+        "createdAt": "number",
+        "updatedAt": "number",
+        "__v": "number"
     }
     ```
 
