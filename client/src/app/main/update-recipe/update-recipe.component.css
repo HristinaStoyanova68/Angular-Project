@@ -86,18 +86,13 @@ select#editIngredientType {
 }
 
 input#ingredientName {
+  width: unset;
   min-width: unset;
   width: 49%;
 }
 
 input#editIngredientName {
   min-width: unset;
-}
-
-.edit-ingredients-container input#ingredientName {
-  width: unset;
-  min-width: unset;
-  width: 40%;
 }
 
 #edit-instruction {
