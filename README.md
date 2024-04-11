@@ -67,7 +67,7 @@ Secure user authentication ensures a personalized experience for each member wit
 ## How it works
 
 - **Account Creation:**
-Users can craft their unique culinary identity by creating a personalized account, which allows them to create, update and delete their own recipes.
+Users can craft their unique culinary identity by creating a personalized account, which allows them to create, edit and delete their own recipes.
 - **Creating an Recipe in a Collection:** 
 Once registered, user can easily go to Add Recipe button and with few steps can add a recipe.
 - **Real-time Updates:** 
@@ -112,17 +112,43 @@ Feel free to explore each directory to understand how different components and f
 - **View Created Recipes:** Users can view all recipes they've created.
 - **Like Recipes:** Logged-in users (non-creators) can like recipes but cannot like their own created recipes.
 
-**Server**
+**Usage**
 
-- **Usage**
+**1. Clone the Repository**
 
-This is **REST service**, provided by **Server**. To execute it, open a command prompt and run `npm run dev`.
+`git clone https://github.com/HristinaStoyanova68/Delicious-to-You.git`
 
-```
-> cd server
-> npm i
-> npm run dev
-```
+**2. Start the Server**
+
+Open a new terminal window in the root directory of the project and navigate to the server:
+
+`cd server`
+
+Install server dependencies:
+
+`npm install`
+
+Start the server in development mode:
+
+`npm run dev`
+
+**3. Setup the Client**
+
+Open a new terminal window in the root directory of the project and navigate to the client:
+
+`cd client`
+
+Install client dependencies:
+
+`npm install`
+
+Start the client in development mode:
+
+`ng serve`
+
+Now when the client setup is complete you can open the following link in your web browser: [http://localhost:4200](http://localhost:4200)
+
+Note: These instructions are intended for users operating on the Windows OS.
 
 ## API Endpoints
 
@@ -130,9 +156,11 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
 
 **BaseUrl:** `http://localhost:3500/users`
 
+The documentation below assumes you are pre-pending the Base URL to the endpoints in order to make requests.
+
 - **POST /register**
 
-    - _Description:_ Register and log in a new user.
+    - _Description:_ Register a new user and log in.
     - _Request:_
     ```json
     {
@@ -170,28 +198,50 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
 
 **BaseUrl:** `http://localhost:3500/recipes`
 
+The documentation below assumes you are pre-pending the Base URL to the endpoints in order to make requests.
+
 - **GET /salads**
 
 - **GET /mains**
 
 - **GET /desserts**
 
-    - _Description:_ Get Collections
+    - _Description:_ Get Collection
 
-    - _Request:_
-    ```json
-    {
-        "collectionName": "string",
-    }
-    ```
     - _Response:_
     ```json
-    {
-        "collectionName ": "collectionName"
-    }
+       [
+        {
+            "_id": "unique_recipe_id",
+            "imageUrl": "string",
+            "recipeName": "string",
+            "ingredients": [
+                "string",
+                ...
+            ],
+            "instructions": [
+                "string",
+                ...
+            ],
+            "prepTime": "number",
+            "cookTime": "number",
+            "servings": "number",
+            "difficulty": "string",
+            "mealType": "string",
+            "likes": [
+                {
+                    "user": "unique_user_id"
+                },
+                ...
+            ],
+            "ownerId": "unique_owner_id",
+            "createdAt": "number",
+            "updatedAt": "number",
+        }
+       ]
     ```
 
-**3. For logged-in users:**
+  **For logged-in users:**
 
 - **POST /add-recipe**
 
@@ -200,40 +250,98 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
     - _Request:_
     ```json
     {
-        "collectionName": "string",
-        "recipeData": "recipeData"
+        "recipeData": {
+            "imageUrl": "string",
+            "recipeName": "string",
+            "ingredients": [
+                "string",
+                ...
+            ],
+            "instructions": [
+                "string",
+                ...
+            ],
+            "prepTime": "number",
+            "cookTime": "number",
+            "servings": "number",
+            "difficulty": "string",
+            "mealType": "string",
+        }
     }
     ```
     - _Response:_
     ```json
     {
-        "recipeData": "recipeData"
+        "recipeData": {
+            "_id": "unique_recipe_id",
+            "imageUrl": "string",
+            "recipeName": "string",
+            "ingredients": [
+                "string",
+                ...
+            ],
+            "instructions": [
+                "string",
+                ...
+            ],
+            "prepTime": "number",
+            "cookTime": "number",
+            "servings": "number",
+            "difficulty": "string",
+            "mealType": "string",
+            "likes": [
+                {
+                    "user": "unique_user_id"
+                },
+                ...
+            ],
+            "ownerId": "unique_owner_id",
+            "createdAt": "number",
+            "updatedAt": "number",
+        }
     }
     ```   
 
-**4. For both logged-in and guest users:**
+  **For both logged-in and guest users:**
 
 - **GET /:collectionName/:id**
 
     - _Description:_ Get recipe and it's details.
 
-    - _Request:_
-    ```json
-    {
-        "collectionName": "string",
-        "id": "unique_id_here"
-    }
-    ```
     - _Response:_
     ```json
     {
-        "itemData ": "itemData"
+        "recipeData": {
+            "_id": "unique_recipe_id",
+            "imageUrl": "string",
+            "recipeName": "string",
+            "ingredients": [
+                "string",
+                ...
+            ],
+            "instructions": [
+                "string",
+                ...
+            ],
+            "prepTime": "number",
+            "cookTime": "number",
+            "servings": "number",
+            "difficulty": "string",
+            "mealType": "string",
+            "likes": [
+                {
+                    "user": "unique_user_id"
+                },
+                ...
+            ],
+            "ownerId": "unique_owner_id",
+            "createdAt": "number",
+            "updatedAt": "number",
+        }
     }
     ```
 
-**5. For logged in users (ownres) - edit and remove recipe**
-
-**BaseUrl:** `http://localhost:3500/recipes`
+  **For logged in users (ownres) - edit and remove recipe**
 
 - **PUT /:collectionName/:recipeId/edit**
 
@@ -242,28 +350,62 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
     - _Request:_
     ```json
     {
-        "collectionName": "string",
-        "id": "unique_id_here"
+        "recipeData": {
+            "imageUrl": "string",
+            "recipeName": "string",
+            "ingredients": [
+                "string",
+                ...
+            ],
+            "instructions": [
+                "string",
+                ...
+            ],
+            "prepTime": "number",
+            "cookTime": "number",
+            "servings": "number",
+            "difficulty": "string",
+            "mealType": "string",
+        }
     }
     ```
     - _Response:_
     ```json
     {
-        "recipeData ": "recipeData"
+        "recipeData": {
+            "_id": "unique_recipe_id",
+            "imageUrl": "string",
+            "recipeName": "string",
+            "ingredients": [
+                "string",
+                ...
+            ],
+            "instructions": [
+                "string",
+                ...
+            ],
+            "prepTime": "number",
+            "cookTime": "number",
+            "servings": "number",
+            "difficulty": "string",
+            "mealType": "string",
+            "likes": [
+                {
+                    "user": "unique_user_id"
+                },
+                ...
+            ],
+            "ownerId": "unique_owner_id",
+            "createdAt": "number",
+            "updatedAt": "number",
+        }
     }
     ```
 
 - **DELETE /:collectionName/:recipeId/delete**
 
-    - _Description:_ Get recipe and remove it.
+    - _Description:_ Delete recipe.
 
-    - _Request:_
-    ```json
-    {
-        "collectionName": "string",
-        "id": "unique_id_here"
-    }
-    ```
     - _Response:_
     ```json
     {
@@ -271,38 +413,49 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
     }
     ```
 
-**6. For logged in users (not owners) - Likes functionality**
+  **For logged in users (not owners) - Likes functionality**
 
-**BaseUrl:** `http://localhost:3500/recipes`
+- **PUT /:collectionName/:recipeId/like`**
 
-- **GET /:collectionName/:recipeId/like`**
-
-    - _Description:_ Get all likes
+    - _Description:_ Like a recipe
 
     - _Request:_
-    ```json
-    {
-        "recipeId": "unique_id_here"
-    }
+    
+    ```json 
+    {}
     ```
     - _Response:_
 
-    The response will be an array of objects, where the key for each object will be its index in the array, and the value will be "recipeData".
-
-    Example structure:
-
     ```json
-    [
-        {
-            "0": "likeData"
-        },
-        {
-            "1": "likeData"
-        },
-        {
-            "2": "likeData"
+    {
+        "recipeData": {
+            "_id": "unique_recipe_id",
+            "imageUrl": "string",
+            "recipeName": "string",
+            "ingredients": [
+                "string",
+                ...
+            ],
+            "instructions": [
+                "string",
+                ...
+            ],
+            "prepTime": "number",
+            "cookTime": "number",
+            "servings": "number",
+            "difficulty": "string",
+            "mealType": "string",
+            "likes": [
+                {
+                    "user": "unique_user_id"
+                },
+                ...
+            ],
+            "ownerId": "unique_owner_id",
+            "createdAt": "number",
+            "updatedAt": "number",
         }
-    ]
+    }
     ```
 
 ## License
