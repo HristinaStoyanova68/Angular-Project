@@ -112,7 +112,7 @@ Feel free to explore each directory to understand how different components and f
 - **View Created Recipes:** Users can view all recipes they've created.
 - **Like Recipes:** Logged-in users (non-creators) can like recipes but cannot like their own created recipes.
 
-**Usage**
+## Usage
 
 **1. Clone the Repository**
 
@@ -420,7 +420,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Description:_ Like a recipe
 
     - _Request:_
-    
+
     ```json 
     {}
     ```
