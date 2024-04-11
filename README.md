@@ -27,13 +27,14 @@ We believe that good and tasty food is the key to our health and happiness. Come
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [How it works](#how-it-works)
-4. [Project Structure](#project-structure)
-5. [API Reference](#api-reference)
-6. [API Endpoints](#api-endpoints)
-7. [License](#license)
-8. [Credits](#credits)
+2. [Project Deployment](#live-demo)
+3. [Features](#features)
+4. [How it works](#how-it-works)
+5. [Project Structure](#project-structure)
+6. [API Reference](#api-reference)
+7. [API Endpoints](#api-endpoints)
+8. [License](#license)
+9. [Credits](#credits)
 
 ## Project Overview
 
@@ -42,6 +43,12 @@ We believe that good and tasty food is the key to our health and happiness. Come
 As a visitor, you'll have the opportunity to browse through an array of recipes, engage by liking and viewing the latest additions, and even contribute your own culinary creations. Additionally, you'll have your own space to collect and explore your favorite recipes.
 
 Join us on Delicious to You, where we celebrate the joy of food, because delicious cuisine is the key to our well-being and happiness.
+
+## Live Demo
+
+Check out the live demo of **Delicious to You** [here](https://delicious-to-you.onrender.com/).
+
+**Note:** The website is optimized for the latest versions of Chrome and Mozilla Firefox, with a desktop resolution of 1920x1080.
 
 ## Features
 
