@@ -172,7 +172,12 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Response:_
     ```json
     {
-        "user": "user"
+        "_id": "string",
+        "email": "string",
+        "username": "string",
+        "password": "string",
+        "accessToken": "string",
+        "__v": "number"
     }
     ```
 
@@ -190,7 +195,12 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Response:_
     ```json
     {
-        "user": "user"
+        "_id": "string",
+        "email": "string",
+        "username": "string",
+        "password": "string",
+        "accessToken": "string",
+        "__v": "number"
     }
     ```
 
@@ -237,6 +247,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
             "ownerId": "unique_owner_id",
             "createdAt": "number",
             "updatedAt": "number",
+            "__v": "number"
         }
        ]
     ```
@@ -298,6 +309,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
             "ownerId": "unique_owner_id",
             "createdAt": "number",
             "updatedAt": "number",
+            "__v": "number"
         }
     }
     ```   
@@ -337,6 +349,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
             "ownerId": "unique_owner_id",
             "createdAt": "number",
             "updatedAt": "number",
+            "__v": "number"
         }
     }
     ```
@@ -398,6 +411,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
             "ownerId": "unique_owner_id",
             "createdAt": "number",
             "updatedAt": "number",
+            "__v": "number"
         }
     }
     ```
@@ -454,6 +468,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
             "ownerId": "unique_owner_id",
             "createdAt": "number",
             "updatedAt": "number",
+            "__v": "number"
         }
     }
     ```
