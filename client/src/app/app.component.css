@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Aladin&display=swap");
 
 .notification {
-  position: fixed;
-  z-index: 100;
+  position: absolute;
+  z-index: 1000;
   right: 8%;
   top: 20%;
   padding: 1rem;

@@ -14,21 +14,21 @@ const routes: Routes = [
   { path: 'salads', component: RecipesListComponent },
   { path: 'mains', component: RecipesListComponent },
   { path: 'desserts', component: RecipesListComponent },
-  { path: ':collectionName/:recipeId', component: RecipeDetailsComponent },
   {
     path: 'add-recipe',
     component: AddRecipeComponent,
-    canActivate: [AuthActivate],
-  },
-  {
-    path: ':collectionName/:recipeId/edit',
-    component: UpdateRecipeComponent,
     canActivate: [AuthActivate],
   },
   { path: 'last-arrivals', component: LastArrivalsComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'share', component: ShareOnSocialMediaComponent },
+  { path: ':collectionName/:recipeId', component: RecipeDetailsComponent },
+  {
+    path: ':collectionName/:recipeId/edit',
+    component: UpdateRecipeComponent,
+    canActivate: [AuthActivate],
+  },
 ];
 
 @NgModule({
