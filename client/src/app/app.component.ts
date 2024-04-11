@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.errorService.apiError$.subscribe((err: any) => {
       this.errorMessage = err?.error?.message || '';
-      console.log(err);
 
       setTimeout(() => {
         this.errorMessage = null;
