@@ -7,8 +7,16 @@
                     <div class="form-group">
                         <label for="imageUrl">Image URL:</label>
                         <input type="text" id="imageUrl" name="imageUrl" placeholder="https://..."
-                            #inputImageUrl="ngModel" ngModel required />
+                             ngModel #inputImageUrl="ngModel" required />
                     </div>
+                    <ng-container *ngIf="inputImageUrl.touched">
+                        <p class="error" *ngIf="inputImageUrl.errors?.['required']">
+                            Image is required!
+                        </p>
+                        <!-- <p class="error">
+                            Email is not valid!
+                        </p> -->
+                    </ng-container>
                     <div class="form-group">
                         <label for="recipeName">Recipe Name:</label>
                         <input type="text" id="recipeName" name="recipeName" #inputRecipeName="ngModel" ngModel

@@ -109,3 +109,17 @@ button:hover {
 .add-recipe {
   font-size: 16px;
 }
+
+/* errors  */
+ 
+p.error {
+  margin-top: 0.5px;
+  font-style: italic;
+  color: red;
+  padding-left: 3.5em;
+  margin-bottom: unset;
+}
+
+.input-error {
+  border-left-color: red;
+}

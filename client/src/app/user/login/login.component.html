@@ -25,22 +25,54 @@
                         </a>
                     </div>
                 </div>
-                <span>or use your email for registration</span>
+                <!-- <span>or use your email for registration</span> -->
                 <div class="form-group">
-                    <input type="text" placeholder="Name" name="username" id="username" ngModel required>
+                    <input type="text" placeholder="Name" name="username" id="username" ngModel #inputUsername="ngModel" required>
                 </div>
+                <ng-container *ngIf="inputUsername.touched">
+                    <p class="error" *ngIf="inputUsername.errors?.['required']">
+                        Name is required!
+                    </p>
+                    <!-- <p class="error">
+                        Email is not valid!
+                    </p> -->
+                </ng-container>
                 <div class="form-group">
-                    <input type="email" placeholder="Email" name="registerEmail" id="registerEmail" ngModel required
+                    <input type="email" placeholder="Email" name="registerEmail" id="registerEmail" ngModel #inputEmail="ngModel" required
                         email>
                 </div>
+                <ng-container *ngIf="inputEmail.touched">
+                    <p class="error" *ngIf="inputEmail.errors?.['required']">
+                        Email is required!
+                    </p>
+                    <!-- <p class="error">
+                        Email is not valid!
+                    </p> -->
+                </ng-container>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" name="registerPassword" id="registerPassword" ngModel
+                    <input type="password" placeholder="Password" name="registerPassword" id="registerPassword" ngModel #inputPassword="ngModel"
                         required>
                 </div>
+                <ng-container *ngIf="inputPassword.touched">
+                    <p class="error" *ngIf="inputPassword.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <!-- <p class="error">
+                        Email is not valid!
+                    </p> -->
+                </ng-container>
                 <div class="form-group">
-                    <input type="password" placeholder="Repeat Password" name="rePassword" id="rePassword" ngModel
+                    <input type="password" placeholder="Repeat Password" name="rePassword" id="rePassword" ngModel #inputRePassword="ngModel"
                         required>
                 </div>
+                <ng-container *ngIf="inputRePassword.touched">
+                    <p class="error" *ngIf="inputRePassword.errors?.['required']">
+                        Repeat Password is required!
+                    </p>
+                    <!-- <p class="error">
+                        Email is not valid!
+                    </p> -->
+                </ng-container>
                 <button>Sign Up</button>
             </form>
         </div>
@@ -69,15 +101,30 @@
                         </a>
                     </div>
                 </div>
-                <span>or use your email password</span>
+                <!-- <span>or use your email password</span> -->
                 <div class="form-group">
-                    <input type="email" placeholder="Email" name="email" id="email" ngModel required>
+                    <input type="email" placeholder="Email" name="email" id="email" ngModel #inputEmail="ngModel" required>
                 </div>
-
+                <ng-container *ngIf="inputEmail.touched">
+                    <p class="error" *ngIf="inputEmail.errors?.['required']">
+                        Email is required!
+                    </p>
+                    <!-- <p class="error">
+                        Email is not valid!
+                    </p> -->
+                </ng-container>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" name="password" id="password" ngModel required>
+                    <input type="password" placeholder="Password" name="password" id="password" ngModel #inputPassword="ngModel" required>
                 </div>
-                <a href="#">Forget Your Password?</a>
+                <ng-container *ngIf="inputPassword.touched">
+                    <p class="error" *ngIf="inputPassword.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <!-- <p class="error">
+                        Email is not valid!
+                    </p> -->
+                </ng-container>
+                <!-- <a href="#">Forget Your Password?</a> -->
                 <button>Sign In</button>
             </form>
         </div>
