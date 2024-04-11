@@ -219,7 +219,7 @@ The documentation below assumes you are pre-pending the Base URL to the endpoint
     - _Description:_ Get Collection
 
     - _Response:_
-    ```json
+    ```
        [
         {
             "_id": "unique_recipe_id",
