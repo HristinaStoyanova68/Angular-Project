@@ -11,7 +11,7 @@ import { ErrorService } from './error.service';
 import { Router } from '@angular/router';
 import { isDevMode } from '@angular/core';
 import { devEnvironment } from 'src/environments/environment.development';
-import { prodEnvironment } from 'src/environments/environment';
+import { prodEnvironment } from 'src/environments/environment.production';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
@@ -25,6 +25,7 @@ export class AppInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const environment = isDevMode() ? devEnvironment : prodEnvironment;
+    const { usersApiUrl, recipesApiUrl } = environment;
 
     if (
       req.url.startsWith(this.API_USERS) ||
@@ -32,8 +33,8 @@ export class AppInterceptor implements HttpInterceptor {
     ) {
       req = req.clone({
         url: req.url.startsWith(this.API_USERS)
-          ? req.url.replace(this.API_USERS, environment.usersApiUrl)
-          : req.url.replace(this.API_RECIPES, environment.recipesApiUrl),
+          ? req.url.replace(this.API_USERS, usersApiUrl)
+          : req.url.replace(this.API_RECIPES, recipesApiUrl),
         withCredentials: true,
       });
     }
