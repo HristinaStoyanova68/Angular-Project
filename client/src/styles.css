@@ -50,3 +50,17 @@ footer {
   color: #423c3c;
   min-height: 7em;
 }
+
+.no-recipes {
+  display: flex;
+  justify-content:flex-end;
+}
+
+.no-recipes p {
+  margin-top: 6.5em;
+  margin-right: 3em;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 30px;
+  color: #423c3c;
+}
