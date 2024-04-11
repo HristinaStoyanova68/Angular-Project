@@ -20,15 +20,17 @@ export class LoginComponent {
 
   loginFormSubmitHandler(form: NgForm | undefined) {
     if (this.isLoginActive) {
-      const { email, password } = form?.value;
+      const { loginEmail, loginPassword } = form?.value;
 
-      if (form?.invalid) {
-        console.log('Form is invalid!');
+      // if (form?.invalid) {
+      //   console.log('Form is invalid!');
 
-        return;
-      }
+      //   return;
+      // }
+      console.log(loginEmail, loginPassword);
+      
 
-      this.userService.login(email, password);
+      this.userService.login(loginEmail, loginPassword);
 
       form?.reset();
     }
@@ -48,7 +50,6 @@ export class LoginComponent {
       console.log(registerPassword, rePassword);
       
       if (registerPassword !== rePassword) {
-        //TODO validation
 
         console.log('The passwords are not matching!');
 
