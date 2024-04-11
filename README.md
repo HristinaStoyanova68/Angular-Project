@@ -45,23 +45,24 @@ Join us on Delicious to You, where we celebrate the joy of food, because delicio
 
 ## Features
 
-**Collections Dropdown Menu:**
-Our application features a dropdown menu **Meal Chises** showcasing the names of the following collections: 
-    - salads 
-    - mains
-    - desserts
+**1. Dropdown Navigation for Collections from Navbar:**
+
+Our application includes a dropdown menu on navigation bar containing the names of the various collections. This feature enables users to easily and swiftly navigate to their preferred collection, allowing them to explore the recipes within it effortlessly.
+
+**2. Home Page Navigation:**
+
+- **Collections Dropdown Menu:**
+Our application features a dropdown menu **Meal Choices** showcasing the names of the following collections: 
+- salads 
+- mains
+- desserts
 
 - **Last Arrivals:**
 Additionally, we provide a last arrivals collection displaying the most recent recipes added to our platform. This will showcases the latest additions from all collections, providing users with a quick glance at the most recent recipes available.
 
-**2. Dropdown Navigation for Collections:**
-
-Our application includes a dropdown menu on navigation bar containing the names of the various collections. This feature enables users to easily and swiftly navigate to their preferred collection, allowing them to explore the recipes within it effortlessly.
-
 **3. User Authentication:** 
 
 Secure user authentication ensures a personalized experience for each member with their created recipes.
-
 
 ## How it works
 
