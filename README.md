@@ -37,96 +37,92 @@ We believe that good and tasty food is the key to our health and happiness. Come
 
 ## Project Overview
 
-**HRISTINA’S CRAFT WORLD ReactJS** aims to bring together people for whom the beauty of small things makes тхеир day beautiful and smiling. It is a place where anyone can view or showcase incredible flowers, bouquets, or decorations made solely from crepe paper.
+**Delicious to You** is a captivating blog platform dedicated to sharing recipes for healthy and delectable cuisine. Dive into our three main collections: Salads, Main Courses, and Desserts, where you can explore a world of culinary delights.
 
-<!-- ## Project deployment
+As a visitor, you'll have the opportunity to browse through an array of recipes, engage by liking and viewing the latest additions, and even contribute your own culinary creations. Additionally, you'll have your own space to collect and explore your favorite recipes.
 
-**HRISTINA’S CRAFT WORLD ReactJS** is deployed on a free hosting service [Firebase](https://firebase.google.com/). You have the opportunity to experience its features firsthand. To access the live version, simply visit [HRISTINA’S CRAFT WORLD ReactJS](https://hristina-s-craft-world-reactjs.firebaseapp.com/). -->
+Join us on Delicious to You, where we celebrate the joy of food, because delicious cuisine is the key to our well-being and happiness.
 
 ## Features
 
-**1. Carousel Features:**
+**Collections Dropdown Menu:**
+Our application features a dropdown menu **Meal Chises** showcasing the names of the following collections: 
+    - salads 
+    - mains
+    - desserts
 
-- **Collections Carousel:**
-Our application features three distinct carousels showcasing the names of the following collections: 
-    - bouquets 
-    - decorations
-    - gift boxes
-
-- **Items Carousel:**
-These carousel offer a visual representation of each collection, allowing users to preview three elements from each category swiftly.
-
-- **New Releases Carousel:**
-Additionally, we provide a carousel displaying the most recent items added to our platform. This carousel showcases the latest additions from all collections, providing users with a quick glance at the most recent items available.
+- **Last Arrivals:**
+Additionally, we provide a last arrivals collection displaying the most recent recipes added to our platform. This will showcases the latest additions from all collections, providing users with a quick glance at the most recent recipes available.
 
 **2. Dropdown Navigation for Collections:**
 
-Our application includes a dropdown menu containing the names of the various collections. This feature enables users to easily and swiftly navigate to their preferred collection, allowing them to explore the items within it effortlessly.
+Our application includes a dropdown menu on navigation bar containing the names of the various collections. This feature enables users to easily and swiftly navigate to their preferred collection, allowing them to explore the recipes within it effortlessly.
 
 **3. User Authentication:** 
 
-Secure user authentication ensures a personalized experience for each member with their created items.
+Secure user authentication ensures a personalized experience for each member with their created recipes.
 
 
 ## How it works
 
 - **Account Creation:**
-Users register to create personalized accounts, allowing them to create, modify, or delete items.
-- **Creating an Item in a Collection:** 
-Once registered, users choose a collection in which they can add their own item.
+Users register to create personalized accounts, allowing them to create, modify, or delete recipe.
+- **Creating an Recipe in a Collection:** 
+Once registered, user can easily  go to add-recipe button and with few steps can add a recipe.
 - **Real-time Updates:** 
-All changes made to the collections, including additions and modifications, are updated in real-time, ensuring that information about each item is current.
-- **Liking an Item:** 
-Any logged-in user who is not the owner of an item can like it, and the count of likes is displayed on the item's screen.
+All changes made to the recipes and collections, including additions and modifications, are updated in real-time, ensuring that information about each recipe is current.
+- **Liking an Recipe:** 
+Any logged-in user who is not the owner of an recipe can like it, and the count of likes is displayed on the recipe's screen.
 - **Guest Visitors:** 
-Unauthenticated visitors can browse all collections and their contents but cannot add, modify, delete, or like items within the collections.
+Unauthenticated visitors can browse all collections and their contents but cannot add, modify, delete, or like recipes within the collections.
 
 ## Project Structure
 
 The project follows a structured organization to enhance maintainability and ease of navigation. Here's a brief overview of the main directories and their purposes:
 
 - `/client:`
- Contains the frontend application built with React.
+ Contains the frontend application built with Angular.
 
     - `/public:`
  Static assets and HTML template.
 
     - `/src:`
- React components, styles, and application logic.
+ Angular components, styles, and application logic.
 
  - `/server:`
- REST service, provided for educational purposes by **SoftUni Practice Server**.
+ REST service, provided for educational purposes by **Server**.
 
 ## API Reference
 
 **User Authentication:**
 
-- **Registration:** Allows users to create personalized accounts, enabling them to create, edit, or delete items.
+- **Registration:** Allows users to create personalized accounts, enabling them to create, edit, or delete recipes.
 - **Login:** Registered users can log in to access additional functionalities.
-- **Guest Access:** Unregistered users can browse the site but cannot perform CRUD operations or like items.
+- **Guest Access:** Unregistered users can browse the site but cannot perform CRUD operations or like recipes.
 
 **User Actions:**
 
-- **Create, Edit, Delete Items:** Logged-in users have the ability to create, modify, and delete items.
-- **View Created Items:** Users can view all items they've created.
-- **Like Items:** Logged-in users (non-creators) can like items but cannot like their own created items.
+- **Create, Edit, Delete Recipes:** Logged-in users have the ability to create, modify, and delete recipes.
+- **View Created Recipes:** Users can view all recipes they've created.
+- **Like Recipes:** Logged-in users (non-creators) can like recipes but cannot like their own created recipes.
 
 **Server**
 
 - **Usage**
 
-This is **REST service**, provided for educational purposes by **SoftUni Practice Server**. To execute it, open a command prompt and run `node server.js`.
+This is **REST service**, provided by **Server**. To execute it, open a command prompt and run `npm run dev`.
 
 ```
 > cd server
-> node server.js
+> npm i
+> npm run dev
 ```
 
 ## API Endpoints
 
 **1. Authentication**
 
-**BaseUrl:** `http://localhost:3030/users`
+**BaseUrl:** `http://localhost:3500/users`
 
 - **POST /register**
 
@@ -142,7 +138,7 @@ This is **REST service**, provided for educational purposes by **SoftUni Practic
     - _Response:_
     ```json
     {
-        "User Data": "userData"
+        "User": "user"
     }
     ```
 
@@ -153,26 +149,26 @@ This is **REST service**, provided for educational purposes by **SoftUni Practic
     - _Request:_
     ```json
     {
-        "username": "string",
+        "email": "string",
         "password": "string"
     }
     ```
     - _Response:_
     ```json
     {
-        "User Data": "userData"
+        "user": "user"
     }
     ```
 
 **2. Collections**
 
-**BaseUrl:** `http://localhost:3030/data`
+**BaseUrl:** `http://localhost:3500/recipes`
 
-- **GET /bouquets**
+- **GET /salads**
 
-- **GET /decorations**
+- **GET /mains**
 
-- **GET /gift_boxes**
+- **GET /desserts**
 
     - _Description:_ Get Collections
 
@@ -191,7 +187,7 @@ This is **REST service**, provided for educational purposes by **SoftUni Practic
 
 **3. For logged-in users:**
 
-- **POST /:collectionName/itemData**
+- **POST /add-recipe**
 
     - _Description:_ Create item.
 
@@ -199,27 +195,27 @@ This is **REST service**, provided for educational purposes by **SoftUni Practic
     ```json
     {
         "collectionName": "string",
-        "itemData": "itemData"
+        "recipeData": "recipeData"
     }
     ```
     - _Response:_
     ```json
     {
-        "itemData": "itemData"
+        "recipeData": "recipeData"
     }
     ```   
 
 **4. For both logged-in and guest users:**
 
-- **GET /:collectionName/:itemId**
+- **GET /:collectionName/:id**
 
-    - _Description:_ Get item and it's details.
+    - _Description:_ Get recipe and it's details.
 
     - _Request:_
     ```json
     {
         "collectionName": "string",
-        "itemId": "unique_id_here"
+        "id": "unique_id_here"
     }
     ```
     - _Response:_
@@ -229,37 +225,37 @@ This is **REST service**, provided for educational purposes by **SoftUni Practic
     }
     ```
 
-**5. For logged in users (ownres) - edit and remove item**
+**5. For logged in users (ownres) - edit and remove recipe**
 
-**BaseUrl:** `http://localhost:3030/data`
+**BaseUrl:** `http://localhost:3500/recipes`
 
-- **PUT /:collectionName/:itemId**
+- **PUT /:collectionName/:id/edit**
 
-    - _Description:_ Edit item's details.
+    - _Description:_ Edit recipe's details.
 
     - _Request:_
     ```json
     {
         "collectionName": "string",
-        "itemId": "unique_id_here"
+        "id": "unique_id_here"
     }
     ```
     - _Response:_
     ```json
     {
-        "itemData ": "itemData"
+        "recipeData ": "recipeData"
     }
     ```
 
-- **DELETE /:collectionName/:itemId**
+- **DELETE /:collectionName/:id/delete**
 
-    - _Description:_ Get item and remove it.
+    - _Description:_ Get recipe and remove it.
 
     - _Request:_
     ```json
     {
         "collectionName": "string",
-        "itemId": "unique_id_here"
+        "id": "unique_id_here"
     }
     ```
     - _Response:_
