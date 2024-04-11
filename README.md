@@ -229,7 +229,7 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
 
 **BaseUrl:** `http://localhost:3500/recipes`
 
-- **PUT /:collectionName/:id/edit**
+- **PUT /:collectionName/:recipeId/edit**
 
     - _Description:_ Edit recipe's details.
 
@@ -247,7 +247,7 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
     }
     ```
 
-- **DELETE /:collectionName/:id/delete**
+- **DELETE /:collectionName/:recipeId/delete**
 
     - _Description:_ Get recipe and remove it.
 
@@ -267,21 +267,21 @@ This is **REST service**, provided by **Server**. To execute it, open a command 
 
 **6. For logged in users (not owners) - Likes functionality**
 
-**BaseUrl:** `http://localhost:3030/data/likes`
+**BaseUrl:** `http://localhost:3500/recipes`
 
-- **GET ?where=itemId=:itemId**
+- **GET /:collectionName/:recipeId/like`**
 
     - _Description:_ Get all likes
 
     - _Request:_
     ```json
     {
-        "itemId": "unique_id_here"
+        "recipeId": "unique_id_here"
     }
     ```
     - _Response:_
 
-    The response will be an array of objects, where the key for each object will be its index in the array, and the value will be "itemData".
+    The response will be an array of objects, where the key for each object will be its index in the array, and the value will be "recipeData".
 
     Example structure:
 
