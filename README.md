@@ -67,9 +67,9 @@ Secure user authentication ensures a personalized experience for each member wit
 ## How it works
 
 - **Account Creation:**
-Users register to create personalized accounts, allowing them to create, modify, or delete recipe.
+Users can craft their unique culinary identity by creating a personalized account, which allows them to create, update and delete their own recipes.
 - **Creating an Recipe in a Collection:** 
-Once registered, user can easily  go to add-recipe button and with few steps can add a recipe.
+Once registered, user can easily go to Add Recipe button and with few steps can add a recipe.
 - **Real-time Updates:** 
 All changes made to the recipes and collections, including additions and modifications, are updated in real-time, ensuring that information about each recipe is current.
 - **Liking an Recipe:** 
@@ -82,16 +82,21 @@ Unauthenticated visitors can browse all collections and their contents but canno
 The project follows a structured organization to enhance maintainability and ease of navigation. Here's a brief overview of the main directories and their purposes:
 
 - `/client:`
- Contains the frontend application built with Angular.
+Contains the frontend application built with Angular.
 
     - `/public:`
- Static assets and HTML template.
+Static assets and HTML template.
 
     - `/src:`
- Angular components, styles, and application logic.
+Angular components, styles, and application logic.
 
- - `/server:`
- REST service, provided for educational purposes by **Server**.
+- `/server:`
+The server-side code for handling backend logic and API requests, using Express.js and MongoDB.
+
+    - `/src:`
+Holds the controllers, models, configuration, routes and other server-side code.
+
+Feel free to explore each directory to understand how different components and functionalities are structured within the project.
 
 ## API Reference
 
