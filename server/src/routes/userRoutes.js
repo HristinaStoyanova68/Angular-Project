@@ -4,10 +4,11 @@ const userController = require('../controllers/userController');
 const { loginValidation, registerValidation } = require('../middlewares/userValidator');
 const loginLimiter = require('../middlewares/loginLimiter');
 const verifyJWT = require('../middlewares/verifyJWT');
+const cacheControl = require('../middlewares/cacheControl');
 
-router.post('/login', loginValidation, loginLimiter, userController.login);
+router.post('/login', cacheControl, loginValidation, loginLimiter, userController.login);
 router.post('/register', registerValidation, userController.register);
-router.post('/logout', verifyJWT, userController.logout);
+router.post('/logout', cacheControl, verifyJWT, userController.logout);
 router.get('/get-user', userController.getUserData);
 
 module.exports = router;

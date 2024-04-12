@@ -27,7 +27,6 @@ const login = asyncHandler(async (req, res) => {
       .json({ message: "Unauthorized: Invalid email or password!" });
   }
 
-  console.log(password, user.password);
   const isValidPassword = await bcrypt.compare(password, user.password);
 
   if (!isValidPassword) {
@@ -39,6 +38,7 @@ const login = asyncHandler(async (req, res) => {
   const accessToken = await accessTokenGenerator(user);
 
   res.setHeader("Authorization", `Bearer ${accessToken}`);
+  res.setHeader('Cache-Control', 'no-cache');
 
   if (process.env.NODE_ENV === "production") {
     res.cookie(authCookieName, accessToken, {
@@ -127,6 +127,7 @@ const logout = (req, res) => {
 
   res.removeHeader("Authorization");
   res.clearCookie(authCookieName);
+  res.setHeader('Cache-Control', 'no-cache');
   res.json({ message: "Successfully logged out!" });
 };
 
