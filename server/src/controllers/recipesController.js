@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Collection = require("../models/Collection");
 const Recipe = require("../models/Recipe");
 const User = require("../models/User");
+const mongoose = require("mongoose");
 
 const getLastArrivals = asyncHandler(async (req, res) => {
   const saladsCollection = await Collection.findOne({ name: "salads" })
@@ -66,6 +67,10 @@ const getAllRecipesForCollection = asyncHandler(async (req, res) => {
 
 const getRecipeById = asyncHandler(async (req, res) => {
   const { recipeId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(recipeId)) {
+    return res.status(400).json({ message: "Invalid recipe ID!" });
+  }
 
   const recipe = await Recipe.findById(recipeId).lean();
 
@@ -225,6 +230,10 @@ const deleteRecipe = asyncHandler(async (req, res) => {
   const { collectionName, recipeId } = req.params;
   const userId = req.user._id;
 
+  if (!mongoose.Types.ObjectId.isValid(recipeId)) {
+    return res.status(400).json({ message: "Invalid recipe ID!" });
+  }
+
   const recipe = await Recipe.findById({ _id: recipeId }).lean();
 
   if (recipe.ownerId !== userId) {
@@ -250,6 +259,10 @@ const deleteRecipe = asyncHandler(async (req, res) => {
 const likeRecipe = asyncHandler(async (req, res) => {
   const { recipeId } = req.params;
   const userId = req.user._id;
+
+  if (!mongoose.Types.ObjectId.isValid(recipeId)) {
+    return res.status(400).json({ message: "Invalid recipe ID!" });
+  }
 
   const recipe = await Recipe.findById({ _id: recipeId });
 
