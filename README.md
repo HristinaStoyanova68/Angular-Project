@@ -142,7 +142,6 @@ Start the server in development mode:
 **Important:** To enable the server to run in development mode, it is necessary to create a `.env` file in the `server` folder with the following content:
 ```
 NODE_ENV=development
-MONGO_URI=mongodb+srv://hristinastoyanova1968:7OCSkAlMELWGfyR6@delicious-to-you-db.0ygcfyb.mongodb.net/recipesDB?retryWrites=true&w=majority&appName=delicious-to-you-DB
 ACCESS_TOKEN_SECRET=257480e82fc005037be59c199dac3fe01cd63c580e0ef91074b1ad3426dd2a9c858c653c922bb0057d4992ba5edc6c1d5346268a7b5d811b2964fb629c1f4b7e
 AUTH_COOKIE_NAME=auth-cookie
 ```
