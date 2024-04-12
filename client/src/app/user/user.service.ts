@@ -89,7 +89,7 @@ export class UserService implements OnDestroy {
     // this.user$$.next(undefined);
 
     this.user = undefined;
-
+    localStorage.removeItem(this.USER_KEY);
     this.userSubscription.unsubscribe();
   }
 }

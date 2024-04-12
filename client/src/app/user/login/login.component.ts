@@ -22,14 +22,6 @@ export class LoginComponent {
     if (this.isLoginActive) {
       const { loginEmail, loginPassword } = form?.value;
 
-      // if (form?.invalid) {
-      //   console.log('Form is invalid!');
-
-      //   return;
-      // }
-      console.log(loginEmail, loginPassword);
-      
-
       this.userService.login(loginEmail, loginPassword);
 
       form?.reset();
@@ -40,12 +32,6 @@ export class LoginComponent {
     if (!this.isLoginActive) {
       const { username, registerEmail, registerPassword, rePassword } =
         form?.value;
-
-      // if (form?.invalid) {
-      //   console.log('Form is invalid!');
-
-      //   return;
-      // }
 
       console.log(registerPassword, rePassword);
       
