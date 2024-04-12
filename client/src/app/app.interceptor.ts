@@ -47,6 +47,10 @@ export class AppInterceptor implements HttpInterceptor {
           this.router.navigate(['/auth/login']);
         }
 
+        if (err.error.message === 'Invalid recipe ID!') {
+          this.router.navigate(['/']);
+        }
+
         return [err];
       })
     );
