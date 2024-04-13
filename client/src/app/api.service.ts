@@ -22,6 +22,10 @@ export class ApiService {
     return this.isOwner;
   }
 
+  chechIsOwner(collectionName: string, recipeId: string): Observable<boolean> {
+    return this.http.get<boolean>(`/recipes/${collectionName}/${recipeId}/is-owner`);
+  }
+
   getLastArrivals() {
     return this.http.get<Recipe[] | []>(`/recipes/last-arrivals`);
   }
@@ -41,7 +45,6 @@ export class ApiService {
 
         this.setIsOwner(true);
 
-        // this.router.navigate(['/site/', newRecipe.mealType, newRecipe._id]);
         this.router.navigate(['/site/last-arrivals']);
       },
 

@@ -6,7 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { ErrorService } from './error.service';
 import { Router } from '@angular/router';
 import { isDevMode } from '@angular/core';
@@ -40,6 +40,11 @@ export class AppInterceptor implements HttpInterceptor {
     }
 
     return next.handle(req).pipe(
+      tap(() => {
+
+        console.log(req.headers);
+        
+      }),
       catchError((err) => {
         this.errorService.setError(err);
 

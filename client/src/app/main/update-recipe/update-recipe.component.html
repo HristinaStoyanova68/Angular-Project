@@ -130,7 +130,7 @@
                     </div>
                     <div class="form-group">
                         <label for="prepTime">Preparation Time (minutes):</label>
-                        <input type="number" id="prepTime" name="prepTime" formControlName="prepTime">
+                        <input type="number" id="prepTime" name="prepTime" min="0" formControlName="prepTime">
                     </div>
                     <ng-container *ngIf="updateForm.get('prepTime')?.touched">
                         <p class="error" *ngIf="updateForm.get('prepTime')?.errors?.['min']">
@@ -139,7 +139,7 @@
                     </ng-container>
                     <div class="form-group">
                         <label for="cookTime">Cooking Time (minutes):</label>
-                        <input type="number" id="cookTime" name="cookTime" formControlName="cookTime">
+                        <input type="number" id="cookTime" name="cookTime" min="0" formControlName="cookTime">
                     </div>
                     <ng-container *ngIf="updateForm.get('cookTime')?.touched">
                         <p class="error" *ngIf="updateForm.get('cookTime')?.errors?.['min']">
@@ -148,7 +148,7 @@
                     </ng-container>
                     <div class="form-group">
                         <label for="servings">Servings:</label>
-                        <input type="number" id="servings" name="servings" formControlName="servings">
+                        <input type="number" id="servings" name="servings" min="0" formControlName="servings">
                     </div>
                     <ng-container *ngIf="updateForm.get('servings')?.touched">
                         <p class="error" *ngIf="updateForm.get('servings')?.errors?.['min']">

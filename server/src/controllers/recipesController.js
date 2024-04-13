@@ -81,6 +81,23 @@ const getRecipeById = asyncHandler(async (req, res) => {
   res.status(200).json(recipe);
 });
 
+const checkIsOwner = asyncHandler(async (req, res) => {
+  const userId = req.cookies[process.env.AUTH_COOKIE_NAME];
+  const {recipeId} = req.params;
+
+  const recipe = await Recipe.findById({_id: recipeId}).lean();
+
+  if (!recipe) {
+    return res.status(400).json({message: 'Recipe not found!'});
+  }
+
+  if (recipe.ownerId === userId) {
+    return res.status(200).json(true);
+  } else {
+    return res.status(200).json(false);
+  }
+});
+
 const getMyRecipes = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
@@ -286,4 +303,5 @@ module.exports = {
   editRecipe,
   deleteRecipe,
   likeRecipe,
+  checkIsOwner,
 };

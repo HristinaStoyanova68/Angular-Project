@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { ApiService } from '../api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -21,10 +21,22 @@ export class OwnerActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    if (this.apiService.getIsOwner()) {
-      return true;
-    } else {
-      return this.router.navigate(['/404']);
-    }
+    
+      const collectionName = route.paramMap.get('collectionName')!;
+      const recipeId = route.paramMap.get('recipeId')!;
+
+      return this.apiService.chechIsOwner(collectionName, recipeId).pipe(
+        tap(isOwner => {
+          if (!isOwner) {
+            this.router.navigate(['/404']);
+          }
+        }),
+        map(isOwner => isOwner || this.router.createUrlTree(['/404'])),
+        catchError(() => {
+          this.router.navigate(['/404']);
+
+          return of(false);
+        })
+      )
   }
 }
