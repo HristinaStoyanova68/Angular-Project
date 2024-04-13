@@ -22,7 +22,7 @@ export class ApiService {
     return this.isOwner;
   }
 
-  chechIsOwner(collectionName: string, recipeId: string): Observable<boolean> {
+  checkIsOwner(collectionName: string, recipeId: string): Observable<boolean> {
     return this.http.get<boolean>(`/recipes/${collectionName}/${recipeId}/is-owner`);
   }
 

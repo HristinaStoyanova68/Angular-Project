@@ -25,7 +25,7 @@ export class OwnerActivate implements CanActivate {
       const collectionName = route.paramMap.get('collectionName')!;
       const recipeId = route.paramMap.get('recipeId')!;
 
-      return this.apiService.chechIsOwner(collectionName, recipeId).pipe(
+      return this.apiService.checkIsOwner(collectionName, recipeId).pipe(
         tap(isOwner => {
           if (!isOwner) {
             this.router.navigate(['/404']);

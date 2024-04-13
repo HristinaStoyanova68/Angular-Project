@@ -136,7 +136,6 @@ export class UpdateRecipeComponent implements OnInit {
 
     this.updateForm.reset();
 
-    // console.log(this.recipe);
   }
 
   deleteSubmitHandler(event: Event): void {
@@ -144,8 +143,6 @@ export class UpdateRecipeComponent implements OnInit {
 
     this.apiService.deleteRecipe(this.collectionName, this.recipeId);
   }
-
-  // openDeleteConfirmationModal() {}
 
   onIngredientPencil(event: Event, i: number) {
     event.preventDefault();
@@ -182,7 +179,6 @@ export class UpdateRecipeComponent implements OnInit {
       editIngredientType === '' ||
       editIngredientName === ''
     ) {
-      //TODO implement error handling
 
       return;
     }
@@ -211,7 +207,6 @@ export class UpdateRecipeComponent implements OnInit {
       ingredientType === '' ||
       ingredientName === ''
     ) {
-      //TODO implement error handling
 
       return;
     }
@@ -251,7 +246,6 @@ export class UpdateRecipeComponent implements OnInit {
       editInstruction === null ||
       editInstruction === ''
     ) {
-      //TODO implement error handling
 
       return;
     }
@@ -271,7 +265,6 @@ export class UpdateRecipeComponent implements OnInit {
     event.preventDefault();
 
     const { instruction } = this.updateForm.controls.addInstructionGroup.value;
-    // console.log(instruction);
 
     if (
       instruction === undefined ||

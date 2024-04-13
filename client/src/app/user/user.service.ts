@@ -60,7 +60,6 @@ export class UserService implements OnDestroy {
   }
 
   signOut() {
-    //TODO see this is .subscribe necessary
 
     this.http
       .post('/users/logout', {})
@@ -85,7 +84,6 @@ export class UserService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.user$$.next(undefined);
 
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);

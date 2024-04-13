@@ -33,8 +33,6 @@ export class LoginComponent {
       const { username, registerEmail, registerPassword, rePassword } =
         form?.value;
 
-      console.log(registerPassword, rePassword);
-      
       if (registerPassword !== rePassword) {
 
         console.log('The passwords are not matching!');
