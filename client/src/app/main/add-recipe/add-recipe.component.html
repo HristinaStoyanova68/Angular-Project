@@ -48,31 +48,31 @@
                             <input type="text" name="ingredientName" id="ingredientName" #inputIngredientName="ngModel"
                                 ngModel required="" />
                         </div>
-                        <ng-container *ngIf="inputIngredientQty.touched">
-                            <p class="error" *ngIf="inputIngredientQty.errors?.['required']">
-                                Ingredient quantity is required!
-                            </p>
-                        </ng-container>
-                        <ng-container *ngIf="inputIngredientName.touched">
-                            <p class="error" *ngIf="inputIngredientName.errors?.['required']">
-                                Ingredient name is required!
-                            </p>
-                        </ng-container>
                         <button type="button" (click)="addIngredient($event, form)">Add Ingredient</button>
                     </div>
+                    <ng-container *ngIf="inputIngredientQty.touched">
+                        <p class="error" *ngIf="inputIngredientQty.errors?.['required']">
+                            Ingredient quantity is required!
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="inputIngredientName.touched">
+                        <p class="error" *ngIf="inputIngredientName.errors?.['required']">
+                            Ingredient name is required!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="instruction">Instructions:</label>
                         <textarea id="instruction" name="instruction"
                             placeholder="Please add your instructions step by step" #textareaInstruction="ngModel"
                             ngModel required>
                         </textarea>
-                        <ng-container *ngIf="textareaInstruction.touched">
-                            <p class="error" *ngIf="textareaInstruction.errors?.['required']">
-                                Instruction is required!
-                            </p>
-                        </ng-container>
                         <button type="button" (click)="addInstruction($event, form)">Add Step</button>
                     </div>
+                    <ng-container *ngIf="textareaInstruction.touched">
+                        <p class="error" *ngIf="textareaInstruction.errors?.['required']">
+                            Instruction is required!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="prepTime">Preparation Time (minutes):</label>
                         <input type="number" id="prepTime" name="prepTime" #inputPrepTime="ngModel" ngModel required>
@@ -102,20 +102,30 @@
                     </ng-container>
                     <div class="form-group">
                         <label for="difficulty">Difficulty:</label>
-                        <select id="difficulty" name="difficulty" ngModel required>
+                        <select id="difficulty" name="difficulty" ngModel #selectDificulty="ngModel" required>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="difficult">Difficult</option>
                         </select>
                     </div>
+                    <ng-container *ngIf="selectDificulty.touched">
+                        <p class="error" *ngIf="selectDificulty.errors?.['required']">
+                            Difficulty is required!
+                        </p>
+                    </ng-container>
                     <div class="form-group">
                         <label for="mealType">Meal type:</label>
-                        <select id="mealType" name="mealType" ngModel required>
+                        <select id="mealType" name="mealType" ngModel #selectMealType="ngModel" required>
                             <option value="salads">Salads</option>
                             <option value="mains">Mains</option>
                             <option value="desserts">Desserts</option>
                         </select>
                     </div>
+                    <ng-container *ngIf="selectMealType.touched">
+                        <p class="error" *ngIf="selectMealType.errors?.['required']">
+                            Meal Type is required!
+                        </p>
+                    </ng-container>
                 </div>
                 <div class="buttons">
                     <button type="submit" class="add-recipe">Add
