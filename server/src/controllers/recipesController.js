@@ -3,6 +3,7 @@ const Collection = require("../models/Collection");
 const Recipe = require("../models/Recipe");
 const User = require("../models/User");
 const mongoose = require("mongoose");
+const jwt = require("../lib/jwt");
 
 const getLastArrivals = asyncHandler(async (req, res) => {
   const saladsCollection = await Collection.findOne({ name: "salads" })
@@ -82,19 +83,43 @@ const getRecipeById = asyncHandler(async (req, res) => {
 });
 
 const checkIsOwner = asyncHandler(async (req, res) => {
-  const userId = req.cookies[process.env.AUTH_COOKIE_NAME];
-  const {recipeId} = req.params;
+  const token = req.cookies[process.env.AUTH_COOKIE_NAME];
+  const { recipeId } = req.params;
 
-  const recipe = await Recipe.findById({_id: recipeId}).lean();
-
-  if (!recipe) {
-    return res.status(400).json({message: 'Recipe not found!'});
+  if (!token) {
+    return res.status(204).json(undefined);
   }
 
-  if (recipe.ownerId === userId) {
-    return res.status(200).json(true);
-  } else {
-    return res.status(200).json(false);
+  try {
+    const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    const userId = decoded.UserInfo._id;
+
+    const recipe = await Recipe.findById({ _id: recipeId }).lean();
+
+    if (!recipe) {
+      return res.status(400).json({ message: "Recipe not found!" });
+    }
+
+    if (recipe.ownerId === userId) {
+      return res.status(200).json(true);
+    } else {
+      return res.status(200).json(false);
+    }
+  } catch (error) {
+    if (error.name === "TokenExpiredError") {
+      res.clearCookie[process.env.AUTH_COOKIE_NAME];
+
+      return res.status(401).json({ message: "Token has expired!" });
+    } else {
+      console.log(error.name);
+      console.log("Problem with token verification!");
+
+      res.clearCookie[process.env.AUTH_COOKIE_NAME];
+
+      return res
+        .status(403)
+        .json({ message: "Problem with token verification!" });
+    }
   }
 });
 
@@ -190,7 +215,7 @@ const editRecipe = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
   if (ownerId !== userId) {
-    return res.status(403).json({ message: "Only owner can update recipe!"});
+    return res.status(403).json({ message: "Only owner can update recipe!" });
   }
 
   const currentUser = await User.findById({ _id: userId });
@@ -284,10 +309,11 @@ const likeRecipe = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById({ _id: recipeId });
 
   if (userId === recipe.ownerId) {
-
-    return res.status(403).json({message: 'You are not allowed to like own recipes!'});
+    return res
+      .status(403)
+      .json({ message: "You are not allowed to like own recipes!" });
   }
-  
+
   recipe.likes.push(userId);
   await recipe.save();
 
