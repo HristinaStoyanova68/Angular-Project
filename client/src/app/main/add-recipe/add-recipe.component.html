@@ -75,7 +75,7 @@
                     </ng-container>
                     <div class="form-group">
                         <label for="prepTime">Preparation Time (minutes):</label>
-                        <input type="number" id="prepTime" name="prepTime" #inputPrepTime="ngModel" ngModel required>
+                        <input type="number" id="prepTime" name="prepTime" min="0" #inputPrepTime="ngModel" ngModel required>
                     </div>
                     <ng-container *ngIf="inputPrepTime.touched">
                         <p class="error" *ngIf="inputPrepTime.errors?.['required']">
@@ -84,7 +84,7 @@
                     </ng-container>
                     <div class="form-group">
                         <label for="cookTime">Cooking Time (minutes):</label>
-                        <input type="number" id="cookTime" name="cookTime" #inputCookTime="ngModel" ngModel required>
+                        <input type="number" id="cookTime" name="cookTime" min="0" #inputCookTime="ngModel" ngModel required>
                     </div>
                     <ng-container *ngIf="inputCookTime.touched">
                         <p class="error" *ngIf="inputCookTime.errors?.['required']">
@@ -93,7 +93,7 @@
                     </ng-container>
                     <div class="form-group">
                         <label for="servings">Servings:</label>
-                        <input type="number" id="servings" name="servings" #inputServings="ngModel" ngModel required>
+                        <input type="number" id="servings" name="servings" min="0" #inputServings="ngModel" ngModel required>
                     </div>
                     <ng-container *ngIf="inputServings.touched">
                         <p class="error" *ngIf="inputServings.errors?.['required']">
